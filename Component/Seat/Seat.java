@@ -3,12 +3,21 @@ package SC2002.Component.Seat;
 public class Seat {
     private int rowNumber, columnNumber;
     private boolean isOccupied;
-    private String seatType;
+    private SeatType seatType;
+    private Seat relatedSeat;
+    public Seat () {
+        this.rowNumber = -1;
+        this.columnNumber = -1;
+        this.isOccupied = false;
+        this.seatType = SeatType.CoupleSeat;
+        this.relatedSeat = new Seat();
+    } 
     public Seat (int rowNumber, int columnNumber){
         this.rowNumber = rowNumber;
         this.columnNumber = columnNumber;
         this.isOccupied = false;
-        this.seatType = "SingleSeat";
+        this.seatType = SeatType.SingleSeat;
+        this.relatedSeat = new Seat();
     }
 
     public void setRowNumber(int rowNumber) {
@@ -19,8 +28,12 @@ public class Seat {
         this.columnNumber = columnNumber;
     }
 
-    public void setSeatType(String seatType) {
+    public void setSeatType(SeatType seatType) {
         this.seatType = seatType;
+    }
+
+    public void setRelatedSeat(Seat seat) {
+        this.relatedSeat = seat;
     }
 
     public void occupy() {
@@ -43,7 +56,11 @@ public class Seat {
         return this.isOccupied;
     }
 
-    public String getSeatType() {
+    public SeatType getSeatType() {
         return this.seatType;
+    }
+
+    public Seat getRelatedSeat() {
+        return this.relatedSeat;
     }
 }

@@ -2,6 +2,7 @@ package SC2002.AdminSystem;
 
 import SC2002.Main;
 import SC2002.Controller.MainController;
+import SC2002.Controller.MovieController;
 
 public class AdminSystem{
     loginSystem loginSys;

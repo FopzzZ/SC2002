@@ -6,7 +6,7 @@ import SC2002.Main;
 import SC2002.Component.Movie.*;
 
 public class MovieController {
-    public static ArrayList<Movie> movieList;
+    public ArrayList<Movie> movieList;
     public MovieController() {
         movieList = new ArrayList<Movie>();
     }

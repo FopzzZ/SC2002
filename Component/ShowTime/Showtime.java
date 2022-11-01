@@ -3,6 +3,7 @@ package SC2002.Component.ShowTime;
 import SC2002.Component.Cinema.cinema;
 import SC2002.Component.Movie.Movie;
 import SC2002.Component.Seat.Seat;
+import SC2002.Component.Seat.Seatplan;
 import SC2002.Component.Time.*;
 
 public class Showtime {
@@ -10,7 +11,7 @@ public class Showtime {
     Movie movie;
     //cineplex
     cinema cinema;
-    Seat[] seats;
+    Seatplan seatplan;
     public Showtime() {
         startTime = new Time();
         movie = new Movie();

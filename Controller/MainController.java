@@ -27,7 +27,7 @@ public class MainController {
 
     public void Work() {
         while(true) {
-            System.out.println("Are you guest? (Y/N)");
+            System.out.println("Are you customer? (Y/N)");
             String input = new String();
             input = Main.sc.nextLine();
             if(input.equals("Y")) {
