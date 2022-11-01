@@ -1,23 +1,22 @@
-package SC2002.BookSystem;
+package SC2002.Controller;
 
 import SC2002.Main;
 import SC2002.AdminSystem.Admin;
-import SC2002.Controller.MovieController;
 
-public class BookSystem {
+public class MainController {
     public static MovieController movieCtrl;
     public static boolean isHoliday;
     Admin adminSystem;
-    public BookSystem() {
-        initBookSystem();
+    public MainController() {
+        initMainController();
     }
 
-    private void initBookSystem() {
-        initMovieList();
+    private void initMainController() {
+        initMovieController();
         initAdminSystem();
     }
 
-    private void initMovieList() {
+    private void initMovieController() {
         movieCtrl = new MovieController();
         // initialize movie list from movie.txt
     }

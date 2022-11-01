@@ -1,7 +1,7 @@
 package SC2002.AdminSystem;
 
 import SC2002.Main;
-import SC2002.BookSystem.BookSystem;
+import SC2002.Controller.MainController;
 
 public class Admin{
     loginSystem loginSys;
@@ -50,16 +50,16 @@ public class Admin{
         input = Main.sc.nextLine();
         switch(input) {
             case "1":
-                BookSystem.movieCtrl.createMovie();
+                MainController.movieCtrl.createMovie();
                 break;
             case "2":
-                BookSystem.movieCtrl.updateMovie();
+                MainController.movieCtrl.updateMovie();
                 break;
             case "3":
-                BookSystem.movieCtrl.removeMovie();
+                MainController.movieCtrl.removeMovie();
                 break;
             case "4":
-                BookSystem.movieCtrl.listMovies();
+                MainController.movieCtrl.listMovies();
                 break;
             default:
                 System.out.println("Invalid input");
