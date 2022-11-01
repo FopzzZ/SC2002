@@ -1,12 +1,12 @@
 package SC2002.Controller;
 
 import SC2002.Main;
-import SC2002.AdminSystem.Admin;
+import SC2002.AdminSystem.AdminSystem;
 
 public class MainController {
     public static MovieController movieCtrl;
     public static boolean isHoliday;
-    Admin adminSystem;
+    AdminSystem adminSystem;
     public MainController() {
         initMainController();
     }
@@ -22,7 +22,7 @@ public class MainController {
     }
     
     private void initAdminSystem() {
-        adminSystem = new Admin();
+        adminSystem = new AdminSystem();
     }
 
     public void Work() {

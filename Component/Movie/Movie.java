@@ -2,6 +2,8 @@ package SC2002.Component.Movie;
 
 import java.io.*;
 
+import SC2002.Main;
+
 public class Movie implements Serializable{
     private String movieTitle, synopsis, director;
     movieType type;
@@ -46,6 +48,46 @@ public class Movie implements Serializable{
             System.out.printf("Rating: %.1f\nContent: %s\n",this.reviews[i].rating, this.reviews[i].content); 
         }
         System.out.println("");
+    }
+
+    public boolean updateDetail() {
+        System.out.println("Enter the attribute you want to edit");
+        System.out.println("1: Title");
+        System.out.println("2: Statu(Coming Soon/Preview/Now Showing/End of Showing)");
+        System.out.println("3: Type(Blockbuster/3D)");
+        System.out.println("4: Director");
+        System.out.println("5: Synopsis");
+        System.out.println("6: Add Cast");
+        String input = Main.sc.nextLine();
+        System.out.println("Enter the value: ");
+        String content = Main.sc.nextLine();
+        switch(input) {
+            case "1": this.setTitle(content); break;
+            case "2": 
+                switch(content) {
+                    case "Coming Soon": this.setStatu(movieStatu.Coming); break;
+                    case "Preview": this.setStatu(movieStatu.Preview); break;
+                    case "Now Showing": this.setStatu(movieStatu.Showing); break;
+                    case "End of Showing": return true;
+                    default:
+                        break;
+                } break;
+            case "3":   
+                switch(content) {
+                    case "Blockbuster": this.setType(movieType.Blockbuster); break;
+                    case "3D": this.setType(movieType.threeD); break;
+                    default:
+                        break;
+                } 
+                break;
+            case "4": this.setDirector(content); break;
+            case "5": this.setSynopsis(content); break;
+            case "6": this.addCast(content); break;
+            default:
+                System.out.println("Invalid input.");
+                break;
+        }
+        return false;
     }
 
     public void setTitle(String movieTitle) {
