@@ -31,6 +31,15 @@ public class InputController {
         return input;
     }
 
+    public static int getIntFromUser(int start, int end) {
+        int input = getIntFromUser();
+        while (input < start || input > end) {
+            System.out.println("Please enter a number from " + start + " to " + end);
+            input = getIntFromUser();
+        }
+        return input;
+    }
+
     public static String getYesOrNoFromUser() {
         String input = "";
         boolean validInput = false;

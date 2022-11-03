@@ -8,7 +8,7 @@ public class MainMenuUI {
         System.out.println("Please select login type");
         System.out.println("1. Admin");
         System.out.println("2. User");
-        int choice = InputController.getIntFromUser();
+        int choice = InputController.getIntFromUser(1, 2);
         switch (choice) {
             case 1:
                 AdminLoginUI adminLoginUI = new AdminLoginUI();
