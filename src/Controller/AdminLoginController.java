@@ -1,17 +1,23 @@
 package Controller;
 
 public class AdminLoginController {
-    String username;
+    String username, password;
 
     public AdminLoginController(String username) {
         this.username = username;
+        initialise();
     }
 
-    public boolean verify(String username) {
-        return false;
+    private void initialise() {
+        // TODO read in from data file and save password to this.password
     }
 
-    public boolean checkValidUsername() {
-        return false;
+    public boolean verify(String password) {
+        if (password == this.password) {
+            return true;
+        } else {
+            return false;
+        }
     }
+
 }
