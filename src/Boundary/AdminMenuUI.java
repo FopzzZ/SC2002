@@ -2,8 +2,6 @@ package Boundary;
 
 import Controller.*;
 
-import java.util.*;
-
 public class AdminMenuUI{
     public void main(){
         boolean loggedIn = true; //think of some way to implement
