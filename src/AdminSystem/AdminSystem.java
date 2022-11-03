@@ -1,8 +1,7 @@
-package SC2002.AdminSystem;
+package src.AdminSystem;
 
-import SC2002.Main;
-import SC2002.Controller.MainController;
-import SC2002.Controller.MovieController;
+import src.Main;
+import src.Controller.MainController;
 
 public class AdminSystem{
     loginSystem loginSys;

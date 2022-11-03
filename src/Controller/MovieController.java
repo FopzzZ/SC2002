@@ -1,9 +1,9 @@
-package SC2002.Controller;
+package src.Controller;
 
 import java.util.ArrayList;
 
-import SC2002.Main;
-import SC2002.Component.Movie.*;
+import src.Main;
+import src.Component.Movie.*;
 
 public class MovieController {
     public ArrayList<Movie> movieList;

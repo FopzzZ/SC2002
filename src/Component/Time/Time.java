@@ -1,4 +1,4 @@
-package SC2002.Component.Time;
+package src.Component.Time;
 
 public class Time {
     int year, month, day, hour, minutes;

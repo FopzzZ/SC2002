@@ -1,4 +1,4 @@
-package SC2002.Component.Movie;
+package src.Component.Movie;
 
 public enum movieStatu {
     Coming, Preview, Showing, Ended;

@@ -1,9 +1,9 @@
-package SC2002.Component.ShowTime;
+package src.Component.ShowTime;
 
-import SC2002.Component.Cinema.cinema;
-import SC2002.Component.Movie.Movie;
-import SC2002.Component.Seat.Seatplan;
-import SC2002.Component.Time.*;
+import src.Component.Cinema.cinema;
+import src.Component.Movie.Movie;
+import src.Component.Seat.Seatplan;
+import src.Component.Time.*;
 
 public class Showtime {
     Time startTime;

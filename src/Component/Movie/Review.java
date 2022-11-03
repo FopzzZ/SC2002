@@ -1,4 +1,4 @@
-package SC2002.Component.Movie;
+package src.Component.Movie;
 
 import java.io.Serializable;
 

@@ -1,8 +1,8 @@
-package SC2002.AdminSystem;
+package src.AdminSystem;
 
 import java.util.ArrayList;
 
-import SC2002.Main;
+import src.Main;
 
 public class loginSystem {
     ArrayList<Admin> listOfAdmin = new ArrayList<Admin>();

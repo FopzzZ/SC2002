@@ -1,8 +1,8 @@
-package SC2002.Component.Movie;
+package src.Component.Movie;
 
 import java.io.*;
 
-import SC2002.Main;
+import src.Main;
 
 public class Movie implements Serializable{
     private String movieTitle, synopsis, director;

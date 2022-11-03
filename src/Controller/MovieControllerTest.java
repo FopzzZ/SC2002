@@ -1,4 +1,4 @@
-package SC2002.Controller;
+package src.Controller;
 
 public class MovieControllerTest {
     public static void main(String[] args) {
