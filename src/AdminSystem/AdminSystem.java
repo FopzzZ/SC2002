@@ -1,18 +1,20 @@
-package src.AdminSystem;
+package AdminSystem;
 
-import src.Main;
-import src.Controller.MainController;
+import Main;
+import Controller.MainController;
 
-public class AdminSystem{
+public class AdminSystem {
     loginSystem loginSys;
+
     public AdminSystem() {
         loginSys = new loginSystem();
     }
 
     public void Work() {
-        if(!loginSys.login()) return;
+        if (!loginSys.login())
+            return;
         String input = new String();
-        while(true) {
+        while (true) {
             System.out.println("Input number for your operations:");
             System.out.println("1: Edit movie list");
             System.out.println("2: Edit showtimes");
@@ -28,15 +30,16 @@ public class AdminSystem{
                     EditShowtime();
                     break;
                 case "3":
-                    EditConfig(); 
+                    EditConfig();
                     break;
                 case "4":
                     exit = true;
                     break;
                 default:
                     break;
-            } 
-            if(exit)    break;
+            }
+            if (exit)
+                break;
         }
     }
 
@@ -44,11 +47,11 @@ public class AdminSystem{
         System.out.println("Select type of edition for movie");
         System.out.println("1: Create a new movie");
         System.out.println("2: Update movie details");
-        System.out.println("3: Remove a movie");   
+        System.out.println("3: Remove a movie");
         System.out.println("4: List all movies");
         String input = new String();
         input = Main.sc.nextLine();
-        switch(input) {
+        switch (input) {
             case "1":
                 MainController.movieCtrl.createMovie();
                 break;
@@ -71,10 +74,10 @@ public class AdminSystem{
         System.out.println("Select type of edition for movie");
         System.out.println("1: Create a new movie");
         System.out.println("2: Update movie details");
-        System.out.println("3: Remove a movie");   
+        System.out.println("3: Remove a movie");
         String input = new String();
         input = Main.sc.next();
-        switch(input) {
+        switch (input) {
             case "1":
                 createShowtime();
                 break;
@@ -101,7 +104,8 @@ public class AdminSystem{
     public void removeShowtime() {
 
     }
+
     public void EditConfig() {
-        
+
     }
 }

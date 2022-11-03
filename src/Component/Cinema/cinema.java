@@ -1,15 +1,15 @@
-package src.Component.Cinema;
+package Component.Cinema;
 
 public class cinema {
     cinemaType type;
     String ID;
-    
+
     public cinema() {
         this.type = cinemaType.NORMAL;
     }
 
     public cinema(cinemaType type, String ID) {
-        this.type = type; 
+        this.type = type;
         this.ID = ID;
     }
 

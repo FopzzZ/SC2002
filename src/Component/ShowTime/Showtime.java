@@ -1,23 +1,24 @@
-package src.Component.ShowTime;
+package Component.ShowTime;
 
-import src.Component.Cinema.cinema;
-import src.Component.Movie.Movie;
-import src.Component.Seat.Seatplan;
-import src.Component.Time.*;
+import Component.Cinema.cinema;
+import Component.Movie.Movie;
+import Component.Seat.Seatplan;
+import Component.Time.*;
 
 public class Showtime {
     Time startTime;
     Movie movie;
-    //cineplex
+    // cineplex
     cinema cinema;
     Seatplan seatplan;
+
     public Showtime() {
         startTime = new Time();
         movie = new Movie();
         cinema = new cinema();
     }
 
-    public void setTime(Time time){
+    public void setTime(Time time) {
         this.startTime = time;
     }
 

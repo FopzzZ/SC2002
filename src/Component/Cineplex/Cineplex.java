@@ -1,8 +1,9 @@
-package src.Component.Cineplex;
+package Component.Cineplex;
 
 import java.util.ArrayList;
 
-import src.Component.Cinema.*;
+import Component.Cinema.*;
+
 public class Cineplex {
     String ID;
     ArrayList<cinema> cinemas;

@@ -1,4 +1,4 @@
-package src.Component.Cinema;
+package Component.Cinema;
 
 public enum cinemaType {
     GOLDCLASS, PLATIUM, IMAX, NORMAL;

@@ -1,18 +1,20 @@
-package src.Component.Seat;
+package Component.Seat;
 
 public class Seat {
     private int rowNumber, columnNumber;
     private boolean isOccupied;
     private SeatType seatType;
     private Seat relatedSeat;
-    public Seat () {
+
+    public Seat() {
         this.rowNumber = -1;
         this.columnNumber = -1;
         this.isOccupied = false;
         this.seatType = SeatType.CoupleSeat;
         this.relatedSeat = new Seat();
-    } 
-    public Seat (int rowNumber, int columnNumber){
+    }
+
+    public Seat(int rowNumber, int columnNumber) {
         this.rowNumber = rowNumber;
         this.columnNumber = columnNumber;
         this.isOccupied = false;

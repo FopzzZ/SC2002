@@ -1,4 +1,4 @@
-package src.Component.Movie;
+package Component.Movie;
 
 public enum movieType {
     Blockbuster, threeD, common;

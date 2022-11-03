@@ -1,5 +1,4 @@
-package src.AdminSystem;
-
+package AdminSystem;
 
 public class Admin {
     private String ID, password;
@@ -13,10 +12,11 @@ public class Admin {
         return password.equals(this.password);
     }
 
-    public String getID(){
+    public String getID() {
         return this.ID;
     }
-    //note: can use hash here
+
+    // note: can use hash here
     public String getPassword() {
         return this.password;
     }

@@ -1,10 +1,10 @@
-package src.Component.Movie;
+package Component.Movie;
 
 import java.io.*;
 
-import src.Main;
+import Main;
 
-public class Movie implements Serializable{
+public class Movie implements Serializable {
     private String movieTitle, synopsis, director;
     movieType type;
     movieStatu statu;
@@ -13,10 +13,11 @@ public class Movie implements Serializable{
     private Review[] reviews;
     double overallRating;
     double sumOfRating;
+
     public Movie() {
         initComponents();
     }
-    
+
     private void initComponents() {
         numOfCasts = 0;
         movieTitle = "";
@@ -28,24 +29,27 @@ public class Movie implements Serializable{
         cast = new String[100];
         reviews = new Review[500];
     }
-    //showDetail used to show all elemnts of the movie to user.
+
+    // showDetail used to show all elemnts of the movie to user.
     public void showDetail() {
-        System.out.printf("Movie Title: %s\nStatu: %s\nSynopsis: %s\n", this.getTitle(), this.getStatu(), this.getSynopsis());
-        System.out.print("Type of movie: "); 
+        System.out.printf("Movie Title: %s\nStatu: %s\nSynopsis: %s\n", this.getTitle(), this.getStatu(),
+                this.getSynopsis());
+        System.out.print("Type of movie: ");
         System.out.println(this.type);
         System.out.printf("\nDirector: %s\n", this.getDirector());
 
         System.out.print("Cast: ");
-        for(int i = 0; i < numOfCasts; i++) 
-            System.out.printf("%s ", this.cast[i]); 
+        for (int i = 0; i < numOfCasts; i++)
+            System.out.printf("%s ", this.cast[i]);
         System.out.printf("\nOverall Rating: ");
-        if(numOfReviews > 1 ) {
+        if (numOfReviews > 1) {
             System.out.printf("%.1f\n", overallRating);
-        } else System.out.println("NA");
+        } else
+            System.out.println("NA");
 
-        for(int i = 0; i < numOfReviews; i++) {
+        for (int i = 0; i < numOfReviews; i++) {
             System.out.printf("Reviews%3d:\n", i + 1);
-            System.out.printf("Rating: %.1f\nContent: %s\n",this.reviews[i].rating, this.reviews[i].content); 
+            System.out.printf("Rating: %.1f\nContent: %s\n", this.reviews[i].rating, this.reviews[i].content);
         }
         System.out.println("");
     }
@@ -61,28 +65,48 @@ public class Movie implements Serializable{
         String input = Main.sc.nextLine();
         System.out.println("Enter the value: ");
         String content = Main.sc.nextLine();
-        switch(input) {
-            case "1": this.setTitle(content); break;
-            case "2": 
-                switch(content) {
-                    case "Coming Soon": this.setStatu(movieStatu.Coming); break;
-                    case "Preview": this.setStatu(movieStatu.Preview); break;
-                    case "Now Showing": this.setStatu(movieStatu.Showing); break;
-                    case "End of Showing": return true;
-                    default:
-                        break;
-                } break;
-            case "3":   
-                switch(content) {
-                    case "Blockbuster": this.setType(movieType.Blockbuster); break;
-                    case "3D": this.setType(movieType.threeD); break;
-                    default:
-                        break;
-                } 
+        switch (input) {
+            case "1":
+                this.setTitle(content);
                 break;
-            case "4": this.setDirector(content); break;
-            case "5": this.setSynopsis(content); break;
-            case "6": this.addCast(content); break;
+            case "2":
+                switch (content) {
+                    case "Coming Soon":
+                        this.setStatu(movieStatu.Coming);
+                        break;
+                    case "Preview":
+                        this.setStatu(movieStatu.Preview);
+                        break;
+                    case "Now Showing":
+                        this.setStatu(movieStatu.Showing);
+                        break;
+                    case "End of Showing":
+                        return true;
+                    default:
+                        break;
+                }
+                break;
+            case "3":
+                switch (content) {
+                    case "Blockbuster":
+                        this.setType(movieType.Blockbuster);
+                        break;
+                    case "3D":
+                        this.setType(movieType.threeD);
+                        break;
+                    default:
+                        break;
+                }
+                break;
+            case "4":
+                this.setDirector(content);
+                break;
+            case "5":
+                this.setSynopsis(content);
+                break;
+            case "6":
+                this.addCast(content);
+                break;
             default:
                 System.out.println("Invalid input.");
                 break;
@@ -115,7 +139,8 @@ public class Movie implements Serializable{
     }
 
     public void addReview(double rating, String content) {
-        if(numOfReviews >= 500) return;
+        if (numOfReviews >= 500)
+            return;
         this.reviews[numOfReviews++] = new Review(rating, content);
         sumOfRating += rating;
         overallRating = sumOfRating / numOfReviews;
@@ -144,10 +169,11 @@ public class Movie implements Serializable{
     public Review[] getReviews() {
         return this.reviews;
     }
-    
+
     public movieType getType() {
         return this.type;
     }
+
     // Just for unit test
     public static void main(String[] args) throws FileNotFoundException, IOException, ClassNotFoundException {
         Movie movie1 = new Movie();
