@@ -2,10 +2,10 @@ package Controller;
 
 import java.util.ArrayList;
 
-import Component.Movie.*;
+import Entity.Movie.Movie;
 
 public class MovieController {
-    public ArrayList<Movie> movieList;
+    private ArrayList<Movie> movieList;
 
     public MovieController() {
         movieList = new ArrayList<Movie>();
@@ -32,10 +32,8 @@ public class MovieController {
         return -1;
     }
 
-    public void updateMovie() {
-        System.out.println("Enter the title of the movie you want to edit: ");
-        String s = InputController.getStringFromUser();
-        int index = searchWithTitle(s);
+    public void updateMovie(String title) {
+        int index = searchWithTitle(title);
         if (index == -1) {
             System.out.println("No such movie");
             return;
@@ -46,16 +44,14 @@ public class MovieController {
         }
     }
 
-    public void removeMovie() {
-        System.out.println("Enter the title of movie you want to remove: ");
-        String s = InputController.getStringFromUser();
-        int index = searchWithTitle(s);
+    //return false if no such movie, return true if removed successfully
+    public boolean removeMovie(String title) {
+        int index = searchWithTitle(title);
         if (index == -1) {
-            System.out.println("No such movie");
-            return;
+            return false;
         }
         remove(index);
-        System.out.printf("Successfully removed the movie <%s>.\n", s);
+        return true;
     }
 
     public void listMovies() {
@@ -68,7 +64,7 @@ public class MovieController {
     public void showDetail(String title) {
         int index = searchWithTitle(title);
         if (index != -1)
-            movieList.get(index).showDetail();
+            System.out.println(movieList.get(index).toString());
         else
             System.out.println("No such movie.");
     }
