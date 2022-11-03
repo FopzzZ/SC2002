@@ -2,7 +2,6 @@ package SC2002.Component.ShowTime;
 
 import SC2002.Component.Cinema.cinema;
 import SC2002.Component.Movie.Movie;
-import SC2002.Component.Seat.Seat;
 import SC2002.Component.Seat.Seatplan;
 import SC2002.Component.Time.*;
 
