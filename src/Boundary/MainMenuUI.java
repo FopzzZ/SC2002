@@ -15,8 +15,8 @@ public class MainMenuUI {
                 adminLoginUI.main();
                 break;
             case 2:
-                UserMenuUI userMenuUI = new UserMenuUI();
-                userMenuUI.main();
+                UserLoginUI userLoginUI = new UserLoginUI();
+                userLoginUI.main();
                 break;
 
         }
