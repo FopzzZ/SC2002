@@ -2,7 +2,6 @@ package Controller;
 
 import java.util.ArrayList;
 
-import Main;
 import Component.Movie.*;
 
 public class MovieController {
@@ -14,7 +13,7 @@ public class MovieController {
 
     public void createMovie() {
         System.out.println("Enter the new movie's title: ");
-        String s = Main.sc.nextLine();
+        String s = InputController.getStringFromUser();
         addMovie(s);
         System.out.printf("Have created new movie <%s>.\n", s);
     }
@@ -35,7 +34,7 @@ public class MovieController {
 
     public void updateMovie() {
         System.out.println("Enter the title of the movie you want to edit: ");
-        String s = Main.sc.nextLine();
+        String s = InputController.getStringFromUser();
         int index = searchWithTitle(s);
         if (index == -1) {
             System.out.println("No such movie");
@@ -49,7 +48,7 @@ public class MovieController {
 
     public void removeMovie() {
         System.out.println("Enter the title of movie you want to remove: ");
-        String s = Main.sc.nextLine();
+        String s = InputController.getStringFromUser();
         int index = searchWithTitle(s);
         if (index == -1) {
             System.out.println("No such movie");

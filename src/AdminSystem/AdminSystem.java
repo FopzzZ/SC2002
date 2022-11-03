@@ -1,6 +1,6 @@
 package AdminSystem;
 
-import Main;
+import Controller.InputController;
 import Controller.MainController;
 
 public class AdminSystem {
@@ -20,7 +20,7 @@ public class AdminSystem {
             System.out.println("2: Edit showtimes");
             System.out.println("3: Edit system config");
             System.out.println("4: Exit");
-            input = Main.sc.nextLine();
+            input = InputController.getStringFromUser();
             boolean exit = false;
             switch (input) {
                 case "1":
@@ -50,7 +50,7 @@ public class AdminSystem {
         System.out.println("3: Remove a movie");
         System.out.println("4: List all movies");
         String input = new String();
-        input = Main.sc.nextLine();
+        input = InputController.getStringFromUser();
         switch (input) {
             case "1":
                 MainController.movieCtrl.createMovie();
@@ -76,7 +76,7 @@ public class AdminSystem {
         System.out.println("2: Update movie details");
         System.out.println("3: Remove a movie");
         String input = new String();
-        input = Main.sc.next();
+        input = InputController.getStringFromUser();
         switch (input) {
             case "1":
                 createShowtime();

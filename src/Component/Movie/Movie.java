@@ -2,7 +2,7 @@ package Component.Movie;
 
 import java.io.*;
 
-import Main;
+import Controller.InputController;
 
 public class Movie implements Serializable {
     private String movieTitle, synopsis, director;
@@ -62,9 +62,9 @@ public class Movie implements Serializable {
         System.out.println("4: Director");
         System.out.println("5: Synopsis");
         System.out.println("6: Add Cast");
-        String input = Main.sc.nextLine();
+        String input = InputController.getStringFromUser();
         System.out.println("Enter the value: ");
-        String content = Main.sc.nextLine();
+        String content = InputController.getStringFromUser();
         switch (input) {
             case "1":
                 this.setTitle(content);

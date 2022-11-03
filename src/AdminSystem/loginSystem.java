@@ -2,7 +2,7 @@ package AdminSystem;
 
 import java.util.ArrayList;
 
-import Main;
+import Controller.InputController;
 
 public class loginSystem {
     ArrayList<Admin> listOfAdmin = new ArrayList<Admin>();
@@ -31,7 +31,7 @@ public class loginSystem {
     public boolean login() {
         while (true) {
             System.out.println("Enter your ID: (input 'exit' to exit login system) ");
-            String ID = Main.sc.nextLine();
+            String ID = InputController.getStringFromUser();
             if (ID == "exit")
                 return false;
             int index = searchAdminIndex(ID);
@@ -40,7 +40,7 @@ public class loginSystem {
                 continue;
             }
             System.out.println("Enter your password:");
-            String password = Main.sc.nextLine();
+            String password = InputController.getStringFromUser();
             Admin admin = listOfAdmin.get(index);
             if (admin.validate(password)) {
                 return true;

@@ -1,6 +1,5 @@
 package Controller;
 
-import Main;
 import AdminSystem.AdminSystem;
 
 public class MainController {
@@ -30,7 +29,7 @@ public class MainController {
         while (true) {
             System.out.println("Are you customer? (Y/N)");
             String input = new String();
-            input = Main.sc.nextLine();
+            input = InputController.getYesOrNoFromUser();
             if (input.equals("Y")) {
                 // customerSystem.Work();
                 break;
