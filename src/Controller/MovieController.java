@@ -2,11 +2,7 @@ package Controller;
 
 import java.io.*;
 import java.util.ArrayList;
-
-import Entity.Movie.Movie;
-import Entity.Movie.MovieStatus;
-import Entity.Movie.MovieType;
-import Entity.Movie.Review;
+import Entity.Movie.*;
 
 public class MovieController {
     private ArrayList<Movie> movieList;
@@ -51,14 +47,8 @@ public class MovieController {
     }
 
     private int getLastID() {
-        int maxID = 0;
-        for(Movie movie: movieList) {
-            if(movie.getID() > maxID)
-                maxID = movie.getID();
-        }
-        return maxID;
+        return movieList.get(movieList.size() - 1).getID();
     }
-
 
     private int searchWithTitle(String title) {
         for (int i = 0; i < movieList.size(); ++i) {
@@ -68,8 +58,28 @@ public class MovieController {
         return -1;
     }
 
-    public void updateMovie(String title) {
+    private int searchWithID(int ID) {
+        for (int i = 0; i < movieList.size(); ++i) {
+            if (movieList.get(i).getID() == ID)
+                return i;
+        }
+        return -1;
+    }
+
+    public void updateMovieByTitle(String title) {
         int index = searchWithTitle(title);
+        if (index == -1) {
+            System.out.println("No such movie");
+            return;
+        }
+        boolean isDeleted = movieList.get(index).updateDetail();
+        if (isDeleted) {
+            remove(index);
+        }
+    }
+    
+    public void updateMovieByID(int ID) {
+        int index = searchWithID(ID);
         if (index == -1) {
             System.out.println("No such movie");
             return;
@@ -81,8 +91,17 @@ public class MovieController {
     }
 
     //return false if no such movie, return true if removed successfully
-    public boolean removeMovie(String title) {
+    public boolean removeMovieByTitle(String title) {
         int index = searchWithTitle(title);
+        if (index == -1) {
+            return false;
+        }
+        remove(index);
+        return true;
+    }
+
+    public boolean removeMovieByID(int ID) {
+        int index = searchWithID(ID);
         if (index == -1) {
             return false;
         }

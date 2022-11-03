@@ -7,6 +7,7 @@ public class SeatPlan {
     int row, column;
 
     public SeatPlan(int row, int column) {
+        seats = new ArrayList<Seat>();
         this.row = row;
         this.column = column;
         for (int i = 1; i <= row; ++i)
@@ -33,6 +34,7 @@ public class SeatPlan {
                 if (j == this.column)
                     System.out.println("");
             }
+        System.out.println("");
     }
 
     public boolean Occupy(int rowNumber, int columnNumber) {
@@ -45,5 +47,13 @@ public class SeatPlan {
             coupleSeat.occupy();
         }
         return true;
+    }
+    //unit test(done)
+    public static void main(String[] args) {
+        SeatPlan seatPlan = new SeatPlan(4, 21);
+        seatPlan.showSeatplan();
+        seatPlan.Occupy(2, 3);
+        seatPlan.Occupy(3, 3);
+        seatPlan.showSeatplan();
     }
 }
