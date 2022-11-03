@@ -1,4 +1,4 @@
-package SC2002.Component.Cinema;
+package src.Component.Cinema;
 
 public class cinema {
     cinemaType type;

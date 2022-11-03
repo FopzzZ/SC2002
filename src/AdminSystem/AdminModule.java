@@ -1,4 +1,4 @@
-package SC2002.AdminSystem;
+package src.AdminSystem;
 
 public interface AdminModule {
     public void createMovie();

@@ -1,7 +1,7 @@
-package SC2002;
+package src;
 import java.util.Scanner;
 
-import SC2002.Controller.MainController;
+import src.Controller.MainController;
 
 public class Main {
     public static final Scanner sc = new Scanner(System.in);

@@ -1,4 +1,4 @@
-package SC2002.Component.Seat;
+package src.Component.Seat;
 
 public class Seat {
     private int rowNumber, columnNumber;
