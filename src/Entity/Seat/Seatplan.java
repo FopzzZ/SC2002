@@ -48,7 +48,8 @@ public class SeatPlan {
         }
         return true;
     }
-    //unit test(done)
+
+    // unit test(done)
     public static void main(String[] args) {
         SeatPlan seatPlan = new SeatPlan(4, 21);
         seatPlan.showSeatplan();
