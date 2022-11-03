@@ -2,11 +2,11 @@ package Entity.Seat;
 
 import java.util.ArrayList;
 
-public class Seatplan {
+public class SeatPlan {
     ArrayList<Seat> seats;
     int row, column;
 
-    public Seatplan(int row, int column) {
+    public SeatPlan(int row, int column) {
         this.row = row;
         this.column = column;
         for (int i = 1; i <= row; ++i)

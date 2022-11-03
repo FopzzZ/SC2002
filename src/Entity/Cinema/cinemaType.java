@@ -1,5 +1,5 @@
 package Entity.Cinema;
 
-public enum cinemaType {
+public enum CinemaType {
     GOLDCLASS, PLATIUM, IMAX, NORMAL;
 }

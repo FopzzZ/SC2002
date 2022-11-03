@@ -4,19 +4,18 @@ import Entity.Movie.*;
 import Entity.Cinema.*;
 import Entity.Seat.*;
 
-
 public class Showtime {
     private Time startTime;
     private Movie movie;
     // cineplex
-    private cinema cinema;
-    private Seatplan seatplan;
+    private Cinema cinema;
+    private SeatPlan seatplan;
 
     public Showtime() {
         startTime = new Time();
         movie = new Movie();
-        cinema = new cinema();
-        seatplan = new Seatplan(0, 0);
+        cinema = new Cinema();
+        seatplan = new SeatPlan(0, 0);
     }
 
     public void setTime(Time time) {
@@ -27,11 +26,11 @@ public class Showtime {
         this.movie = movie;
     }
 
-    public void setCinema(cinema cinema) {
+    public void setCinema(Cinema cinema) {
         this.cinema = cinema;
     }
 
-    public void setSeatPlan(Seatplan seatplan) {
+    public void setSeatPlan(SeatPlan seatplan) {
         this.seatplan = seatplan;
     }
 
@@ -43,11 +42,11 @@ public class Showtime {
         return this.movie;
     }
 
-    public cinema getCinema() {
+    public Cinema getCinema() {
         return this.cinema;
     }
 
-    public Seatplan getSeatplan() {
+    public SeatPlan getSeatplan() {
         return this.seatplan;
     }
 }

@@ -1,9 +1,11 @@
 package Boundary;
 
 import Controller.InputController;
+import Controller.UserController;
 
 public class UserMenuUI {
     public void main() {
+        UserController userController = new UserController();
         System.out.println("Select an option:");
         System.out.println("1. Search/List movies");
         System.out.println("2. View movie details");
@@ -14,12 +16,14 @@ public class UserMenuUI {
         int choice = InputController.getIntFromUser();
         switch (choice) {
             case 1:
+                userController.searchMovies();
                 break;
             case 2:
                 break;
             case 3:
                 break;
             case 4:
+                userController.bookTicket();
                 break;
             case 5:
                 break;

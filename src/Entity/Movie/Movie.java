@@ -8,8 +8,8 @@ import Controller.InputController;
 
 public class Movie implements Serializable {
     private String movieTitle, synopsis, director;
-    private movieType type;
-    private movieStatu statu;
+    private MovieType type;
+    private MovieStatus status;
     private String rating;
     private ArrayList<String> cast;
     private ArrayList<Review> reviews;
@@ -20,8 +20,8 @@ public class Movie implements Serializable {
 
     private void initComponents() {
         movieTitle = "";
-        statu = movieStatu.Coming;
-        type = movieType.common;
+        status = MovieStatus.Coming;
+        type = MovieType.common;
         synopsis = "";
         rating = "normal";
         director = "";
@@ -29,16 +29,15 @@ public class Movie implements Serializable {
         reviews = new ArrayList<Review>();
     }
 
-    public String getOverallReviewsRating(){
+    public String getOverallReviewsRating() {
         double sum = 0;
-        if(reviews.size()>1){
-            for(Review review : reviews){
+        if (reviews.size() > 1) {
+            for (Review review : reviews) {
                 sum += review.getRating();
             }
             DecimalFormat df = new DecimalFormat("#.##");
-            return df.format(sum/reviews.size());
-        }
-        else {
+            return df.format(sum / reviews.size());
+        } else {
             return "N/A";
         }
     }
@@ -61,13 +60,13 @@ public class Movie implements Serializable {
             case "2":
                 switch (content) {
                     case "Coming Soon":
-                        this.setStatu(movieStatu.Coming);
+                        this.setStatus(MovieStatus.Coming);
                         break;
                     case "Preview":
-                        this.setStatu(movieStatu.Preview);
+                        this.setStatus(MovieStatus.Preview);
                         break;
                     case "Now Showing":
-                        this.setStatu(movieStatu.Showing);
+                        this.setStatus(MovieStatus.Showing);
                         break;
                     case "End of Showing":
                         return true;
@@ -78,10 +77,10 @@ public class Movie implements Serializable {
             case "3":
                 switch (content) {
                     case "Blockbuster":
-                        this.setType(movieType.Blockbuster);
+                        this.setType(MovieType.Blockbuster);
                         break;
                     case "3D":
-                        this.setType(movieType.threeD);
+                        this.setType(MovieType.threeD);
                         break;
                     default:
                         break;
@@ -107,12 +106,12 @@ public class Movie implements Serializable {
         this.movieTitle = movieTitle;
     }
 
-    public void setType(movieType type) {
+    public void setType(MovieType type) {
         this.type = type;
     }
 
-    public void setStatu(movieStatu statu) {
-        this.statu = statu;
+    public void setStatus(MovieStatus status) {
+        this.status = status;
     }
 
     public void setRating(String rating) {
@@ -139,8 +138,8 @@ public class Movie implements Serializable {
         return this.movieTitle;
     }
 
-    public movieStatu getStatu() {
-        return this.statu;
+    public MovieStatus getStatus() {
+        return this.status;
     }
 
     public String getSynopsis() {
@@ -159,56 +158,56 @@ public class Movie implements Serializable {
         return this.reviews;
     }
 
-    public movieType getType() {
+    public MovieType getType() {
         return this.type;
     }
 
     public String getRating() {
         return this.rating;
-    }    
-    
-    
+    }
+
     public String toString() {
         String castS = new String();
-        for(int i = 0; i < this.getCast().size(); ++i) {
-            if(i != 0) castS += ",";
+        for (int i = 0; i < this.getCast().size(); ++i) {
+            if (i != 0)
+                castS += ",";
             castS += this.getCast().get(i);
         }
 
         String reviewS = new String();
-        for(int i = 0; i < this.getReviews().size(); ++i) {
+        for (int i = 0; i < this.getReviews().size(); ++i) {
             reviewS += "\n\n" + this.getReviews().get(i).getContent();
         }
-        if(this.getReviews().size() == 0) {
+        if (this.getReviews().size() == 0) {
             reviewS = "N/A";
         }
 
         String ret = new String();
         ret += "Movie Title: " + this.getTitle() + "\n"
-            +  "Statu: " + this.getStatu() + "\n"
-            +  "Synposis: " + this.getSynopsis() + "\n"
-            +  "Rating: " + this.getRating() + "\n"
-            +  "Type of movie: " + this.getType() + "\n"
-            +  "Director: " + this.getDirector() + "\n"
-            +  "Cast: " + castS + "\n"
-            +  "Overall rating: " + this.getOverallReviewsRating() + "\n"
-            +  "Reviews: " + reviewS + "\n";
-        
+                + "Status: " + this.getStatus() + "\n"
+                + "Synposis: " + this.getSynopsis() + "\n"
+                + "Rating: " + this.getRating() + "\n"
+                + "Type of movie: " + this.getType() + "\n"
+                + "Director: " + this.getDirector() + "\n"
+                + "Cast: " + castS + "\n"
+                + "Overall rating: " + this.getOverallReviewsRating() + "\n"
+                + "Reviews: " + reviewS + "\n";
+
         return ret;
     }
 
-    //unit test
+    // unit test
     public static void main(String[] args) throws FileNotFoundException, IOException, ClassNotFoundException {
         Movie movie1 = new Movie();
         movie1.setTitle("SpiderMan");
-        movie1.setStatu(movieStatu.Showing);
+        movie1.setStatus(MovieStatus.Showing);
         movie1.setSynopsis("Spider man 1");
         movie1.setDirector("IDK");
         movie1.addCast("CastA");
         movie1.addCast("CastB");
         movie1.addReview(5, "Nice movie.");
         movie1.addReview(2.0, "Not good.");
-        movie1.setType(movieType.threeD);
+        movie1.setType(MovieType.threeD);
 
         ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("database/abc.txt"));
         oos.writeObject(movie1);
