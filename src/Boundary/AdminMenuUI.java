@@ -55,8 +55,15 @@ public class AdminMenuUI {
                 updateMovieListing();
                 break;
             case 3:
+                removeMovieListing();
                 break;
         }
+    }
+
+    private void removeMovieListing() {
+        System.out.println("Select movie to remove: ");
+        // print list of movies then (change showing status to end of showing/delete
+        // entirely)?
     }
 
     private void updateMovieListing() {
@@ -111,5 +118,31 @@ public class AdminMenuUI {
     }
 
     private void modifyMovieShowtime() {
+        System.out.println("Select movie to modify showtimes:");
+        // TODO print list of movies and then select one
+        System.out.println("1. Create movie showtime");
+        System.out.println("2. Update movie showtime");
+        System.out.println("3. Remove movie showtime");
+        System.out.println("Select action: ");
+        switch (InputController.getIntFromUser(1, 3)) {
+            case 1:
+                createMovieShowtime();
+                break;
+            case 2:
+                updateMovieShowtime();
+                break;
+            case 3:
+                removeMovieShowtime();
+                break;
+        }
+    }
+
+    private void removeMovieShowtime() {
+    }
+
+    private void updateMovieShowtime() {
+    }
+
+    private void createMovieShowtime() {
     }
 }
