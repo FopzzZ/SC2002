@@ -12,26 +12,27 @@ public class MovieController {
     public MovieController() {
         movieList = new ArrayList<Movie>();
         File dbFile = new File(DataBaseFilePath);
-        if(dbFile.exists())
+        if (dbFile.exists())
             movieList = readFromDB();
     }
 
-    public void createNewMovie(String movieTitle,MovieStatus status, String synposis, String rating, MovieType type, String director, ArrayList<String> cast) {
-        Movie movie = new Movie(getLastID() + 1, movieTitle, synposis, director, type, status, rating, cast, new ArrayList<Review>());
+    public void createNewMovie(String movieTitle, MovieStatus status, String synposis, String rating, MovieType type,
+            String director, ArrayList<String> cast) {
+        Movie movie = new Movie(getLastID() + 1, movieTitle, synposis, director, type, status, rating, cast,
+                new ArrayList<Review>());
         movieList.add(movie);
         writeToDB(movieList);
     }
 
-
     @SuppressWarnings("unchecked")
     public ArrayList<Movie> readFromDB() {
         try {
-            ObjectInputStream ois = new ObjectInputStream(new FileInputStream(DataBaseFilePath));   
+            ObjectInputStream ois = new ObjectInputStream(new FileInputStream(DataBaseFilePath));
             ArrayList<Movie> movieListing = (ArrayList<Movie>) ois.readObject();
             ois.close();
             return movieListing;
         } catch (ClassNotFoundException | IOException e) {
-        } 
+        }
         return new ArrayList<Movie>();
     }
 
@@ -49,6 +50,7 @@ public class MovieController {
     private int getLastID() {
         return movieList.get(movieList.size() - 1).getID();
     }
+
 
     private int searchWithTitle(String title) {
         for (int i = 0; i < movieList.size(); ++i) {

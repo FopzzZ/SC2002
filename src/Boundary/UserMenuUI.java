@@ -1,10 +1,13 @@
 package Boundary;
 
 import Controller.InputController;
-import Controller.UserController;
 
 public class UserMenuUI {
-    UserController userController;
+    String userEmail;
+
+    public UserMenuUI(String userEmail) {
+        this.userEmail = userEmail;
+    }
 
     public void main() {
         System.out.println("Select an option:");

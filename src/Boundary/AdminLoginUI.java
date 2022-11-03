@@ -4,35 +4,33 @@ import Controller.AdminLoginController;
 import Controller.InputController;
 
 public class AdminLoginUI {
-    private String username; // decide on userID or email
+    private String username, password; // decide on username or email
 
     public void main() {
-        boolean result;
-        boolean exit = false;
-
-        do {
-            result = verify();
-            if (!result) {
+        boolean validLogin, exit = false;
+        while (true && exit == false) {
+            System.out.println("Please enter your username: ");
+            username = InputController.getStringFromUser(); // get username
+            System.out.println("Please enter your password: ");
+            password = InputController.getStringFromUser();
+            AdminLoginController adminLoginController = new AdminLoginController(username);
+            validLogin = adminLoginController.verify(password);
+            if (!validLogin) {
                 System.out.println("Invalid username or password.");
-                System.out.println("1. Enter again");
+                System.out.println("1. Try again");
                 System.out.println("2. Exit");
-                if (InputController.getIntFromUser() == 2) {
+                int choice = InputController.getIntFromUser(1, 2);
+                if (choice == 1) {
+                    continue;
+                } else if (choice == 2) {
                     exit = true;
+                    continue;
                 }
+            } else {
+                System.out.println("You have logged in sucessfully.\n\n");
+                AdminMenuUI adminMenuUI = new AdminMenuUI();
+                adminMenuUI.main();
             }
-        } while (!result && !exit);
-        if (result) {
-            System.out.println("You have logged in sucessfully.\n\n");
-            return;
         }
-        return;
-    }
-
-    public boolean verify() {
-        System.out.println("Please enter your email: ");
-        username = InputController.getStringFromUser(); // get username
-
-        AdminLoginController adminLoginController = new AdminLoginController();
-        return adminLoginController.verify(username);
     }
 }
