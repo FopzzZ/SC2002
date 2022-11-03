@@ -1,9 +1,9 @@
 package Entity.Movie;
 
 public enum MovieType {
-    Blockbuster("Blockebuster"),
-    threeD("3-D"),
-    common("Common");
+    Blockbuster("Blockbuster"),
+    ThreeD("3-D"),
+    Common("Common");
 
     private final String text;
 

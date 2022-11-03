@@ -19,7 +19,7 @@ public class Movie implements Serializable {
         this.ID = -1;
         this.movieTitle = "";
         this.status = MovieStatus.Coming;
-        this.type = MovieType.common;
+        this.type = MovieType.Common;
         this.synopsis = "";
         this.rating = "normal";
         this.director = "";
@@ -91,7 +91,7 @@ public class Movie implements Serializable {
                         this.setType(MovieType.Blockbuster);
                         break;
                     case "3D":
-                        this.setType(MovieType.threeD);
+                        this.setType(MovieType.ThreeD);
                         break;
                     default:
                         break;
@@ -226,7 +226,7 @@ public class Movie implements Serializable {
         movie1.addCast("CastB");
         movie1.addReview(5, "Nice movie.");
         movie1.addReview(2.0, "Not good.");
-        movie1.setType(MovieType.threeD);
+        movie1.setType(MovieType.ThreeD);
 
         ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("database/abc.txt"));
         oos.writeObject(movie1);
