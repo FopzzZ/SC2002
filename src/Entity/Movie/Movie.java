@@ -27,7 +27,8 @@ public class Movie implements Serializable {
         this.reviews = new ArrayList<Review>();
     }
 
-    public Movie(int ID, String movieTitle, String synposis, String director, MovieType type, MovieStatus status, String rating, ArrayList<String> cast, ArrayList<Review> review) {
+    public Movie(int ID, String movieTitle, String synposis, String director, MovieType type, MovieStatus status,
+            String rating, ArrayList<String> cast, ArrayList<Review> review) {
         this.ID = ID;
         this.movieTitle = movieTitle;
         this.status = status;
@@ -52,10 +53,10 @@ public class Movie implements Serializable {
         }
     }
 
-    public boolean updateDetail() {
+    public boolean updateDetail() { // move to movieController?
         System.out.println("Enter the attribute you want to edit");
         System.out.println("1: Title");
-        System.out.println("2: Statu(Coming Soon/Preview/Now Showing/End of Showing)");
+        System.out.println("2: Status(Coming Soon/Preview/Now Showing/End of Showing)");
         System.out.println("3: Type(Blockbuster/3D)");
         System.out.println("4: Director");
         System.out.println("5: Synopsis");
