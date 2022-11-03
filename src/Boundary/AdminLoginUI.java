@@ -5,7 +5,6 @@ import Controller.InputController;
 
 public class AdminLoginUI {
     private String username; // decide on userID or email
-    private String password;
 
     public void main() {
         boolean result;
@@ -32,9 +31,8 @@ public class AdminLoginUI {
     public boolean verify() {
         System.out.println("Please enter your email: ");
         username = InputController.getStringFromUser(); // get username
-        System.out.println("Password: ");
-        password = InputController.getStringFromUser(); // get password
 
-        return AdminLoginController.verify(username);
+        AdminLoginController adminLoginController = new AdminLoginController();
+        return adminLoginController.verify(username);
     }
 }

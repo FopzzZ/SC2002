@@ -2,27 +2,26 @@ package Boundary;
 
 import Controller.*;
 
-public class RegisterUI{
+public class RegisterUI {
     private String username;
     private String password;
     private String password2;
     private boolean consistentPassword = false;
 
-    public void main(){
+    public void main() {
         do {
             inputRegister();
-            if(consistentPassword){
-                adminsCtrl.create(username, password); //need adminscontroller to be implemented
+            if (consistentPassword) {
+                AdminController adminController = new AdminController();
+                adminController.create(username, password); // need adminscontroller to be implemented
                 System.out.println("You have registered successfully");
-            }
-            else {
+            } else {
                 System.out.println("Password not consistent. Enter again");
             }
-        }
-        while(!consistentPassword);
+        } while (!consistentPassword);
     }
 
-    public void inputRegister(){
+    public void inputRegister() {
         System.out.println("Username: ");
         username = InputController.getStringFromUser();
         System.out.println("Password: ");
