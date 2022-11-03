@@ -1,28 +1,64 @@
 package Controller;
 
+import java.io.*;
 import java.util.ArrayList;
 
 import Entity.Movie.Movie;
+import Entity.Movie.MovieStatus;
+import Entity.Movie.MovieType;
+import Entity.Movie.Review;
 
 public class MovieController {
     private ArrayList<Movie> movieList;
 
+    private final static String DataBaseFilePath = "DataBase/Movies.txt";
+
     public MovieController() {
         movieList = new ArrayList<Movie>();
+        File dbFile = new File(DataBaseFilePath);
+        if(dbFile.exists())
+            movieList = readFromDB();
     }
 
-    public void createMovie() {
-        System.out.println("Enter the new movie's title: ");
-        String s = InputController.getStringFromUser();
-        addMovie(s);
-        System.out.printf("Have created new movie <%s>.\n", s);
+    public void createNewMovie(String movieTitle,MovieStatus status, String synposis, String rating, MovieType type, String director, ArrayList<String> cast) {
+        Movie movie = new Movie(getLastID() + 1, movieTitle, synposis, director, type, status, rating, cast, new ArrayList<Review>());
+        movieList.add(movie);
+        writeToDB(movieList);
     }
 
-    public void addMovie(String s) {
-        Movie newMovie = new Movie();
-        newMovie.setTitle(s);
-        movieList.add(newMovie);
+
+    @SuppressWarnings("unchecked")
+    public ArrayList<Movie> readFromDB() {
+        try {
+            ObjectInputStream ois = new ObjectInputStream(new FileInputStream(DataBaseFilePath));   
+            ArrayList<Movie> movieListing = (ArrayList<Movie>) ois.readObject();
+            ois.close();
+            return movieListing;
+        } catch (ClassNotFoundException | IOException e) {
+        } 
+        return new ArrayList<Movie>();
     }
+
+    public void writeToDB(ArrayList<Movie> movielist) {
+        try {
+            ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(DataBaseFilePath));
+            out.writeObject(movielist);
+            out.flush();
+            out.close();
+        } catch (IOException e) {
+            // ignore error
+        }
+    }
+
+    private int getLastID() {
+        int maxID = 0;
+        for(Movie movie: movieList) {
+            if(movie.getID() > maxID)
+                maxID = movie.getID();
+        }
+        return maxID;
+    }
+
 
     private int searchWithTitle(String title) {
         for (int i = 0; i < movieList.size(); ++i) {
@@ -56,7 +92,7 @@ public class MovieController {
 
     public void listMovies() {
         for (int i = 0; i < movieList.size(); ++i) {
-            System.out.printf("Movie%d: %s\n", i + 1, movieList.get(i).getTitle());
+            System.out.printf("Movie%d: %s\n", movieList.get(i).getID(), movieList.get(i).getTitle());
         }
         System.out.printf("Totally %d movies.", movieList.size());
     }

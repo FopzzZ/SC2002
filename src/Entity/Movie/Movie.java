@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import Controller.InputController;
 
 public class Movie implements Serializable {
+    private int ID;
     private String movieTitle, synopsis, director;
     private MovieType type;
     private MovieStatus status;
@@ -15,18 +16,27 @@ public class Movie implements Serializable {
     private ArrayList<Review> reviews;
 
     public Movie() {
-        initComponents();
+        this.ID = -1;
+        this.movieTitle = "";
+        this.status = MovieStatus.Coming;
+        this.type = MovieType.common;
+        this.synopsis = "";
+        this.rating = "normal";
+        this.director = "";
+        this.cast = new ArrayList<String>();
+        this.reviews = new ArrayList<Review>();
     }
 
-    private void initComponents() {
-        movieTitle = "";
-        status = MovieStatus.Coming;
-        type = MovieType.common;
-        synopsis = "";
-        rating = "normal";
-        director = "";
-        cast = new ArrayList<String>();
-        reviews = new ArrayList<Review>();
+    public Movie(int ID, String movieTitle, String synposis, String director, MovieType type, MovieStatus status, String rating, ArrayList<String> cast, ArrayList<Review> review) {
+        this.ID = ID;
+        this.movieTitle = movieTitle;
+        this.status = status;
+        this.type = type;
+        this.synopsis = synposis;
+        this.rating = rating;
+        this.director = director;
+        this.cast = cast;
+        this.reviews = review;
     }
 
     public String getOverallReviewsRating() {
@@ -102,6 +112,10 @@ public class Movie implements Serializable {
         return false;
     }
 
+    protected void setID(int ID) { // cannot change ID
+        this.ID = ID;
+    }
+
     public void setTitle(String movieTitle) {
         this.movieTitle = movieTitle;
     }
@@ -132,6 +146,10 @@ public class Movie implements Serializable {
 
     public void addReview(double rating, String content) {
         this.reviews.add(new Review(rating, content));
+    }
+
+    public int getID() {
+        return this.ID;
     }
 
     public String getTitle() {

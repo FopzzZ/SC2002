@@ -5,6 +5,8 @@ import Entity.Cinema.*;
 import Entity.Seat.*;
 
 public class Showtime {
+    private int ID;
+    private boolean isHoliday;
     private Time startTime;
     private Movie movie;
     // cineplex
@@ -16,6 +18,10 @@ public class Showtime {
         movie = new Movie();
         cinema = new Cinema();
         seatplan = new SeatPlan(0, 0);
+    }
+
+    public void setID(int ID) {
+        this.ID = ID;
     }
 
     public void setTime(Time time) {
@@ -33,6 +39,14 @@ public class Showtime {
     public void setSeatPlan(SeatPlan seatplan) {
         this.seatplan = seatplan;
     }
+    
+    public void setIsHoliday(boolean isHoliday) {
+        this.isHoliday = isHoliday;
+    }
+
+    public int getID() {
+        return this.ID;
+    }
 
     public Time getTime() {
         return this.startTime;
@@ -48,5 +62,9 @@ public class Showtime {
 
     public SeatPlan getSeatplan() {
         return this.seatplan;
+    }
+
+    public boolean getIsHoliday() {
+        return this.isHoliday;
     }
 }

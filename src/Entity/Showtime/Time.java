@@ -1,5 +1,6 @@
 package Entity.Showtime;
 
+//Could be replace with 
 public class Time {
     int year, month, day, hour, minutes;
 
