@@ -2,30 +2,41 @@ package Entity.Cinema;
 
 public class Cinema {
     private CinemaType type;
-    private String ID;
+    private String name; 
+    private int ID;
 
     public Cinema() {
         this.type = CinemaType.NORMAL;
     }
 
-    public Cinema(CinemaType type, String ID) {
+    public Cinema(CinemaType type, String name, int ID) {
         this.type = type;
+        this.name = name;
         this.ID = ID;
     }
 
-    public CinemaType getType() {
-        return this.type;
+    protected void setID(int ID) {
+        this.ID = ID;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public void setType(CinemaType type) {
         this.type = type;
     }
 
-    public String getID() {
+    public int getID() {
         return this.ID;
     }
 
-    public void setID(String ID) {
-        this.ID = ID;
+    public CinemaType getType() {
+        return this.type;
     }
+
+    public String getName() {
+        return this.name;
+    }
+    
 }

@@ -4,6 +4,7 @@ public class Seat {
     private int rowNumber, columnNumber;
     private boolean isOccupied;
     private SeatType seatType;
+    //relatedSeat is 'null' if seat type is single seat
     private Seat relatedSeat;
 
     public Seat() {
@@ -11,7 +12,7 @@ public class Seat {
         this.columnNumber = -1;
         this.isOccupied = false;
         this.seatType = SeatType.CoupleSeat;
-        this.relatedSeat = new Seat();
+        this.relatedSeat = null;
     }
 
     public Seat(int rowNumber, int columnNumber) {
@@ -19,7 +20,7 @@ public class Seat {
         this.columnNumber = columnNumber;
         this.isOccupied = false;
         this.seatType = SeatType.SingleSeat;
-        this.relatedSeat = new Seat();
+        this.relatedSeat = null;
     }
 
     public void setRowNumber(int rowNumber) {

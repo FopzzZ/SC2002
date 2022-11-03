@@ -1,15 +1,17 @@
 package Entity.Showtime;
 
+import Entity.Cineplex.Cineplex;
 import Entity.Movie.*;
+import java.io.Serializable;
 import Entity.Cinema.*;
 import Entity.Seat.*;
 
-public class Showtime {
+public class Showtime implements Serializable{
     private int ID;
     private boolean isHoliday;
     private Time startTime;
     private Movie movie;
-    // cineplex
+    private Cineplex cineplex;
     private Cinema cinema;
     private SeatPlan seatplan;
 
@@ -18,6 +20,16 @@ public class Showtime {
         movie = new Movie();
         cinema = new Cinema();
         seatplan = new SeatPlan(0, 0);
+        isHoliday = false;
+    }
+
+    public Showtime(int ID, Movie movie, Time startTime, Cineplex cineplex, Cinema cinema, boolean isHoliday) {
+        this.ID = ID;
+        this.movie = movie;
+        this.startTime = startTime;
+        this.cinema = cinema;
+        this.cineplex = cineplex;   
+        this.isHoliday = isHoliday;
     }
 
     public void setID(int ID) {
@@ -26,6 +38,10 @@ public class Showtime {
 
     public void setTime(Time time) {
         this.startTime = time;
+    }
+
+    public void setCineplex(Cineplex cineplex) {
+        this.cineplex = cineplex;
     }
 
     public void setMovie(Movie movie) {
@@ -67,4 +83,24 @@ public class Showtime {
     public boolean getIsHoliday() {
         return this.isHoliday;
     }
+
+    public Cineplex getCineplex() {
+        return this.cineplex;
+    }
+
+    public String toString() {
+        String ret = new String();
+        String discount = "";
+        if(this.getIsHoliday()) discount = "YES";
+        else discount = "NO";
+        ret = "Showtime ID: " + this.getID() + "\n"
+            + "Movie: " + this.getMovie().getTitle() + "\n"
+            + "Time: " + this.getTime().toString() + "\n"
+            + "Cineplex: " + this.getCineplex().getName() + "\n"
+            + "Cinema: " + this.getCinema().getName() + "\n"
+            + "Have holiday discount: " + discount +"\n\n";
+        return ret;
+    }
+
+    //unit test(haven't do)
 }

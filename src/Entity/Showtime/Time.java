@@ -18,7 +18,14 @@ public class Time {
         this.minutes = minutes;
     }
 
-    public void show() {
-        System.out.printf("%d %d-%d, %d:%d\n", year, month, day, hour, minutes);
+    public String toString() {
+        String ret = "";
+        ret = "" + this.year + "  " + this.month + "-" + day + ", " + hour + ":" + minutes;
+        return ret;
+    }
+
+    public static void main(String[] args) {
+        Time time = new Time(2022,12,2,23,59);
+        System.out.println(time.toString());
     }
 }
