@@ -2,7 +2,7 @@ package Entity.Cinema;
 
 public class Cinema {
     private CinemaType type;
-    private String name; 
+    private String name;
     private int ID;
 
     public Cinema() {
@@ -38,5 +38,5 @@ public class Cinema {
     public String getName() {
         return this.name;
     }
-    
+
 }
