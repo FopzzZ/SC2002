@@ -1,7 +1,7 @@
-package SC2002.Controller;
+package src.Controller;
 
-import SC2002.Main;
-import SC2002.AdminSystem.AdminSystem;
+import src.Main;
+import src.AdminSystem.AdminSystem;
 
 public class MainController {
     public static MovieController movieCtrl;

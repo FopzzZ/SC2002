@@ -1,5 +1,5 @@
 package SC2002.Component.Seat;
 
-public enum seatType {
+public enum SeatType {
     SingleSeat, CoupleSeat;
 }
