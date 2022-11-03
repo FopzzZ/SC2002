@@ -1,13 +1,14 @@
 package Entity.Movie;
 
-public enum movieStatu {
-    Coming("Coming Soon"), 
-    Preview("Preview"), 
+public enum MovieStatus {
+    Coming("Coming Soon"),
+    Preview("Preview"),
     Showing("Showing"),
     Ended("End of showing");
+
     private final String text;
 
-    private movieStatu(String text) {
+    private MovieStatus(String text) {
         this.text = text;
     }
 
