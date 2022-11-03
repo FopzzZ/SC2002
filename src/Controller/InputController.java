@@ -16,6 +16,21 @@ public class InputController {
         return input;
     }
 
+    public static int getIntFromUser() {
+        int input = -1;
+        boolean validInput = false;
+        while (!validInput) {
+            if (sc.hasNextInt()) {
+                input = sc.nextInt();
+                validInput = true;
+            } else {
+                System.out.println("Wrong input!");
+            }
+            sc.nextLine();
+        }
+        return input;
+    }
+
     public static String getYesOrNoFromUser() {
         String input = "";
         boolean validInput = false;
