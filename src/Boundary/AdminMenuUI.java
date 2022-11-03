@@ -52,10 +52,16 @@ public class AdminMenuUI {
                 createMovieListing();
                 break;
             case 2:
+                updateMovieListing();
                 break;
             case 3:
                 break;
         }
+    }
+
+    private void updateMovieListing() {
+        System.out.println("Select movie to update: ");
+        // print list of movies then select
     }
 
     private void createMovieListing() {
