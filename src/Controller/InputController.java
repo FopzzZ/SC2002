@@ -53,4 +53,19 @@ public class InputController {
         }
         return input;
     }
+
+    public static String getEmailFromUser() {
+        String pattern = "^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$"; // TODO change regex
+        String input = "";
+        boolean validInput = false;
+        while (!validInput) {
+            input = getStringFromUser();
+            if (input.matches(pattern)) {
+                validInput = true;
+            } else {
+                System.out.println("Please enter a valid email!");
+            }
+        }
+        return input;
+    }
 }
