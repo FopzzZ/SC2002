@@ -218,7 +218,7 @@ public class Movie implements Serializable {
     // unit test
     public static void main(String[] args) throws FileNotFoundException, IOException, ClassNotFoundException {
         Movie movie1 = new Movie();
-        movie1.setTitle("SpiderMan");
+        movie1.setTitle("SpiderMan 1");
         movie1.setStatus(MovieStatus.Showing);
         movie1.setSynopsis("Spider man 1");
         movie1.setDirector("IDK");
@@ -228,17 +228,37 @@ public class Movie implements Serializable {
         movie1.addReview(2.0, "Not good.");
         movie1.setType(MovieType.ThreeD);
 
+        Movie movie2 = new Movie();
+        movie2.setTitle("SpiderMan 2");
+        movie2.setStatus(MovieStatus.Showing);
+        movie2.setSynopsis("Spider man 2");
+        movie2.setDirector("IDK");
+        movie2.addCast("CastA");
+        movie2.addCast("CastB");
+        movie2.addReview(5, "Nice movie.");
+        movie2.addReview(2.0, "Good.");
+        movie2.setType(MovieType.ThreeD);
+
         ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("database/abc.txt"));
         oos.writeObject(movie1);
-        oos.writeObject(movie1);
+        // oos.writeObject(movie2);
         oos.close();
-        Movie movie2 = new Movie();
-        Movie movie3 = new Movie();
+
         ObjectInputStream ois = new ObjectInputStream(new FileInputStream("database/abc.txt"));
-        movie2 = (Movie) ois.readObject();
-        movie3 = (Movie) ois.readObject();
-        System.out.println(movie2.toString());
-        System.out.println(movie3.toString());
+        ArrayList<Movie> movies = new ArrayList<Movie>();
+        while (true) {
+            try {
+                Movie temp = new Movie();
+                temp = (Movie) ois.readObject();
+                movies.add(temp);
+            } catch (Exception e) {
+                System.out.println("End of file");
+                break;
+            }
+        }
+        for (Movie m : movies) {
+            System.out.println(m.toString());
+        }
         ois.close();
     }
 }
