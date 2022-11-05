@@ -12,23 +12,29 @@ public class ModifyMovieMenuUI {
 
     public void main() {
         movieController = new MovieController();
-        System.out.println("1. Create movie listing");
-        System.out.println("2. Update movie listing");
-        System.out.println("3. Remove movie listing");
-        System.out.println("4. Back to main menu");
-        System.out.println("Select action: ");
-        switch (InputController.getIntFromUser(1, 4)) {
-            case 1:
-                createMovieListing();
-                break;
-            case 2:
-                updateMovieListing();
-                break;
-            case 3:
-                removeMovieListing();
-                break;
-            case 4:
-                return;
+        while (true) {
+            System.out.println("\n" +
+                    "-----------------\n" +
+                    "| Modify Movies |\n" +
+                    "-----------------\n" +
+                    "1. Create movie listing\n" +
+                    "2. Update movie listing\n" +
+                    "3. Remove movie listing\n" +
+                    "4. Back to main menu\n");
+            System.out.println("Select action: ");
+            switch (InputController.getIntFromUser(1, 4)) {
+                case 1:
+                    createMovieListing();
+                    break;
+                case 2:
+                    updateMovieListing();
+                    break;
+                case 3:
+                    removeMovieListing();
+                    break;
+                case 4:
+                    return;
+            }
         }
     }
 
@@ -66,8 +72,8 @@ public class ModifyMovieMenuUI {
         System.out.println("Enter a cast's name: (Enter END when done)");
         castInput = InputController.getStringFromUser();
         while (!castInput.equals("END")) {
-            castInput = InputController.getStringFromUser();
             castNames.add(castInput);
+            castInput = InputController.getStringFromUser();
         }
         // implement reviewer rating or nah?
         movieController.createNewMovie(movieTitle, showingStatus, movieSynopsis, "4", movieType,

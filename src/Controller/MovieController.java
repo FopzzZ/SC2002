@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import Entity.Movie.*;
 
 public class MovieController {
-    private ArrayList<Movie> movieList;
+    private static ArrayList<Movie> movieList;
 
     private final static String DataBaseFilePath = "DataBase/Movies.txt";
 
@@ -134,6 +134,13 @@ public class MovieController {
 
     public void showDetail(String title) {
         int index = searchWithTitle(title);
+        if (index != -1)
+            System.out.println(movieList.get(index).toString());
+        else
+            System.out.println("No such movie.");
+    }
+
+    public void showDetail(int index) {
         if (index != -1)
             System.out.println(movieList.get(index).toString());
         else
