@@ -17,9 +17,7 @@ public class AdminLoginController {
         AdminController adminController = new AdminController();
         ArrayList<Admin> adminList = adminController.getAdminList();
         for (Admin admin : adminList) {
-            System.out.println("Username:" + admin.getUsername()); // test
             if (admin.getUsername().matches(this.username)) {
-                System.out.println("Admin found"); // test
                 this.password = admin.getPassword();
                 break;
             }
@@ -27,7 +25,6 @@ public class AdminLoginController {
     }
 
     public boolean verify(String password) {
-        System.out.println(this.password); // test
         if (this.password != null && password.matches(this.password)) {
             return true;
         } else {

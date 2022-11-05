@@ -17,6 +17,7 @@ public class AdminController {
         }
     }
 
+    @SuppressWarnings("unchecked")
     public ArrayList<Admin> readFromDB() {
         try {
             ObjectInputStream ois = new ObjectInputStream(new FileInputStream(DataBaseFilePath));
@@ -29,7 +30,7 @@ public class AdminController {
         return new ArrayList<Admin>();
     }
 
-    public void writeToDB(ArrayList<Admin> adminList) { // TODO write is not clearing database
+    public void writeToDB(ArrayList<Admin> adminList) {
         try {
             ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(DataBaseFilePath));
             out.writeObject(adminList);
