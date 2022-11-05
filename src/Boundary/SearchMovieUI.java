@@ -4,17 +4,19 @@ import Controller.*;
 import Entity.Movie.*;
 
 public class SearchMovieUI {
+    private MovieController movieController;
     private String title;
     private String type;
     private int option;
 
-    public void main(){
-        while (option!=4) {
+    public void main() {
+        while (option != 4) {
+            movieController = new MovieController();
             System.out.println("1. Search by movie title");
             System.out.println("2. Search by movie type");
-            System.out.println("3. List all movie title");
-            System.out.println("4. Exit");
-            switch (option = InputController.getIntFromUser()) {
+            System.out.println("3. List all movie titles");
+            System.out.println("4. Back to menu");
+            switch (option = InputController.getIntFromUser(1, 4)) {
                 case 1:
                     searchByTitle();
                     break;
@@ -33,15 +35,17 @@ public class SearchMovieUI {
         }
     }
 
-    public void searchByTitle(){
+    public void searchByTitle() {
+        System.out.println("Enter movie title to search:");
         title = InputController.getStringFromUser();
+        movieController.showDetail(title);
     }
 
-    public void searchByType(){
+    public void searchByType() {
         type = InputController.getStringFromUser();
     }
 
-    public void showAllMovies(){
-
+    public void showAllMovies() {
+        movieController.listMovies();
     }
 }

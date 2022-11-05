@@ -24,7 +24,7 @@ public class InputController {
                 input = sc.nextInt();
                 validInput = true;
             } else {
-                System.out.println("Wrong input!");
+                System.out.println("Invalid input! Please try again.");
             }
             sc.nextLine();
         }

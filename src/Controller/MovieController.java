@@ -18,10 +18,9 @@ public class MovieController {
 
     public void createNewMovie(String movieTitle, MovieStatus status, String synposis, String rating, MovieType type,
             String director, ArrayList<String> cast) {
-        Movie movie = new Movie(getLastID() + 1, movieTitle, synposis, director, type, status, rating, cast,
+        Movie movie = new Movie(movieTitle, synposis, director, type, status, rating, cast,
                 new ArrayList<Review>());
-        movieList.add(movie);
-        writeToDB(movieList);
+        addMovie(movie);
     }
 
     public void addMovie(Movie movie) {
@@ -52,14 +51,14 @@ public class MovieController {
         }
     }
 
-    public int getLastID() {
-        if (movieList.size() == 0) {
-            return 1;
-        }
-        return movieList.get(movieList.size() - 1).getID();
-    }
+    // public int getLastID() {
+    // if (movieList.size() == 0) {
+    // return 1;
+    // }
+    // return movieList.get(movieList.size() - 1).getID();
+    // }
 
-    private int searchWithTitle(String title) {
+    public int searchWithTitle(String title) { // returns index of movie in movieList
         for (int i = 0; i < movieList.size(); ++i) {
             if (movieList.get(i).getTitle().equals(title))
                 return i;
@@ -67,12 +66,16 @@ public class MovieController {
         return -1;
     }
 
-    private int searchWithID(int ID) {
-        for (int i = 0; i < movieList.size(); ++i) {
-            if (movieList.get(i).getID() == ID)
-                return i;
+    public int searchWithID(int ID) {
+        if (ID > movieList.size()) {
+            return -1;
         }
-        return -1;
+        return ID;
+        // for (int i = 0; i < movieList.size(); ++i) {
+        // if (movieList.get(i).getID() == ID)
+        // return i;
+        // }
+        // return -1;
     }
 
     public void updateMovieByTitle(String title) {
@@ -124,7 +127,7 @@ public class MovieController {
 
     public void listMovies() {
         for (int i = 0; i < movieList.size(); ++i) {
-            System.out.printf("Movie %d: %s\n", movieList.get(i).getID(), movieList.get(i).getTitle());
+            System.out.printf("Movie %d: %s\n", i + 1, movieList.get(i).getTitle());
         }
         System.out.printf("Total %d movies.\n", movieList.size());
     }

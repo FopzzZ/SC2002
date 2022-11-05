@@ -1,11 +1,7 @@
 package Boundary;
 
-import java.util.ArrayList;
-
+import Boundary.AdminMenu.ModifyMovieMenuUI;
 import Controller.*;
-import Entity.Movie.Movie;
-import Entity.Movie.MovieStatus;
-import Entity.Movie.MovieType;
 
 public class AdminMenuUI {
     MovieController movieController;
@@ -20,33 +16,30 @@ public class AdminMenuUI {
         boolean loggedIn = true; // think of some way to implement
         while (loggedIn) {
             System.out.println("|Admin Menu|\n" +
-                    "1. List movies\n" +
-                    "2. Search movies\n" +
-                    "3. View movie details\n" +
-                    "4. Modify movie listings\n" +
-                    "5. Modify movie showtimes\n" +
-                    "6. Configure system settings\n" +
-                    "7. Log out");
+                    "1. Search/List movies\n" +
+                    "2. View movie details\n" +
+                    "3. Modify movie listings\n" +
+                    "4. Modify movie showtimes\n" +
+                    "5. Configure system settings\n" +
+                    "6. Log out");
             System.out.print("Select action: ");
-            switch (InputController.getIntFromUser(1, 7)) {
+            switch (InputController.getIntFromUser(1, 6)) {
                 case 1:
-                    listMovies();
+                    searchListMovies();
                     break;
                 case 2:
-                    break;
-                case 3:
 
                     break;
-                case 4:
+                case 3:
                     modifyMovieListings();
 
                     break;
-                case 5:
+                case 4:
                     modifyMovieShowtimes();
                     break;
-                case 6:
+                case 5:
                     break;
-                case 7:
+                case 6:
                     loggedIn = false;
                     System.out.println("Logged out successfully!");
                     break;
@@ -56,87 +49,14 @@ public class AdminMenuUI {
         }
     }
 
-    private void listMovies() {
-        movieController.listMovies();
+    private void searchListMovies() {
+        SearchMovieUI searchMovieUI = new SearchMovieUI();
+        searchMovieUI.main();
     }
 
     private void modifyMovieListings() {
-        System.out.println("1. Create movie listing");
-        System.out.println("2. Update movie listing");
-        System.out.println("3. Remove movie listing");
-        System.out.println("Select action: ");
-        switch (InputController.getIntFromUser(1, 3)) {
-            case 1:
-                createMovieListing();
-                break;
-            case 2:
-                updateMovieListing();
-                break;
-            case 3:
-                removeMovieListing();
-                break;
-        }
-    }
-
-    private void createMovieListing() {
-        int movieID;
-        String movieTitle, movieSynopsis, movieDirector, castInput, reviewerRating;
-        ArrayList<String> castNames = new ArrayList<String>();
-        MovieStatus showingStatus = MovieStatus.Coming;
-        MovieType movieType = MovieType.Common;
-        movieID = movieController.getLastID() + 1;
-        System.out.println("Enter movie title: ");
-        movieTitle = InputController.getStringFromUser();
-        System.out.println("Select showing status:\n" +
-                "1. Coming Soon\n" +
-                "2. Preview\n" +
-                "3. Now Showing\n" +
-                "4. End of Showing");
-        switch (InputController.getIntFromUser(1, 4)) {
-            case 1:
-                showingStatus = MovieStatus.Coming;
-                break;
-            case 2:
-                showingStatus = MovieStatus.Preview;
-                break;
-            case 3:
-                showingStatus = MovieStatus.Showing;
-                break;
-            case 4:
-                showingStatus = MovieStatus.Ended;
-                break;
-
-        }
-        System.out.println("Enter synopsis: ");
-        movieSynopsis = InputController.getStringFromUser();
-        System.out.println("Enter director's name: ");
-        movieDirector = InputController.getStringFromUser();
-        System.out.println("Enter a cast's name: (Enter END when done)");
-        castInput = InputController.getStringFromUser();
-        while (!castInput.equals("END")) {
-            castInput = InputController.getStringFromUser();
-            castNames.add(castInput);
-        }
-        // implement reviewer rating or nah?
-        Movie newMovie = new Movie(movieID, movieTitle, movieSynopsis,
-                movieDirector, movieType, showingStatus, null, castNames, null);
-        movieController.addMovie(newMovie);
-    }
-
-    private void updateMovieListing() {
-        movieController.listMovies();
-        System.out.println("Select movie to update: ");
-        int selection = InputController.getIntFromUser();
-        movieController.updateMovieByID(selection);
-    }
-
-    private void removeMovieListing() { // deletes off database for now
-        movieController.listMovies();
-        System.out.println("Select movie to remove: ");
-        int selection = InputController.getIntFromUser();
-        movieController.removeMovieByID(selection);
-        System.out.println("Movie has been removed");
-
+        ModifyMovieMenuUI modifyMovieMenuUI = new ModifyMovieMenuUI();
+        modifyMovieMenuUI.main();
     }
 
     private void modifyMovieShowtimes() {

@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import Controller.InputController;
 
 public class Movie implements Serializable {
-    private int ID;
     private String movieTitle, synopsis, director;
     private MovieType type;
     private MovieStatus status;
@@ -16,7 +15,6 @@ public class Movie implements Serializable {
     private ArrayList<Review> reviews;
 
     public Movie() {
-        this.ID = -1;
         this.movieTitle = "";
         this.status = MovieStatus.Coming;
         this.type = MovieType.Common;
@@ -27,9 +25,8 @@ public class Movie implements Serializable {
         this.reviews = new ArrayList<Review>();
     }
 
-    public Movie(int ID, String movieTitle, String synposis, String director, MovieType type, MovieStatus status,
+    public Movie(String movieTitle, String synposis, String director, MovieType type, MovieStatus status,
             String rating, ArrayList<String> cast, ArrayList<Review> review) {
-        this.ID = ID;
         this.movieTitle = movieTitle;
         this.status = status;
         this.type = type;
@@ -121,10 +118,6 @@ public class Movie implements Serializable {
         return false;
     }
 
-    protected void setID(int ID) { // cannot change ID
-        this.ID = ID;
-    }
-
     public void setTitle(String movieTitle) {
         this.movieTitle = movieTitle;
     }
@@ -155,10 +148,6 @@ public class Movie implements Serializable {
 
     public void addReview(double rating, String content) {
         this.reviews.add(new Review(rating, content));
-    }
-
-    public int getID() {
-        return this.ID;
     }
 
     public String getTitle() {
@@ -202,11 +191,13 @@ public class Movie implements Serializable {
         }
 
         String reviewS = new String();
-        for (int i = 0; i < this.getReviews().size(); ++i) {
-            reviewS += "\n\n" + this.getReviews().get(i).getContent();
-        }
+
         if (this.getReviews().size() == 0) {
             reviewS = "N/A";
+        } else {
+            for (int i = 0; i < this.getReviews().size(); ++i) {
+                reviewS += "\n\n" + this.getReviews().get(i).getContent();
+            }
         }
 
         String ret = new String();
