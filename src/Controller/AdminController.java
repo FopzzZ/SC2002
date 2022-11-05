@@ -21,11 +21,11 @@ public class AdminController {
     public ArrayList<Admin> readFromDB() {
         try {
             ObjectInputStream ois = new ObjectInputStream(new FileInputStream(DataBaseFilePath));
-            ArrayList<Admin> movieListing = (ArrayList<Admin>) ois.readObject();
+            ArrayList<Admin> adminList = (ArrayList<Admin>) ois.readObject();
             ois.close();
-            return movieListing;
+            return adminList;
         } catch (ClassNotFoundException | IOException e) {
-            System.out.println("Error when reading from DB");
+            System.out.println("Error when reading from admin DB");
         }
         return new ArrayList<Admin>();
     }
@@ -38,7 +38,7 @@ public class AdminController {
             out.close();
         } catch (IOException e) {
             System.out.print(e.toString());
-            System.out.println("Error when writing to DB");
+            System.out.println("Error when writing to admin DB");
         }
     }
 

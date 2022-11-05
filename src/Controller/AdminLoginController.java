@@ -9,7 +9,6 @@ public class AdminLoginController {
 
     public AdminLoginController(String username) {
         this.username = username;
-
         initialise();
     }
 

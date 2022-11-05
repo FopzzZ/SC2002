@@ -87,4 +87,19 @@ public class InputController {
         }
         return input;
     }
+
+    public static String getMobileNumberFromUser() { // 8 digit mobile number
+        String pattern = "[\\d]{8}";
+        String input = "";
+        boolean validInput = false;
+        while (!validInput) {
+            input = getStringFromUser();
+            if (input.matches(pattern)) {
+                validInput = true;
+            } else {
+                System.out.println("Please enter a valid mobile number!");
+            }
+        }
+        return input;
+    }
 }
