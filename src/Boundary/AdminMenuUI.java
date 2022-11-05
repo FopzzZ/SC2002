@@ -1,6 +1,7 @@
 package Boundary;
 
 import Boundary.AdminMenu.ModifyMovieMenuUI;
+import Boundary.AdminMenu.ModifyShowtimeMenuUI;
 import Controller.*;
 
 public class AdminMenuUI {
@@ -35,7 +36,7 @@ public class AdminMenuUI {
 
                     break;
                 case 4:
-                    modifyMovieShowtimes();
+                    modifyShowtimes();
                     break;
                 case 5:
                     break;
@@ -59,32 +60,9 @@ public class AdminMenuUI {
         modifyMovieMenuUI.main();
     }
 
-    private void modifyMovieShowtimes() {
-        System.out.println("Select movie to modify showtimes:");
-        // TODO print list of movies and then select one
-        System.out.println("1. Create movie showtime");
-        System.out.println("2. Update movie showtime");
-        System.out.println("3. Remove movie showtime");
-        System.out.println("Select action: ");
-        switch (InputController.getIntFromUser(1, 3)) {
-            case 1:
-                createMovieShowtime();
-                break;
-            case 2:
-                updateMovieShowtime();
-                break;
-            case 3:
-                removeMovieShowtime();
-                break;
-        }
+    private void modifyShowtimes() {
+        ModifyShowtimeMenuUI modifyShowtimeMenuUI = new ModifyShowtimeMenuUI();
+        modifyShowtimeMenuUI.main();
     }
 
-    private void removeMovieShowtime() {
-    }
-
-    private void updateMovieShowtime() {
-    }
-
-    private void createMovieShowtime() {
-    }
 }
