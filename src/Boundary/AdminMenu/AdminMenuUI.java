@@ -6,6 +6,12 @@ import Controller.*;
 public class AdminMenuUI {
     MovieController movieController;
 
+    // for testing
+    public static void main(String[] args) {
+        AdminMenuUI adminMenuUI = new AdminMenuUI();
+        adminMenuUI.main();
+    }
+
     public void main() {
         movieController = new MovieController();
         while (true) {

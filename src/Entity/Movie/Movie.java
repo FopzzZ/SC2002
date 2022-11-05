@@ -69,15 +69,18 @@ public class Movie implements Serializable {
             System.out.println("5: Synopsis");
             System.out.println("6: Add Cast");
             System.out.println("7: Exit");
-            System.out.println("Enter the attribute you want to edit");
+            System.out.println("Select attribute to edit");
             input = InputController.getIntFromUser(1, 7);
-            System.out.println("Enter the value: ");
-            content = InputController.getStringFromUser();
+
             switch (input) {
                 case 1:
+                    System.out.println("Enter movie title: ");
+                    content = InputController.getStringFromUser();
                     this.setTitle(content);
                     break;
                 case 2:
+                    System.out.println("Enter movie status (Coming Soon/Preview/Now Showing/End of Showing): ");
+                    content = InputController.getStringFromUser();
                     switch (content) {
                         case "Coming Soon":
                             this.setStatus(MovieStatus.Coming);
@@ -95,6 +98,8 @@ public class Movie implements Serializable {
                     }
                     break;
                 case 3:
+                    System.out.println("Enter movie type (Blockbuster/3D): ");
+                    content = InputController.getStringFromUser();
                     switch (content) {
                         case "Blockbuster":
                             this.setType(MovieType.Blockbuster);
@@ -107,18 +112,21 @@ public class Movie implements Serializable {
                     }
                     break;
                 case 4:
+                    System.out.println("Enter director's name: ");
+                    content = InputController.getStringFromUser();
                     this.setDirector(content);
                     break;
                 case 5:
+                    System.out.println("Enter synopsis: ");
+                    content = InputController.getStringFromUser();
                     this.setSynopsis(content);
                     break;
                 case 6:
+                    System.out.println("Enter name of cast member: ");
+                    content = InputController.getStringFromUser();
                     this.addCast(content);
                     break;
                 case 7:
-                    break;
-                default:
-                    System.out.println("Invalid input.");
                     break;
             }
         }

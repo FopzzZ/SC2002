@@ -44,4 +44,6 @@ public class ShowtimeController {
     public ArrayList<Showtime> getShowtimeList() {
         return this.showtimeList;
     }
+
+    // TODO implement a sort showtime function
 }
