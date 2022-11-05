@@ -11,7 +11,7 @@ public class AdminMenuUI {
     public void main() {
         boolean loggedIn = true; // think of some way to implement
         while (loggedIn) {
-            System.out.println("|Admin Menu|" +
+            System.out.println("|Admin Menu|\n" +
                     "1. Search/List movies\n" +
                     "2. View movie details\n" +
                     "3. Modify movie listing\n" +

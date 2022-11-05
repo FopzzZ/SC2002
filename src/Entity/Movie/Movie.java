@@ -239,23 +239,16 @@ public class Movie implements Serializable {
         movie2.addReview(2.0, "Good.");
         movie2.setType(MovieType.ThreeD);
 
+        ArrayList<Movie> movieList = new ArrayList<Movie>();
+        movieList.add(movie2);
+        // movieList.add(movie1);
         ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("database/abc.txt"));
-        oos.writeObject(movie1);
-        // oos.writeObject(movie2);
+        oos.writeObject(movieList);
         oos.close();
 
         ObjectInputStream ois = new ObjectInputStream(new FileInputStream("database/abc.txt"));
-        ArrayList<Movie> movies = new ArrayList<Movie>();
-        while (true) {
-            try {
-                Movie temp = new Movie();
-                temp = (Movie) ois.readObject();
-                movies.add(temp);
-            } catch (Exception e) {
-                System.out.println("End of file");
-                break;
-            }
-        }
+        ArrayList<Movie> movies = (ArrayList<Movie>) ois.readObject();
+
         for (Movie m : movies) {
             System.out.println(m.toString());
         }
