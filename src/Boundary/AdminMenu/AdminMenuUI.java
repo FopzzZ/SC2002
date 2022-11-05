@@ -23,7 +23,7 @@ public class AdminMenuUI {
                     "2. View movie details\n" +
                     "3. Modify movie listings\n" +
                     "4. Modify movie showtimes\n" +
-                    "5. Configure system settings\n" +
+                    "5. Configure system settings\n" + // configure system settings not done yet.
                     "6. Log out\n");
             System.out.print("Select action: ");
             switch (InputController.getIntFromUser(1, 6)) {

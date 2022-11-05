@@ -82,6 +82,34 @@ public class MovieController {
         return ID;
     }
 
+    public void filterByType(MovieType type) {
+        ArrayList<Movie> tempList = new ArrayList<Movie>();
+        for (Movie movie : movieList) {
+            if (movie.getType() == type) {
+                tempList.add(movie);
+            }
+        }
+        ;
+        for (int i = 0; i < tempList.size(); ++i) {
+            System.out.printf("Movie %d: %s\n", i + 1, tempList.get(i).getTitle());
+        }
+        System.out.printf("Total %d movies.\n", tempList.size());
+    }
+
+    public void filterByStatus(MovieStatus status) {
+        ArrayList<Movie> tempList = new ArrayList<Movie>();
+        for (Movie movie : movieList) {
+            if (movie.getStatus() == status) {
+                tempList.add(movie);
+            }
+        }
+        ;
+        for (int i = 0; i < tempList.size(); ++i) {
+            System.out.printf("Movie %d: %s\n", i + 1, tempList.get(i).getTitle());
+        }
+        System.out.printf("Total %d movies.\n", tempList.size());
+    }
+
     public void updateMovieByTitle(String title) {
         int index = searchWithTitle(title);
         if (index == -1) {
@@ -141,7 +169,7 @@ public class MovieController {
         if (index != -1)
             System.out.println(movieList.get(index).toString());
         else
-            System.out.println("No such movie.");
+            System.out.println("No movie found.");
     }
 
     public void showDetail(int index) {

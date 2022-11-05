@@ -16,4 +16,5 @@ public class AdminConfigSettingUI {
     }
 
     // create the functions below
+    // maybe for changing type of cinema, name of cineplex etc
 }
