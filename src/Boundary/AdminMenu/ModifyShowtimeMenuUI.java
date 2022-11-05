@@ -1,5 +1,6 @@
 package Boundary.AdminMenu;
 
+import Controller.CineplexController;
 import Controller.InputController;
 import Controller.MovieController;
 import Controller.ShowtimeController;
@@ -12,6 +13,7 @@ import Entity.Showtime.Time;
 public class ModifyShowtimeMenuUI {
     private MovieController movieController;
     private ShowtimeController showtimeController;
+    private CineplexController cineplexController;
     private Movie selectedMovie;
 
     public static void main(String[] args) { // for testing
@@ -20,6 +22,7 @@ public class ModifyShowtimeMenuUI {
     }
 
     public void main() {
+        cineplexController = new CineplexController();
         movieController = new MovieController();
         movieController.listMovies();
         System.out.println("Select movie to modify showtimes:");
@@ -61,10 +64,16 @@ public class ModifyShowtimeMenuUI {
         Time startTime = new Time(InputController.getTimeFromUser());
         System.out.println("Enter end time in the format YYYYMMDDHHMM:");
         Time endTime = new Time(InputController.getTimeFromUser());
-        // Select cineplex
-        // Select cinema
-        // isHoliday
-        showtimeController.create(selectedMovie, startTime, endTime, new Cineplex(), new Cinema(), false);
+        cineplexController.listCineplex();
+        System.out.println("Select cineplex:");
+        Cineplex selectedCineplex = cineplexController.getCineplexList().get(InputController.getIntFromUser() - 1);
+        cineplexController.listCinemas(selectedCineplex);
+        System.out.println("Select cinema:");
+        Cinema selectedCinema = cineplexController.getCinemaList(selectedCineplex)
+                .get(InputController.getIntFromUser() - 1);
+        System.out.println("Is this on a holiday? (Y/N)");
+        boolean isHoliday = InputController.getYesOrNoFromUser();
+        showtimeController.create(selectedMovie, startTime, endTime, selectedCineplex, selectedCinema, isHoliday);
 
     }
 
@@ -76,10 +85,16 @@ public class ModifyShowtimeMenuUI {
         Time startTime = new Time(InputController.getTimeFromUser());
         System.out.println("Enter end time in the format YYYYMMDDHHMM:");
         Time endTime = new Time(InputController.getTimeFromUser());
-        // Select cineplex
-        // Select cinema
-        // isHoliday
-        Showtime newShowtime = new Showtime(startTime, endTime, null, null, false);
+        cineplexController.listCineplex();
+        System.out.println("Select cineplex:");
+        Cineplex selectedCineplex = cineplexController.getCineplexList().get(InputController.getIntFromUser() - 1);
+        cineplexController.listCinemas(selectedCineplex);
+        System.out.println("Select cinema:");
+        Cinema selectedCinema = cineplexController.getCinemaList(selectedCineplex)
+                .get(InputController.getIntFromUser() - 1);
+        System.out.println("Is this on a holiday? (Y/N)");
+        boolean isHoliday = InputController.getYesOrNoFromUser();
+        Showtime newShowtime = new Showtime(startTime, endTime, selectedCineplex, selectedCinema, isHoliday);
         showtimeController.updateShowtime(selection - 1, newShowtime);
 
     }

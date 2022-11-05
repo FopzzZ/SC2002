@@ -40,18 +40,22 @@ public class InputController {
         return input;
     }
 
-    public static String getYesOrNoFromUser() {
+    public static boolean getYesOrNoFromUser() { // Y or N to boolean
         String input = "";
         boolean validInput = false;
         while (!validInput) {
             input = sc.nextLine();
-            if (input == "Y" || input == "N") {
+            if (input.equals("Y") || input.equals("N")) {
                 validInput = true;
             } else {
                 System.out.println("Must be either Y or N");
             }
         }
-        return input;
+        if (input.equals("Y")) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public static String getEmailFromUser() {

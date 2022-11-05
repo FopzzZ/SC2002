@@ -87,17 +87,17 @@ public class Showtime implements Serializable {
 
     public String toString() {
         String ret = new String();
-        String discount = "";
+        String isHoliday = "";
         if (this.getIsHoliday())
-            discount = "YES";
+            isHoliday = "YES";
         else
-            discount = "NO";
+            isHoliday = "NO";
         ret = "\n"
                 + "Start time: " + this.getStartTime().toString() + "\n"
                 + "End time: " + this.getEndTime().toString() + "\n"
                 + "Cineplex: " + this.getCineplex().getName() + "\n"
                 + "Cinema: " + this.getCinema().getName() + "\n"
-                + "Have holiday discount: " + discount + "\n\n";
+                + "Is a holiday: " + isHoliday + "\n\n";
         return ret;
     }
 

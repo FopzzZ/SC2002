@@ -1,33 +1,10 @@
 package Boundary.AdminMenu;
 
-import java.util.ArrayList;
-
 import Boundary.SearchMovieUI;
 import Controller.*;
-import Entity.Movie.MovieStatus;
-import Entity.Movie.MovieType;
 
 public class AdminMenuUI {
     MovieController movieController;
-
-    public static void main(String[] args) { // for testing
-        // add movies run once
-        ArrayList<String> cast = new ArrayList<String>();
-        cast.add("Cast1");
-        cast.add("Cast2");
-        MovieController movieController = new MovieController();
-        movieController.createNewMovie("John Cena", MovieStatus.Showing, "now u see me",
-                "4", MovieType.Common,
-                "dk", cast);
-        movieController.createNewMovie("Nemo", MovieStatus.Showing, "now u see me",
-                "4", MovieType.Common,
-                "dk", cast);
-        movieController.createNewMovie("Bob bones", MovieStatus.Showing, "now u see me",
-                "4", MovieType.Common,
-                "dk", cast);
-        AdminMenuUI adminMenuUI = new AdminMenuUI();
-        adminMenuUI.main();
-    }
 
     public void main() {
         movieController = new MovieController();

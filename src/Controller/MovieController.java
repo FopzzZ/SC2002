@@ -47,7 +47,7 @@ public class MovieController {
             ObjectInputStream ois = new ObjectInputStream(new FileInputStream(dataBaseFilePath));
             ArrayList<Movie> movieListing = (ArrayList<Movie>) ois.readObject();
             ois.close();
-            System.out.println("Reading from database"); // for testing
+            System.out.println("Reading from movies database"); // for testing
             return movieListing;
         } catch (ClassNotFoundException | IOException e) {
             System.out.println(e); // for testing
@@ -61,9 +61,9 @@ public class MovieController {
             out.writeObject(movielist);
             out.flush();
             out.close();
-            System.out.println("Updating database"); // for testing
+            System.out.println("Updating movies database"); // for testing
         } catch (IOException e) {
-            // ignore error
+            System.out.println(e); // print error
         }
     }
 
@@ -157,5 +157,32 @@ public class MovieController {
 
     public Movie getMovie(int index) {
         return movieList.get(index);
+    }
+
+    public void clearDatabase() {
+        while (movieList.size() > 0) {
+            movieList.remove(0);
+        }
+        writeToDB(movieList);
+        System.out.println("Clearing movie database");
+    }
+
+    // adding initial movies to database for testing
+    public static void main(String[] args) { // for testing
+        // add movies run once
+        ArrayList<String> cast = new ArrayList<String>();
+        cast.add("Cast1");
+        cast.add("Cast2");
+        MovieController movieController = new MovieController();
+        movieController.clearDatabase();
+        movieController.createNewMovie("John Cena", MovieStatus.Showing, "now u see me",
+                "4", MovieType.Common,
+                "dk", cast);
+        movieController.createNewMovie("Nemo", MovieStatus.Showing, "now u see me",
+                "4", MovieType.Common,
+                "dk", cast);
+        movieController.createNewMovie("Bob bones", MovieStatus.Showing, "now u see me",
+                "4", MovieType.Common,
+                "dk", cast);
     }
 }
