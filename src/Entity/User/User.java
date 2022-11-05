@@ -11,6 +11,10 @@ public class User implements Serializable {
     private String name;
     private ArrayList<Booking> bookingHistory;
 
+    public User() {
+
+    }
+
     public User(String email, String mobileNumber, String name) {
         this.mobileNumber = mobileNumber;
         this.name = name;
@@ -20,6 +24,16 @@ public class User implements Serializable {
 
     public ArrayList<Booking> getBookingHistory() {
         return this.bookingHistory;
+    }
+
+    public void printBookingHistory() {
+        if (bookingHistory.size() == 0) {
+            System.out.println("Booking history is empty");
+            return;
+        }
+        for (Booking booking : bookingHistory) {
+            System.out.print(booking.toString());
+        }
     }
 
     public String getName() {

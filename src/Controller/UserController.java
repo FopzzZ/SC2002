@@ -25,6 +25,7 @@ public class UserController {
             return userList;
         } catch (ClassNotFoundException | IOException e) {
             System.out.println("Error when reading from user DB");
+            System.out.println(e);
         }
         return new ArrayList<User>();
     }
@@ -48,12 +49,31 @@ public class UserController {
     }
 
     public ArrayList<User> getUserList() {
-        return this.userList;
+        return userList;
+    }
+
+    public User getUser(String email) {
+        for (User user : userList) {
+            if (user.getEmail().equals(email)) {
+                return user;
+            }
+        }
+        System.out.println("No user found for some reason. Error somewhere");
+        return new User();
+    }
+
+    public void clearDatabase() {
+        while (userList.size() > 0) {
+            userList.remove(0);
+        }
+        writeToDB(userList);
+        System.out.println("Clearing user database");
     }
 
     // for adding users
     public static void main(String[] args) {
         UserController userController = new UserController();
+        userController.clearDatabase();
         userController.addUser("bob@gmail.com", "99128412", "Bob");
         userController.addUser("john@gmail.com", "96729103", "John");
     }

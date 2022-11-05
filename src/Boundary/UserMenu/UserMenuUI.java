@@ -3,6 +3,7 @@ package Boundary.UserMenu;
 import Boundary.SearchMovieUI;
 import Boundary.ViewMovieDetailsUI;
 import Controller.InputController;
+import Controller.UserController;
 
 public class UserMenuUI {
     String userEmail;
@@ -63,19 +64,27 @@ public class UserMenuUI {
     }
 
     private void checkSeatAvailability() {
-
+        UserCheckSeatAvailabilityUI userCheckSeatAvailabilityUI = new UserCheckSeatAvailabilityUI();
+        userCheckSeatAvailabilityUI.main();
     }
 
-    private void bookTicket() {
+    private void bookTicket() { // TODO
         // do sth with bookingController
     }
 
     private void viewBookingHistory() {
+        UserController userController = new UserController();
+        userController.getUser(userEmail).printBookingHistory();
+    }
+
+    private void listTop5Ranking() { // TODO
 
     }
 
-    private void listTop5Ranking() {
-
+    // testing
+    public static void main(String[] args) {
+        UserMenuUI userMenuUI = new UserMenuUI("bob@gmail.com");
+        userMenuUI.main();
     }
 
 }

@@ -1,8 +1,9 @@
 package Entity.Seat;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class SeatPlan {
+public class SeatPlan implements Serializable {
     ArrayList<Seat> seats;
     int row, column;
 
@@ -18,8 +19,19 @@ public class SeatPlan {
     }
 
     // only single seats now
-    public void showSeatplan() {
-        for (int i = 1; i <= this.row; ++i)
+    public void showSeatplan() { // hardcoded for 9 rows and 24 columns
+        System.out.print("            SCREEN\n"); // fixed spaces for now
+        System.out.print("  ");
+        for (int j = 1; j <= this.column; ++j) {
+            System.out.print(String.valueOf((char) (j + 'A' - 1)));
+            if (j == this.column / 3)
+                System.out.print(" ");
+            if (j == this.column / 3 * 2)
+                System.out.print(" ");
+        }
+        System.out.print("\n");
+        for (int i = 1; i <= this.row; ++i) {
+            System.out.print(i + " ");
             for (int j = 1; j <= this.column; ++j) {
 
                 Seat seat = seats.get((i - 1) * this.column + j - 1);
@@ -34,10 +46,10 @@ public class SeatPlan {
                 if (j == this.column)
                     System.out.println("");
             }
-        System.out.println("");
+        }
     }
 
-    public boolean Occupy(int rowNumber, int columnNumber) {
+    public boolean occupy(int rowNumber, int columnNumber) { // returns false if seat is already occupied
         Seat seat = seats.get((rowNumber - 1) * this.column + columnNumber - 1);
         if (seat.isOccupied())
             return false;
@@ -51,10 +63,10 @@ public class SeatPlan {
 
     // unit test(done)
     public static void main(String[] args) {
-        SeatPlan seatPlan = new SeatPlan(4, 21);
+        SeatPlan seatPlan = new SeatPlan(9, 24);
         seatPlan.showSeatplan();
-        seatPlan.Occupy(2, 3);
-        seatPlan.Occupy(3, 3);
+        seatPlan.occupy(2, 3);
+        seatPlan.occupy(3, 3);
         seatPlan.showSeatplan();
     }
 }

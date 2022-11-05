@@ -27,6 +27,7 @@ public class Showtime implements Serializable {
         this.cinema = cinema;
         this.cineplex = cineplex;
         this.isHoliday = isHoliday;
+        this.seatplan = new SeatPlan(9, 24); // default for now
     }
 
     public void update(Showtime showtime) {
@@ -97,7 +98,7 @@ public class Showtime implements Serializable {
                 + "End time: " + this.getEndTime().toString() + "\n"
                 + "Cineplex: " + this.getCineplex().getName() + "\n"
                 + "Cinema: " + this.getCinema().getName() + "\n"
-                + "Is a holiday: " + isHoliday + "\n\n";
+                + "Is a holiday: " + isHoliday + "\n";
         return ret;
     }
 

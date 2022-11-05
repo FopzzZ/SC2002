@@ -1,10 +1,12 @@
 package Entity.Seat;
 
-public class Seat {
+import java.io.Serializable;
+
+public class Seat implements Serializable {
     private int rowNumber, columnNumber;
     private boolean isOccupied;
     private SeatType seatType;
-    //relatedSeat is 'null' if seat type is single seat
+    // relatedSeat is 'null' if seat type is single seat
     private Seat relatedSeat;
 
     public Seat() {

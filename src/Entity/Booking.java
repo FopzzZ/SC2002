@@ -60,4 +60,14 @@ public class Booking {
     public void setTransactionID(String transactionID) {
         this.transactionID = transactionID;
     }
+
+    public String toString() { // TODO show showtime and movie details
+        String ret = new String();
+        ret = "\n"
+                + "Name: " + this.getName() + "\n"
+                + "Mobile number: " + this.getMobileNumber() + "\n"
+                + "Email: " + this.getEmail() + "\n"
+                + "Transaction ID: " + this.getTransactionID() + "\n";
+        return ret;
+    }
 }
