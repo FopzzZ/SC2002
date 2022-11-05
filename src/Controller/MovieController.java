@@ -24,6 +24,11 @@ public class MovieController {
         writeToDB(movieList);
     }
 
+    public void addMovie(Movie movie) {
+        movieList.add(movie);
+        writeToDB(movieList);
+    }
+
     @SuppressWarnings("unchecked")
     public ArrayList<Movie> readFromDB() {
         try {
@@ -47,10 +52,12 @@ public class MovieController {
         }
     }
 
-    private int getLastID() {
+    public int getLastID() {
+        if (movieList.size() == 0) {
+            return 1;
+        }
         return movieList.get(movieList.size() - 1).getID();
     }
-
 
     private int searchWithTitle(String title) {
         for (int i = 0; i < movieList.size(); ++i) {
@@ -78,8 +85,9 @@ public class MovieController {
         if (isDeleted) {
             remove(index);
         }
+        writeToDB(movieList);
     }
-    
+
     public void updateMovieByID(int ID) {
         int index = searchWithID(ID);
         if (index == -1) {
@@ -90,15 +98,17 @@ public class MovieController {
         if (isDeleted) {
             remove(index);
         }
+        writeToDB(movieList);
     }
 
-    //return false if no such movie, return true if removed successfully
+    // return false if no such movie, return true if removed successfully
     public boolean removeMovieByTitle(String title) {
         int index = searchWithTitle(title);
         if (index == -1) {
             return false;
         }
         remove(index);
+        writeToDB(movieList);
         return true;
     }
 
@@ -108,14 +118,15 @@ public class MovieController {
             return false;
         }
         remove(index);
+        writeToDB(movieList);
         return true;
     }
 
     public void listMovies() {
         for (int i = 0; i < movieList.size(); ++i) {
-            System.out.printf("Movie%d: %s\n", movieList.get(i).getID(), movieList.get(i).getTitle());
+            System.out.printf("Movie %d: %s\n", movieList.get(i).getID(), movieList.get(i).getTitle());
         }
-        System.out.printf("Totally %d movies.", movieList.size());
+        System.out.printf("Total %d movies.\n", movieList.size());
     }
 
     public void showDetail(String title) {

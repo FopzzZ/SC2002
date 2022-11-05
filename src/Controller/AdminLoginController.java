@@ -17,7 +17,7 @@ public class AdminLoginController {
         AdminController adminController = new AdminController();
         ArrayList<Admin> adminList = adminController.getAdminList();
         for (Admin admin : adminList) {
-            if (admin.getUsername().matches(this.username)) {
+            if (admin.getUsername().equals(this.username)) {
                 this.password = admin.getPassword();
                 break;
             }
@@ -25,7 +25,7 @@ public class AdminLoginController {
     }
 
     public boolean verify(String password) {
-        if (this.password != null && password.matches(this.password)) {
+        if (this.password != null && password.equals(this.password)) {
             return true;
         } else {
             return false;

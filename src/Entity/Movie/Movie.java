@@ -53,63 +53,71 @@ public class Movie implements Serializable {
         }
     }
 
-    public boolean updateDetail() { // move to movieController?
-        System.out.println("Enter the attribute you want to edit");
-        System.out.println("1: Title");
-        System.out.println("2: Status(Coming Soon/Preview/Now Showing/End of Showing)");
-        System.out.println("3: Type(Blockbuster/3D)");
-        System.out.println("4: Director");
-        System.out.println("5: Synopsis");
-        System.out.println("6: Add Cast");
-        String input = InputController.getStringFromUser();
-        System.out.println("Enter the value: ");
-        String content = InputController.getStringFromUser();
-        switch (input) {
-            case "1":
-                this.setTitle(content);
-                break;
-            case "2":
-                switch (content) {
-                    case "Coming Soon":
-                        this.setStatus(MovieStatus.Coming);
-                        break;
-                    case "Preview":
-                        this.setStatus(MovieStatus.Preview);
-                        break;
-                    case "Now Showing":
-                        this.setStatus(MovieStatus.Showing);
-                        break;
-                    case "End of Showing":
-                        return true;
-                    default:
-                        break;
-                }
-                break;
-            case "3":
-                switch (content) {
-                    case "Blockbuster":
-                        this.setType(MovieType.Blockbuster);
-                        break;
-                    case "3D":
-                        this.setType(MovieType.ThreeD);
-                        break;
-                    default:
-                        break;
-                }
-                break;
-            case "4":
-                this.setDirector(content);
-                break;
-            case "5":
-                this.setSynopsis(content);
-                break;
-            case "6":
-                this.addCast(content);
-                break;
-            default:
-                System.out.println("Invalid input.");
-                break;
+    public boolean updateDetail() { // move to movieController/adminMenuUI
+        int input = 0;
+        String content;
+        while (input != 7) {
+            System.out.println("1: Title");
+            System.out.println("2: Status(Coming Soon/Preview/Now Showing/End of Showing)");
+            System.out.println("3: Type(Blockbuster/3D)");
+            System.out.println("4: Director");
+            System.out.println("5: Synopsis");
+            System.out.println("6: Add Cast");
+            System.out.println("7: Exit");
+            System.out.println("Enter the attribute you want to edit");
+            input = InputController.getIntFromUser(1, 7);
+            System.out.println("Enter the value: ");
+            content = InputController.getStringFromUser();
+            switch (input) {
+                case 1:
+                    this.setTitle(content);
+                    break;
+                case 2:
+                    switch (content) {
+                        case "Coming Soon":
+                            this.setStatus(MovieStatus.Coming);
+                            break;
+                        case "Preview":
+                            this.setStatus(MovieStatus.Preview);
+                            break;
+                        case "Now Showing":
+                            this.setStatus(MovieStatus.Showing);
+                            break;
+                        case "End of Showing":
+                            return true;
+                        default:
+                            break;
+                    }
+                    break;
+                case 3:
+                    switch (content) {
+                        case "Blockbuster":
+                            this.setType(MovieType.Blockbuster);
+                            break;
+                        case "3D":
+                            this.setType(MovieType.ThreeD);
+                            break;
+                        default:
+                            break;
+                    }
+                    break;
+                case 4:
+                    this.setDirector(content);
+                    break;
+                case 5:
+                    this.setSynopsis(content);
+                    break;
+                case 6:
+                    this.addCast(content);
+                    break;
+                case 7:
+                    break;
+                default:
+                    System.out.println("Invalid input.");
+                    break;
+            }
         }
+
         return false;
     }
 

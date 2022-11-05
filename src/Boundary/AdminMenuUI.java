@@ -8,31 +8,45 @@ import Entity.Movie.MovieStatus;
 import Entity.Movie.MovieType;
 
 public class AdminMenuUI {
+    MovieController movieController;
+
+    public static void main(String[] args) { // for testing
+        AdminMenuUI adminMenuUI = new AdminMenuUI();
+        adminMenuUI.main();
+    }
+
     public void main() {
+        movieController = new MovieController();
         boolean loggedIn = true; // think of some way to implement
         while (loggedIn) {
             System.out.println("|Admin Menu|\n" +
-                    "1. Search/List movies\n" +
-                    "2. View movie details\n" +
-                    "3. Modify movie listing\n" +
-                    "4. Modify movie showtimes\n" +
-                    "3. Configure system settings\n" +
-                    "6. Log out\n");
+                    "1. List movies\n" +
+                    "2. Search movies\n" +
+                    "3. View movie details\n" +
+                    "4. Modify movie listings\n" +
+                    "5. Modify movie showtimes\n" +
+                    "6. Configure system settings\n" +
+                    "7. Log out");
             System.out.print("Select action: ");
-            switch (InputController.getIntFromUser(1, 6)) {
+            switch (InputController.getIntFromUser(1, 7)) {
                 case 1:
+                    listMovies();
                     break;
                 case 2:
                     break;
                 case 3:
-                    modifyMovieListing();
+
                     break;
                 case 4:
-                    modifyMovieShowtime();
+                    modifyMovieListings();
+
                     break;
                 case 5:
+                    modifyMovieShowtimes();
                     break;
                 case 6:
+                    break;
+                case 7:
                     loggedIn = false;
                     System.out.println("Logged out successfully!");
                     break;
@@ -42,7 +56,11 @@ public class AdminMenuUI {
         }
     }
 
-    private void modifyMovieListing() {
+    private void listMovies() {
+        movieController.listMovies();
+    }
+
+    private void modifyMovieListings() {
         System.out.println("1. Create movie listing");
         System.out.println("2. Update movie listing");
         System.out.println("3. Remove movie listing");
@@ -60,32 +78,20 @@ public class AdminMenuUI {
         }
     }
 
-    private void removeMovieListing() {
-        System.out.println("Select movie to remove: ");
-        // print list of movies then (change showing status to end of showing/delete
-        // entirely)?
-    }
-
-    private void updateMovieListing() {
-        System.out.println("Select movie to update: ");
-        // print list of movies then select
-    }
-
     private void createMovieListing() {
         int movieID;
         String movieTitle, movieSynopsis, movieDirector, castInput, reviewerRating;
         ArrayList<String> castNames = new ArrayList<String>();
         MovieStatus showingStatus = MovieStatus.Coming;
         MovieType movieType = MovieType.Common;
-        System.out.println("Enter movie id: ");
-        movieID = InputController.getIntFromUser();
+        movieID = movieController.getLastID() + 1;
         System.out.println("Enter movie title: ");
         movieTitle = InputController.getStringFromUser();
         System.out.println("Select showing status:\n" +
                 "1. Coming Soon\n" +
                 "2. Preview\n" +
                 "3. Now Showing\n" +
-                "4. End of Showing\n");
+                "4. End of Showing");
         switch (InputController.getIntFromUser(1, 4)) {
             case 1:
                 showingStatus = MovieStatus.Coming;
@@ -107,17 +113,33 @@ public class AdminMenuUI {
         movieDirector = InputController.getStringFromUser();
         System.out.println("Enter a cast's name: (Enter END when done)");
         castInput = InputController.getStringFromUser();
-        while (castInput != "END") {
+        while (!castInput.equals("END")) {
             castInput = InputController.getStringFromUser();
             castNames.add(castInput);
         }
         // implement reviewer rating or nah?
         Movie newMovie = new Movie(movieID, movieTitle, movieSynopsis,
                 movieDirector, movieType, showingStatus, null, castNames, null);
-        // add this newMovie to catalog;
+        movieController.addMovie(newMovie);
     }
 
-    private void modifyMovieShowtime() {
+    private void updateMovieListing() {
+        movieController.listMovies();
+        System.out.println("Select movie to update: ");
+        int selection = InputController.getIntFromUser();
+        movieController.updateMovieByID(selection);
+    }
+
+    private void removeMovieListing() { // deletes off database for now
+        movieController.listMovies();
+        System.out.println("Select movie to remove: ");
+        int selection = InputController.getIntFromUser();
+        movieController.removeMovieByID(selection);
+        System.out.println("Movie has been removed");
+
+    }
+
+    private void modifyMovieShowtimes() {
         System.out.println("Select movie to modify showtimes:");
         // TODO print list of movies and then select one
         System.out.println("1. Create movie showtime");
