@@ -7,16 +7,19 @@ public class SearchMovieUI {
     private MovieController movieController;
     private String title;
     private String type;
-    private int option;
 
     public void main() {
-        while (option != 4) {
-            movieController = new MovieController();
-            System.out.println("1. Search by movie title");
-            System.out.println("2. Search by movie type");
-            System.out.println("3. List all movie titles");
-            System.out.println("4. Back to menu");
-            switch (option = InputController.getIntFromUser(1, 4)) {
+        movieController = new MovieController();
+        while (true) {
+            System.out.println("\n" +
+                    "----------------------\n" +
+                    "| Search/List Movies |\n" +
+                    "----------------------\n" +
+                    "1. Search by movie title\n" +
+                    "2. Search by movie type\n" +
+                    "3. List all movie titles\n" +
+                    "4. Back to main menu\n");
+            switch (InputController.getIntFromUser(1, 4)) {
                 case 1:
                     searchByTitle();
                     break;
@@ -27,10 +30,7 @@ public class SearchMovieUI {
                     showAllMovies();
                     break;
                 case 4:
-                    System.out.println("Exit");
                     return;
-                default:
-                    System.out.println("Invalid input! Please try again.");
             }
         }
     }

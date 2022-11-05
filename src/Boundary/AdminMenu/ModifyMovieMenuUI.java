@@ -83,15 +83,15 @@ public class ModifyMovieMenuUI {
     private void updateMovieListing() {
         movieController.listMovies();
         System.out.println("Select movie to update: ");
-        int selection = InputController.getIntFromUser();
-        movieController.updateMovieByID(selection);
+        int index = InputController.getIntFromUser();
+        movieController.updateMovieByID(index - 1);
     }
 
     private void removeMovieListing() { // deletes off database for now
         movieController.listMovies();
         System.out.println("Select movie to remove: ");
-        int selection = InputController.getIntFromUser();
-        movieController.removeMovieByID(selection);
+        int index = InputController.getIntFromUser();
+        movieController.removeMovieByID(index - 1);
         System.out.println("Movie has been removed");
 
     }

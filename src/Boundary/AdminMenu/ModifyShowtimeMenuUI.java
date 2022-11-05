@@ -1,12 +1,31 @@
 package Boundary.AdminMenu;
 
 import Controller.InputController;
+import Controller.MovieController;
+import Controller.ShowtimeController;
+import Entity.Cinema.Cinema;
+import Entity.Cineplex.Cineplex;
+import Entity.Movie.Movie;
+import Entity.Showtime.Showtime;
+import Entity.Showtime.Time;
 
 public class ModifyShowtimeMenuUI {
+    private MovieController movieController;
+    private ShowtimeController showtimeController;
+    private Movie selectedMovie;
+
+    public static void main(String[] args) { // for testing
+        ModifyShowtimeMenuUI modifyShowtimeMenuUI = new ModifyShowtimeMenuUI();
+        modifyShowtimeMenuUI.main();
+    }
+
     public void main() {
+        movieController = new MovieController();
+        movieController.listMovies();
+        System.out.println("Select movie to modify showtimes:");
+        selectedMovie = movieController.getMovie(InputController.getIntFromUser() - 1);
+        showtimeController = new ShowtimeController(selectedMovie);
         while (true) {
-            System.out.println("Select movie to modify showtimes:");
-            // TODO print list of movies and then select one
             System.out.println("\n" +
                     "--------------------\n" +
                     "| Modify Showtimes |\n" +
@@ -33,12 +52,39 @@ public class ModifyShowtimeMenuUI {
 
     }
 
-    private void removeMovieShowtime() {
+    private void createMovieShowtime() {
+        System.out.println("Enter start time in the format YYYYMMDDHHMM:");
+        Time startTime = new Time(InputController.getTimeFromUser());
+        System.out.println("Enter end time in the format YYYYMMDDHHMM:");
+        Time endTime = new Time(InputController.getTimeFromUser());
+        // Select cineplex
+        // Select cinema
+        // isHoliday
+        showtimeController.create(selectedMovie, startTime, endTime, new Cineplex(), new Cinema(), false);
+
     }
 
     private void updateMovieShowtime() {
+        showtimeController.showAllShowtimes();
+        System.out.println("Select showtime to update:");
+        int selection = InputController.getIntFromUser();
+        System.out.println("Enter start time in the format YYYYMMDDHHMM:");
+        Time startTime = new Time(InputController.getTimeFromUser());
+        System.out.println("Enter end time in the format YYYYMMDDHHMM:");
+        Time endTime = new Time(InputController.getTimeFromUser());
+        // Select cineplex
+        // Select cinema
+        // isHoliday
+        Showtime newShowtime = new Showtime(startTime, endTime, null, null, false);
+        showtimeController.updateShowtime(selection - 1, newShowtime);
+
     }
 
-    private void createMovieShowtime() {
+    private void removeMovieShowtime() {
+        showtimeController.showAllShowtimes();
+        System.out.println("Select showtime to remove:");
+        int selection = InputController.getIntFromUser();
+        showtimeController.removeShowtime(selection - 1);
     }
+
 }

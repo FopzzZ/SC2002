@@ -3,15 +3,16 @@ package Controller;
 import java.io.*;
 import java.util.ArrayList;
 import Entity.Movie.*;
+import Entity.Showtime.Showtime;
 
 public class MovieController {
     private static ArrayList<Movie> movieList;
 
-    private final static String DataBaseFilePath = "DataBase/Movies.txt";
+    private final static String dataBaseFilePath = "database/Movies.txt";
 
     public MovieController() {
         movieList = new ArrayList<Movie>();
-        File dbFile = new File(DataBaseFilePath);
+        File dbFile = new File(dataBaseFilePath);
         if (dbFile.exists())
             movieList = readFromDB();
     }
@@ -28,10 +29,22 @@ public class MovieController {
         writeToDB(movieList);
     }
 
+    public void addShowtime(Movie movie, Showtime showtime) {
+        int index = searchWithTitle(movie.getTitle());
+        movieList.get(index).addShowtime(showtime);
+        writeToDB(movieList);
+    }
+
+    public void updateShowtime(Movie movie, ArrayList<Showtime> showtimes) {
+        int index = searchWithTitle(movie.getTitle());
+        movieList.get(index).updateShowtime(showtimes);
+        writeToDB(movieList);
+    }
+
     @SuppressWarnings("unchecked")
     public ArrayList<Movie> readFromDB() {
         try {
-            ObjectInputStream ois = new ObjectInputStream(new FileInputStream(DataBaseFilePath));
+            ObjectInputStream ois = new ObjectInputStream(new FileInputStream(dataBaseFilePath));
             ArrayList<Movie> movieListing = (ArrayList<Movie>) ois.readObject();
             ois.close();
             return movieListing;
@@ -42,7 +55,7 @@ public class MovieController {
 
     public void writeToDB(ArrayList<Movie> movielist) {
         try {
-            ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(DataBaseFilePath));
+            ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(dataBaseFilePath));
             out.writeObject(movielist);
             out.flush();
             out.close();
@@ -149,5 +162,9 @@ public class MovieController {
 
     private void remove(int index) {
         movieList.remove(index);
+    }
+
+    public Movie getMovie(int index) {
+        return movieList.get(index);
     }
 }

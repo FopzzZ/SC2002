@@ -6,7 +6,6 @@ import Controller.InputController;
 import Controller.MovieController;
 import Entity.Movie.Movie;
 
-
 public class UserController {
     public class 
     
@@ -17,14 +16,17 @@ public class UserController {
         int choice = InputController.getIntFromUser();
         int result = -1;
         int found = -1;
-        
-        private ArrayList<movie> resultList = new ArrayList<movie>;
-        private ArrayList<Integer> resultInt = new ArrayList<Integer>;
-      
-        ArrayList<movie> movielist = MovieController.readFromDB();
-        //TO DO: Finish search function to return a list of movies so that can search by type and director
-        //TO DO: Edit Movie.java to include search functions for type, director and rating
-        switch(choice) {
+
+    private ArrayList<movie> resultList = new ArrayList<movie>;
+    private ArrayList<Integer> resultInt = new ArrayList<Integer>;
+
+    ArrayList<movie> movielist = MovieController.readFromDB();
+    // TO DO: Finish search function to return a list of movies so that can search
+    // by type and director
+    // TO DO: Edit Movie.java to include search functions for type, director and
+    // rating
+    switch(choice)
+    {
             case 1:
                 string inputTitle = InputController.getStringFromUser();
                 for(int i = 0; i < movieList.size; i++) {
@@ -53,10 +55,10 @@ public class UserController {
                 result = -2;
                 break;
                 
-        }
-        if(found == -1) {
-            System.out.println("Movie not found");
-        }
+        }if(found==-1)
+    {
+        System.out.println("Movie not found");
+    }
     }
 
     public void bookTicket() {

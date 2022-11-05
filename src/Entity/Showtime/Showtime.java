@@ -1,51 +1,52 @@
 package Entity.Showtime;
 
 import Entity.Cineplex.Cineplex;
-import Entity.Movie.*;
 import java.io.Serializable;
 import Entity.Cinema.*;
 import Entity.Seat.*;
 
-public class Showtime implements Serializable{
-    private int ID;
+public class Showtime implements Serializable {
     private boolean isHoliday;
     private Time startTime;
-    private Movie movie;
+    private Time endTime;
     private Cineplex cineplex;
     private Cinema cinema;
     private SeatPlan seatplan;
 
     public Showtime() {
         startTime = new Time();
-        movie = new Movie();
+        endTime = new Time();
         cinema = new Cinema();
         seatplan = new SeatPlan(0, 0);
         isHoliday = false;
     }
 
-    public Showtime(int ID, Movie movie, Time startTime, Cineplex cineplex, Cinema cinema, boolean isHoliday) {
-        this.ID = ID;
-        this.movie = movie;
+    public Showtime(Time startTime, Time endTime, Cineplex cineplex, Cinema cinema, boolean isHoliday) {
         this.startTime = startTime;
+        this.endTime = endTime;
         this.cinema = cinema;
-        this.cineplex = cineplex;   
+        this.cineplex = cineplex;
         this.isHoliday = isHoliday;
     }
 
-    public void setID(int ID) {
-        this.ID = ID;
+    public void update(Showtime showtime) {
+        this.startTime = showtime.getStartTime();
+        this.endTime = showtime.getEndTime();
+        this.cinema = showtime.getCinema();
+        this.cineplex = showtime.getCineplex();
+        this.isHoliday = showtime.getIsHoliday();
     }
 
-    public void setTime(Time time) {
+    public void setStartTime(Time time) {
         this.startTime = time;
+    }
+
+    public void setEndTime(Time time) {
+        this.endTime = time;
     }
 
     public void setCineplex(Cineplex cineplex) {
         this.cineplex = cineplex;
-    }
-
-    public void setMovie(Movie movie) {
-        this.movie = movie;
     }
 
     public void setCinema(Cinema cinema) {
@@ -55,21 +56,17 @@ public class Showtime implements Serializable{
     public void setSeatPlan(SeatPlan seatplan) {
         this.seatplan = seatplan;
     }
-    
+
     public void setIsHoliday(boolean isHoliday) {
         this.isHoliday = isHoliday;
     }
 
-    public int getID() {
-        return this.ID;
-    }
-
-    public Time getTime() {
+    public Time getStartTime() {
         return this.startTime;
     }
 
-    public Movie getMovie() {
-        return this.movie;
+    public Time getEndTime() {
+        return this.endTime;
     }
 
     public Cinema getCinema() {
@@ -91,16 +88,17 @@ public class Showtime implements Serializable{
     public String toString() {
         String ret = new String();
         String discount = "";
-        if(this.getIsHoliday()) discount = "YES";
-        else discount = "NO";
-        ret = "Showtime ID: " + this.getID() + "\n"
-            + "Movie: " + this.getMovie().getTitle() + "\n"
-            + "Time: " + this.getTime().toString() + "\n"
-            + "Cineplex: " + this.getCineplex().getName() + "\n"
-            + "Cinema: " + this.getCinema().getName() + "\n"
-            + "Have holiday discount: " + discount +"\n\n";
+        if (this.getIsHoliday())
+            discount = "YES";
+        else
+            discount = "NO";
+        ret = "\n"
+                + "Start time: " + this.getStartTime().toString() + "\n"
+                + "End time: " + this.getEndTime().toString() + "\n"
+                + "Cineplex: " + this.getCineplex().getName() + "\n"
+                + "Cinema: " + this.getCinema().getName() + "\n"
+                + "Have holiday discount: " + discount + "\n\n";
         return ret;
     }
 
-    //unit test(haven't do)
 }

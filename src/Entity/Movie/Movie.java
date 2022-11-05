@@ -5,6 +5,7 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 import Controller.InputController;
+import Entity.Showtime.Showtime;
 
 public class Movie implements Serializable {
     private String movieTitle, synopsis, director;
@@ -13,6 +14,7 @@ public class Movie implements Serializable {
     private String rating;
     private ArrayList<String> cast;
     private ArrayList<Review> reviews;
+    private ArrayList<Showtime> showtimes;
 
     public Movie() {
         this.movieTitle = "";
@@ -23,6 +25,7 @@ public class Movie implements Serializable {
         this.director = "";
         this.cast = new ArrayList<String>();
         this.reviews = new ArrayList<Review>();
+        this.showtimes = new ArrayList<Showtime>();
     }
 
     public Movie(String movieTitle, String synposis, String director, MovieType type, MovieStatus status,
@@ -35,6 +38,7 @@ public class Movie implements Serializable {
         this.director = director;
         this.cast = cast;
         this.reviews = review;
+        this.showtimes = new ArrayList<Showtime>();
     }
 
     public String getOverallReviewsRating() {
@@ -48,6 +52,10 @@ public class Movie implements Serializable {
         } else {
             return "N/A";
         }
+    }
+
+    public void updateShowtime(ArrayList<Showtime> showtimes) {
+        this.showtimes = showtimes;
     }
 
     public boolean updateDetail() { // move to movieController/adminMenuUI
@@ -150,6 +158,10 @@ public class Movie implements Serializable {
         this.reviews.add(new Review(rating, content));
     }
 
+    public void addShowtime(Showtime showtime) {
+        this.showtimes.add(showtime);
+    }
+
     public String getTitle() {
         return this.movieTitle;
     }
@@ -172,6 +184,10 @@ public class Movie implements Serializable {
 
     public ArrayList<Review> getReviews() {
         return this.reviews;
+    }
+
+    public ArrayList<Showtime> getShowtimes() {
+        return this.showtimes;
     }
 
     public MovieType getType() {
@@ -215,42 +231,45 @@ public class Movie implements Serializable {
     }
 
     // unit test
-    public static void main(String[] args) throws FileNotFoundException, IOException, ClassNotFoundException {
-        Movie movie1 = new Movie();
-        movie1.setTitle("SpiderMan 1");
-        movie1.setStatus(MovieStatus.Showing);
-        movie1.setSynopsis("Spider man 1");
-        movie1.setDirector("IDK");
-        movie1.addCast("CastA");
-        movie1.addCast("CastB");
-        movie1.addReview(5, "Nice movie.");
-        movie1.addReview(2.0, "Not good.");
-        movie1.setType(MovieType.ThreeD);
+    // public static void main(String[] args) throws FileNotFoundException,
+    // IOException, ClassNotFoundException {
+    // Movie movie1 = new Movie();
+    // movie1.setTitle("SpiderMan 1");
+    // movie1.setStatus(MovieStatus.Showing);
+    // movie1.setSynopsis("Spider man 1");
+    // movie1.setDirector("IDK");
+    // movie1.addCast("CastA");
+    // movie1.addCast("CastB");
+    // movie1.addReview(5, "Nice movie.");
+    // movie1.addReview(2.0, "Not good.");
+    // movie1.setType(MovieType.ThreeD);
 
-        Movie movie2 = new Movie();
-        movie2.setTitle("SpiderMan 2");
-        movie2.setStatus(MovieStatus.Showing);
-        movie2.setSynopsis("Spider man 2");
-        movie2.setDirector("IDK");
-        movie2.addCast("CastA");
-        movie2.addCast("CastB");
-        movie2.addReview(5, "Nice movie.");
-        movie2.addReview(2.0, "Good.");
-        movie2.setType(MovieType.ThreeD);
+    // Movie movie2 = new Movie();
+    // movie2.setTitle("SpiderMan 2");
+    // movie2.setStatus(MovieStatus.Showing);
+    // movie2.setSynopsis("Spider man 2");
+    // movie2.setDirector("IDK");
+    // movie2.addCast("CastA");
+    // movie2.addCast("CastB");
+    // movie2.addReview(5, "Nice movie.");
+    // movie2.addReview(2.0, "Good.");
+    // movie2.setType(MovieType.ThreeD);
 
-        ArrayList<Movie> movieList = new ArrayList<Movie>();
-        movieList.add(movie2);
-        // movieList.add(movie1);
-        ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("database/abc.txt"));
-        oos.writeObject(movieList);
-        oos.close();
+    // ArrayList<Movie> movieList = new ArrayList<Movie>();
+    // movieList.add(movie2);
+    // // movieList.add(movie1);
+    // ObjectOutputStream oos = new ObjectOutputStream(new
+    // FileOutputStream("database/abc.txt"));
+    // oos.writeObject(movieList);
+    // oos.close();
 
-        ObjectInputStream ois = new ObjectInputStream(new FileInputStream("database/abc.txt"));
-        ArrayList<Movie> movies = (ArrayList<Movie>) ois.readObject();
+    // ObjectInputStream ois = new ObjectInputStream(new
+    // FileInputStream("database/abc.txt"));
+    // ArrayList<Movie> movies = (ArrayList<Movie>) ois.readObject();
 
-        for (Movie m : movies) {
-            System.out.println(m.toString());
-        }
-        ois.close();
-    }
+    // for (Movie m : movies) {
+    // System.out.println(m.toString());
+    // }
+    // ois.close();
+    // }
 }

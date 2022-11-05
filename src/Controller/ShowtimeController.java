@@ -1,6 +1,5 @@
 package Controller;
 
-import java.io.*;
 import java.util.ArrayList;
 
 import Entity.Cinema.Cinema;
@@ -9,72 +8,40 @@ import Entity.Movie.Movie;
 import Entity.Showtime.*;
 
 public class ShowtimeController {
-
+    private Movie movie;
     private ArrayList<Showtime> showtimeList;
+    private MovieController movieController;
 
-    private final static String DataBaseFilePath = "DataBase/Showtimes.txt";
-
-    public ShowtimeController() {
-        showtimeList = new ArrayList<Showtime>();
-        File dbFile = new File(DataBaseFilePath);
-        if(dbFile.exists())
-            showtimeList = readFromDB();
+    public ShowtimeController(Movie movie) {
+        this.movie = movie;
+        movieController = new MovieController();
+        showtimeList = movie.getShowtimes();
     }
 
-    @SuppressWarnings("unchecked")
-    public ArrayList<Showtime> readFromDB() {
-        try {
-            ObjectInputStream ois = new ObjectInputStream(new FileInputStream(DataBaseFilePath));   
-            ArrayList<Showtime> ShowtimeListing = (ArrayList<Showtime>) ois.readObject();
-            ois.close();
-            return ShowtimeListing;
-        } catch (ClassNotFoundException | IOException e) {
-        } 
-        return new ArrayList<Showtime>();
-    }
+    public void create(Movie movie, Time startTime, Time endTime, Cineplex cineplex, Cinema cinema, boolean isHoliday) {
+        movieController.addShowtime(movie, new Showtime(startTime, endTime, cineplex, cinema, isHoliday));
 
-    public void writeToDB(ArrayList<Showtime> Showtimelist) {
-        try {
-            ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(DataBaseFilePath));
-            out.writeObject(Showtimelist);
-            out.flush();
-            out.close();
-        } catch (IOException e) {
-            // ignore error
-        }
-    }
+    } // adds a showtime to movie
 
-    private int getLastID() {
-        return showtimeList.get(showtimeList.size() - 1).getID();
-    }
-
-    public void create(Movie movie, Time time, Cineplex cineplex, Cinema cinema, boolean isHoliday) {
-        Showtime showtime = new Showtime(getLastID() + 1, movie, time, cineplex, cinema, isHoliday);
-        showtimeList.add(showtime);
-        writeToDB(showtimeList);
-    }
-
-    //return the index in ArrayList
-    public int searchWithID(int ID) {
+    public void showAllShowtimes() {
+        showtimeList = movie.getShowtimes();
         for (int i = 0; i < showtimeList.size(); ++i) {
-            if (showtimeList.get(i).getID() == ID)
-                return i;
+            System.out.printf("Showtime %d: %s\n", i + 1, showtimeList.get(i).toString());
         }
-        return -1;
+        System.out.printf("Total %d showtimes.\n", showtimeList.size());
     }
 
-    
-    //Return false if no such showtime; Otherwise true
-    public boolean removeWithID(int ID) {
-        int index = searchWithID(ID);
-        if(index == -1){
-            return false;
-        } 
-        remove(index);
-        return true;
+    public void updateShowtime(int index, Showtime showtime) {
+        showtimeList.get(index).update(showtime);
+        movieController.updateShowtime(movie, showtimeList);
     }
 
-    public void remove(int index) {
-        this.showtimeList.remove(index);
+    public void removeShowtime(int index) {
+        showtimeList.remove(index);
+        movieController.updateShowtime(movie, showtimeList);
+    }
+
+    public ArrayList<Showtime> getShowtimeList() {
+        return this.showtimeList;
     }
 }
