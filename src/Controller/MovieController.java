@@ -29,11 +29,11 @@ public class MovieController {
         writeToDB(movieList);
     }
 
-    public void addShowtime(Movie movie, Showtime showtime) {
-        int index = searchWithTitle(movie.getTitle());
-        movieList.get(index).addShowtime(showtime);
-        writeToDB(movieList);
-    }
+    // public void addShowtime(Movie movie, Showtime showtime) {
+    // int index = searchWithTitle(movie.getTitle());
+    // movieList.get(index).addShowtime(showtime);
+    // writeToDB(movieList);
+    // }
 
     public void updateShowtime(Movie movie, ArrayList<Showtime> showtimes) {
         int index = searchWithTitle(movie.getTitle());
@@ -47,8 +47,10 @@ public class MovieController {
             ObjectInputStream ois = new ObjectInputStream(new FileInputStream(dataBaseFilePath));
             ArrayList<Movie> movieListing = (ArrayList<Movie>) ois.readObject();
             ois.close();
+            System.out.println("Reading from database"); // for testing
             return movieListing;
         } catch (ClassNotFoundException | IOException e) {
+            System.out.println(e); // for testing
         }
         return new ArrayList<Movie>();
     }
@@ -59,17 +61,11 @@ public class MovieController {
             out.writeObject(movielist);
             out.flush();
             out.close();
+            System.out.println("Updating database"); // for testing
         } catch (IOException e) {
             // ignore error
         }
     }
-
-    // public int getLastID() {
-    // if (movieList.size() == 0) {
-    // return 1;
-    // }
-    // return movieList.get(movieList.size() - 1).getID();
-    // }
 
     public int searchWithTitle(String title) { // returns index of movie in movieList
         for (int i = 0; i < movieList.size(); ++i) {
@@ -84,11 +80,6 @@ public class MovieController {
             return -1;
         }
         return ID;
-        // for (int i = 0; i < movieList.size(); ++i) {
-        // if (movieList.get(i).getID() == ID)
-        // return i;
-        // }
-        // return -1;
     }
 
     public void updateMovieByTitle(String title) {

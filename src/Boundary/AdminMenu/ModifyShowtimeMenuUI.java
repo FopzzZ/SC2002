@@ -30,22 +30,26 @@ public class ModifyShowtimeMenuUI {
                     "--------------------\n" +
                     "| Modify Showtimes |\n" +
                     "--------------------\n" +
-                    "1. Create showtime\n" +
-                    "2. Update showtime\n" +
-                    "3. Remove showtime\n" +
-                    "4. Back to main menu\n");
+                    "1. List all showtimes\n" +
+                    "2. Create showtime\n" +
+                    "3. Update showtime\n" +
+                    "4. Remove showtime\n" +
+                    "5. Back to main menu\n");
             System.out.println("Select action: ");
-            switch (InputController.getIntFromUser(1, 4)) {
+            switch (InputController.getIntFromUser(1, 5)) {
                 case 1:
-                    createMovieShowtime();
+                    showtimeController.showAllShowtimes();
                     break;
                 case 2:
-                    updateMovieShowtime();
+                    createMovieShowtime();
                     break;
                 case 3:
-                    removeMovieShowtime();
+                    updateMovieShowtime();
                     break;
                 case 4:
+                    removeMovieShowtime();
+                    break;
+                case 5:
                     return;
             }
         }

@@ -1,7 +1,9 @@
 package Entity.Showtime;
 
+import java.io.Serializable;
+
 //Could be replace with 
-public class Time {
+public class Time implements Serializable {
     private int year, month, day, hour, minutes;
 
     public Time() {

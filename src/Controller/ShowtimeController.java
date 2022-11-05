@@ -19,12 +19,12 @@ public class ShowtimeController {
     }
 
     public void create(Movie movie, Time startTime, Time endTime, Cineplex cineplex, Cinema cinema, boolean isHoliday) {
-        movieController.addShowtime(movie, new Showtime(startTime, endTime, cineplex, cinema, isHoliday));
+        showtimeList.add(new Showtime(startTime, endTime, cineplex, cinema, isHoliday));
+        movieController.updateShowtime(movie, showtimeList);
 
     } // adds a showtime to movie
 
     public void showAllShowtimes() {
-        showtimeList = movie.getShowtimes();
         for (int i = 0; i < showtimeList.size(); ++i) {
             System.out.printf("Showtime %d: %s\n", i + 1, showtimeList.get(i).toString());
         }
