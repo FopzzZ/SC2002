@@ -1,4 +1,4 @@
-package Boundary.AdminMenu;
+package Boundary;
 
 import Controller.InputController;
 import Controller.MovieController;

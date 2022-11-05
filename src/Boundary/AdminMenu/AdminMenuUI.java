@@ -1,6 +1,7 @@
 package Boundary.AdminMenu;
 
 import Boundary.SearchMovieUI;
+import Boundary.ViewMovieDetailsUI;
 import Controller.*;
 
 public class AdminMenuUI {
@@ -57,7 +58,6 @@ public class AdminMenuUI {
     private void viewMovieDetails() {
         ViewMovieDetailsUI viewMovieDetailsUI = new ViewMovieDetailsUI();
         viewMovieDetailsUI.main();
-
     }
 
     private void modifyMovieListings() {

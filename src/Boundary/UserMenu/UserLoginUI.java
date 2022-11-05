@@ -1,4 +1,4 @@
-package Boundary;
+package Boundary.UserMenu;
 
 import Controller.InputController;
 import Controller.UserLoginController;

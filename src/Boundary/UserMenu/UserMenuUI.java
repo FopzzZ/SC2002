@@ -1,0 +1,81 @@
+package Boundary.UserMenu;
+
+import Boundary.SearchMovieUI;
+import Boundary.ViewMovieDetailsUI;
+import Controller.InputController;
+
+public class UserMenuUI {
+    String userEmail;
+
+    public UserMenuUI(String userEmail) {
+        this.userEmail = userEmail;
+    }
+
+    public void main() {
+        while (true) {
+            System.out.println("\n" +
+                    "--------------\n" +
+                    "| User Menu |\n" +
+                    "--------------\n" +
+                    "1. Search/List movies\n" +
+                    "2. View movie details\n" +
+                    "3. Check seat availability\n" +
+                    "4. Book ticket\n" +
+                    "5. View booking history\n" +
+                    "6. List Top 5 ranking\n" +
+                    "7. Log out\n");
+            System.out.print("Select action: ");
+            int choice = InputController.getIntFromUser(1, 7);
+            switch (choice) {
+                case 1:
+                    searchListMovies();
+                    break;
+                case 2:
+                    viewMovieDetails();
+                    break;
+                case 3:
+                    checkSeatAvailability();
+                    break;
+                case 4:
+                    bookTicket();
+                    break;
+                case 5:
+                    viewBookingHistory();
+                    break;
+                case 6:
+                    listTop5Ranking();
+                    break;
+                case 7:
+                    return;
+            }
+        }
+
+    }
+
+    private void searchListMovies() {
+        SearchMovieUI searchMovieUI = new SearchMovieUI();
+        searchMovieUI.main();
+    }
+
+    private void viewMovieDetails() {
+        ViewMovieDetailsUI viewMovieDetailsUI = new ViewMovieDetailsUI();
+        viewMovieDetailsUI.main();
+    }
+
+    private void checkSeatAvailability() {
+
+    }
+
+    private void bookTicket() {
+        // do sth with bookingController
+    }
+
+    private void viewBookingHistory() {
+
+    }
+
+    private void listTop5Ranking() {
+
+    }
+
+}

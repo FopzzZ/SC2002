@@ -1,6 +1,6 @@
 //ignore this file first
 
-package Boundary;
+package Boundary.AdminMenu;
 
 import Controller.*;
 

@@ -1,6 +1,5 @@
-package Boundary;
+package Boundary.AdminMenu;
 
-import Boundary.AdminMenu.AdminMenuUI;
 import Controller.AdminLoginController;
 import Controller.InputController;
 
