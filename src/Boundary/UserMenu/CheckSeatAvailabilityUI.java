@@ -8,7 +8,7 @@ import Entity.Cineplex.Cineplex;
 import Entity.Movie.Movie;
 import Entity.Showtime.Showtime;
 
-public class UserCheckSeatAvailabilityUI {
+public class CheckSeatAvailabilityUI {
     public void main() {
         CineplexController cineplexController = new CineplexController();
         MovieController movieController = new MovieController();

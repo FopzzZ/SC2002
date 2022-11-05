@@ -64,12 +64,13 @@ public class UserMenuUI {
     }
 
     private void checkSeatAvailability() {
-        UserCheckSeatAvailabilityUI userCheckSeatAvailabilityUI = new UserCheckSeatAvailabilityUI();
-        userCheckSeatAvailabilityUI.main();
+        CheckSeatAvailabilityUI checkSeatAvailabilityUI = new CheckSeatAvailabilityUI();
+        checkSeatAvailabilityUI.main();
     }
 
-    private void bookTicket() { // TODO
-        // do sth with bookingController
+    private void bookTicket() {
+        BookTicketUI bookTicketUI = new BookTicketUI();
+        bookTicketUI.main();
     }
 
     private void viewBookingHistory() {

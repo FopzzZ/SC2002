@@ -102,4 +102,19 @@ public class InputController {
         }
         return input;
     }
+
+    public static char getCapitalLetterFromUser() { // A-Z
+        String pattern = "[A-Z]{1}";
+        String input = "";
+        boolean validInput = false;
+        while (!validInput) {
+            input = getStringFromUser();
+            if (input.matches(pattern)) {
+                validInput = true;
+            } else {
+                System.out.println("Please enter a valid character!");
+            }
+        }
+        return input.charAt(0);
+    }
 }

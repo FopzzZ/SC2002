@@ -50,6 +50,19 @@ public class ShowtimeController {
         movieController.updateShowtime(movie, showtimeList);
     }
 
+    public void updateSeatingPlan(Showtime updatedShowtime) { // TODO make better, now is temp solution
+        boolean found = false;
+        for (Showtime showtime : showtimeList) {
+            if (showtime.matchExceptSeatplan(updatedShowtime)) {
+                showtime.setSeatPlan(updatedShowtime.getSeatplan());
+            }
+        }
+        if (!found) {
+            System.out.println("Showtime not found error");
+        }
+        movieController.updateShowtime(movie, showtimeList);
+    }
+
     public void removeShowtime(int index) {
         showtimeList.remove(index);
         movieController.updateShowtime(movie, showtimeList);

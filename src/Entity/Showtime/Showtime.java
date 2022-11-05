@@ -11,13 +11,13 @@ public class Showtime implements Serializable {
     private Time endTime;
     private Cineplex cineplex;
     private Cinema cinema;
-    private SeatPlan seatplan;
+    private SeatPlan seatPlan;
 
     public Showtime() {
         startTime = new Time();
         endTime = new Time();
         cinema = new Cinema();
-        seatplan = new SeatPlan(0, 0);
+        seatPlan = new SeatPlan(0, 0);
         isHoliday = false;
     }
 
@@ -27,7 +27,7 @@ public class Showtime implements Serializable {
         this.cinema = cinema;
         this.cineplex = cineplex;
         this.isHoliday = isHoliday;
-        this.seatplan = new SeatPlan(9, 24); // default for now
+        this.seatPlan = new SeatPlan(9, 24); // default for now
     }
 
     public void update(Showtime showtime) {
@@ -54,8 +54,8 @@ public class Showtime implements Serializable {
         this.cinema = cinema;
     }
 
-    public void setSeatPlan(SeatPlan seatplan) {
-        this.seatplan = seatplan;
+    public void setSeatPlan(SeatPlan seatPlan) {
+        this.seatPlan = seatPlan;
     }
 
     public void setIsHoliday(boolean isHoliday) {
@@ -75,7 +75,7 @@ public class Showtime implements Serializable {
     }
 
     public SeatPlan getSeatplan() {
-        return this.seatplan;
+        return this.seatPlan;
     }
 
     public boolean getIsHoliday() {
@@ -100,6 +100,18 @@ public class Showtime implements Serializable {
                 + "Cinema: " + this.getCinema().getName() + "\n"
                 + "Is a holiday: " + isHoliday + "\n";
         return ret;
+    }
+
+    public boolean matchExceptSeatplan(Showtime other) {
+        if (this.startTime.equals(other.getStartTime()) &&
+                this.endTime.equals(other.getEndTime()) &&
+                this.cineplex.equals(other.getCineplex()) &&
+                this.cinema.equals(other.getCinema()) &&
+                this.isHoliday == other.getIsHoliday()) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
 }
