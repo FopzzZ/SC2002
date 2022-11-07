@@ -198,11 +198,12 @@ public class MovieController {
             System.out.println("No movie found.");
     }
 
-    public void showDetail(int index) {
+    public void showDetailByID(int ID) {
+        int index = searchWithID(ID);
         if (index != -1)
             System.out.println(movieList.get(index).toString());
         else
-            System.out.println("No such movie.");
+            System.out.println("No movie found.");
     }
 
     private void remove(int index) {
