@@ -48,6 +48,14 @@ public class AdminController {
         writeToDB(adminList);
     }
 
+    public void clearDatabase() {
+        while (adminList.size() > 0) {
+            adminList.remove(0);
+        }
+        writeToDB(adminList);
+        System.out.println("Clearing admin database");
+    }
+
     public ArrayList<Admin> getAdminList() {
         return this.adminList;
     }

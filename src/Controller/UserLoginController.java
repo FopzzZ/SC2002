@@ -29,8 +29,8 @@ public class UserLoginController {
         return userExists;
     }
 
-    public void addUser(String email, String mobileNumber, String name) {
-        userController.addUser(email, mobileNumber, name);
+    public void addUser(String email, String mobileNumber, String name, String dateOfBirth) {
+        userController.addUser(email, mobileNumber, name, dateOfBirth);
         userExists = true;
     }
 }

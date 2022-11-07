@@ -9,16 +9,18 @@ public class User implements Serializable {
     private String email;
     private String mobileNumber;
     private String name;
+    private String dateOfBirth;
     private ArrayList<Booking> bookingHistory;
 
     public User() {
 
     }
 
-    public User(String email, String mobileNumber, String name) {
+    public User(String email, String mobileNumber, String name, String dateOfBirth) {
         this.mobileNumber = mobileNumber;
         this.name = name;
         this.email = email;
+        this.dateOfBirth = dateOfBirth;
         this.bookingHistory = new ArrayList<Booking>();
     }
 
@@ -36,6 +38,10 @@ public class User implements Serializable {
         }
     }
 
+    public String getDateOfBirth() {
+        return this.dateOfBirth;
+    }
+
     public String getName() {
         return this.name;
 
@@ -47,6 +53,10 @@ public class User implements Serializable {
 
     public String getEmail() {
         return this.email;
+    }
+
+    public void setDateOfBirth(String dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
     }
 
     public void setName(String name) {

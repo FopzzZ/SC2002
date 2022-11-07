@@ -80,11 +80,12 @@ public class CineplexController {
         return cineplex.getCinemas();
     }
 
-    // adding initial cineplexes to database
-    // public static void main(String[] args) {
-    // CineplexController cineplexController = new CineplexController();
-    // cineplexController.addNewCineplex("Bishan");
-    // cineplexController.addNewCineplex("Jurong");
-    // cineplexController.addNewCineplex("Orchard");
-    // }
+    public void clearDatabase() {
+        while (cineplexList.size() > 0) {
+            cineplexList.remove(0);
+        }
+        writeToDB(cineplexList);
+        System.out.println("Clearing cineplex database");
+    }
+
 }

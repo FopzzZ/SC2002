@@ -1,6 +1,8 @@
 package Entity.Showtime;
 
 import java.io.Serializable;
+import java.util.Calendar;
+import java.util.Date;
 
 //Could be replace with 
 public class Time implements Serializable {
@@ -34,8 +36,31 @@ public class Time implements Serializable {
         return ret;
     }
 
-    public static void main(String[] args) {
-        Time time = new Time(2022, 12, 2, 23, 59);
-        System.out.println(time.toString());
+    public int getYear() {
+        return this.year;
     }
+
+    public int getMonth() {
+        return this.month;
+    }
+
+    public int getDay() {
+        return this.day;
+    }
+
+    // 1 is fri, 4 is mon, 5 is tue
+    public int getDayOfWeek() {
+        Calendar c = Calendar.getInstance();
+        c.set(year, month, day);
+        return c.get(Calendar.DAY_OF_WEEK);
+    }
+
+    // testing
+    public static void main(String[] args) {
+        Time time = new Time(2022, 11, 7, 12, 00);
+        System.out.println(time.toString());
+        System.out.println(time.getDayOfWeek());
+
+    }
+
 }

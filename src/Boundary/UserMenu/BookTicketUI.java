@@ -1,14 +1,22 @@
 package Boundary.UserMenu;
 
+import Controller.BookingController;
 import Controller.CineplexController;
 import Controller.InputController;
 import Controller.MovieController;
 import Controller.ShowtimeController;
+import Controller.UserController;
 import Entity.Cineplex.Cineplex;
 import Entity.Movie.Movie;
 import Entity.Showtime.Showtime;
 
 public class BookTicketUI {
+    private String userEmail;
+
+    public BookTicketUI(String userEmail) {
+        this.userEmail = userEmail;
+    }
+
     public void main() { // very similar to checkSeatAvailabilityUI
         CineplexController cineplexController = new CineplexController();
         MovieController movieController = new MovieController();
@@ -34,8 +42,6 @@ public class BookTicketUI {
         int rowNumber = InputController.getIntFromUser(1, 9);
         System.out.print("Select column letter:");
         int colNumber = (int) InputController.getCapitalLetterFromUser() - 64;
-        // TODO implement paying and cost (booking controller)
-        // now is auto accept
         while (selectedShowtime.getSeatplan().occupy(rowNumber, colNumber) == false) {
             System.out.println("Seat is already occupied. Please select another seat");
             selectedShowtime.getSeatplan().showSeatplan();
@@ -44,7 +50,19 @@ public class BookTicketUI {
             System.out.print("Select column letter:");
             colNumber = (int) InputController.getCapitalLetterFromUser() - 64;
         }
-        showtimeController.updateSeatingPlan(selectedShowtime);
-        selectedShowtime.getSeatplan().showSeatplan();
+        BookingController bookingController = new BookingController();
+        UserController userController = new UserController();
+        double ticketPrice = bookingController.getTicketPrice(selectedMovie, selectedShowtime,
+                userController.getUser(userEmail));
+        System.out.println("Ticket price is " + ticketPrice);
+        System.out.println("Confirm booking? (Y/N)");
+        if (InputController.getYesOrNoFromUser()) {
+            showtimeController.updateSeatingPlan(selectedShowtime);
+            selectedShowtime.getSeatplan().showSeatplan();
+            // TODO add to bookingHistory
+        } else {
+            return;
+        }
+
     }
 }

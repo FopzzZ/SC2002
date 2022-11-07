@@ -69,7 +69,7 @@ public class UserMenuUI {
     }
 
     private void bookTicket() {
-        BookTicketUI bookTicketUI = new BookTicketUI();
+        BookTicketUI bookTicketUI = new BookTicketUI(userEmail);
         bookTicketUI.main();
     }
 

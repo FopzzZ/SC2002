@@ -13,7 +13,9 @@ public class UserLoginUI {
             String mobileNumber = InputController.getMobileNumberFromUser();
             System.out.println("Please enter your name:");
             String name = InputController.getStringFromUser();
-            userLoginController.addUser(userEmail, mobileNumber, name);
+            System.out.println("Please enter your date of birth in DDMMYYYY:");
+            String dateOfBirth = InputController.getDateOfBirthFromUser();
+            userLoginController.addUser(userEmail, mobileNumber, name, dateOfBirth);
         }
         UserMenuUI userMenuUI = new UserMenuUI(userEmail);
         userMenuUI.main();

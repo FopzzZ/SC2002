@@ -42,8 +42,8 @@ public class UserController {
         }
     }
 
-    public void addUser(String email, String mobileNumber, String name) {
-        User newUser = new User(email, mobileNumber, name);
+    public void addUser(String email, String mobileNumber, String name, String dateOfBirth) {
+        User newUser = new User(email, mobileNumber, name, dateOfBirth);
         userList.add(newUser);
         writeToDB(userList);
     }
@@ -74,8 +74,8 @@ public class UserController {
     public static void main(String[] args) {
         UserController userController = new UserController();
         userController.clearDatabase();
-        userController.addUser("bob@gmail.com", "99128412", "Bob");
-        userController.addUser("john@gmail.com", "96729103", "John");
+        userController.addUser("bob@gmail.com", "99128412", "Bob", "20022000");
+        userController.addUser("john@gmail.com", "96729103", "John", "26031961");
     }
 
 }

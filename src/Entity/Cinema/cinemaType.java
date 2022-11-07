@@ -2,7 +2,7 @@ package Entity.Cinema;
 
 public enum CinemaType {
     GOLDCLASS("Gold Class"),
-    PLATIUM("Platium"),
+    PLATINUM("Platinum"),
     IMAX("IMax"),
     NORMAL("Normal");
 

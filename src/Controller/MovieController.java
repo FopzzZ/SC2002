@@ -187,6 +187,10 @@ public class MovieController {
         return movieList.get(index);
     }
 
+    public ArrayList<Movie> getMovieList() {
+        return movieList;
+    }
+
     public void clearDatabase() {
         while (movieList.size() > 0) {
             movieList.remove(0);
