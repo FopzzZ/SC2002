@@ -2,8 +2,6 @@ package Controller;
 
 import java.util.ArrayList;
 import java.io.*;
-
-import Entity.Booking;
 import Entity.User.User;
 
 public class UserController {
@@ -44,10 +42,20 @@ public class UserController {
         }
     }
 
-    public void addUser(String email, String mobileNumber, String name, String dateOfBirth) {
+    public boolean addUser(String email, String mobileNumber, String name, String dateOfBirth) {
         User newUser = new User(email, mobileNumber, name, dateOfBirth);
+        if(!EmailCheckController.isValid(email)) {
+            System.out.println("Enter a valid email address");
+            return false;
+        }
+        if(!DoBCheckController.isValid(dateOfBirth)) {
+            System.out.println("Enter a valid date of birth (dd/mm/yyyy)");
+            return false;
+        }
+        
         userList.add(newUser);
         writeToDB(userList);
+        return true;
     }
 
     public ArrayList<User> getUserList() {
@@ -70,15 +78,6 @@ public class UserController {
         }
         writeToDB(userList);
         System.out.println("Clearing user database");
-    }
-
-    public void addBookingToHistory(Booking booking, String userEmail) {
-        for (User user : userList) {
-            if (user.getEmail().equals(userEmail)) {
-                user.addBooking(booking);
-            }
-        }
-        writeToDB(userList);
     }
 
     // for adding users
