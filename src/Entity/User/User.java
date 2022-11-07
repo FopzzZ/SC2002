@@ -33,7 +33,10 @@ public class User implements Serializable {
             System.out.println("Booking history is empty");
             return;
         }
+        int index = 1;
         for (Booking booking : bookingHistory) {
+            System.out.print("\nBooking " + index + ":");
+            index += 1;
             System.out.print(booking.toString());
         }
     }
@@ -74,5 +77,9 @@ public class User implements Serializable {
 
     public void setBookingHistory(ArrayList<Booking> bookingHistory) {
         this.bookingHistory = bookingHistory;
+    }
+
+    public void addBooking(Booking booking) {
+        bookingHistory.add(booking);
     }
 }

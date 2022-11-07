@@ -6,6 +6,8 @@ import Controller.InputController;
 import Controller.MovieController;
 import Controller.ShowtimeController;
 import Controller.UserController;
+import Entity.Booking;
+import Entity.Ticket;
 import Entity.Cineplex.Cineplex;
 import Entity.Movie.Movie;
 import Entity.Showtime.Showtime;
@@ -54,12 +56,16 @@ public class BookTicketUI {
         UserController userController = new UserController();
         double ticketPrice = bookingController.getTicketPrice(selectedMovie, selectedShowtime,
                 userController.getUser(userEmail));
+
         System.out.println("Ticket price is $" + ticketPrice);
         System.out.println("Confirm booking? (Y/N)");
         if (InputController.getYesOrNoFromUser()) {
             showtimeController.updateSeatingPlan(selectedShowtime);
             selectedShowtime.getSeatplan().showSeatplan();
-            // TODO add to bookingHistory
+            Ticket ticket = new Ticket(ticketPrice, selectedShowtime);
+            String transactionID = bookingController.getTransactionID(selectedShowtime);
+            Booking booking = new Booking(ticket, userEmail, transactionID);
+            userController.addBookingToHistory(booking, userEmail);
         } else {
             return;
         }

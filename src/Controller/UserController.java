@@ -2,6 +2,8 @@ package Controller;
 
 import java.util.ArrayList;
 import java.io.*;
+
+import Entity.Booking;
 import Entity.User.User;
 
 public class UserController {
@@ -68,6 +70,15 @@ public class UserController {
         }
         writeToDB(userList);
         System.out.println("Clearing user database");
+    }
+
+    public void addBookingToHistory(Booking booking, String userEmail) {
+        for (User user : userList) {
+            if (user.getEmail().equals(userEmail)) {
+                user.addBooking(booking);
+            }
+        }
+        writeToDB(userList);
     }
 
     // for adding users

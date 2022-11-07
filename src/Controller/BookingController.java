@@ -1,5 +1,8 @@
 package Controller;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
+
 import Entity.Cinema.CinemaType;
 import Entity.Movie.Movie;
 import Entity.Movie.MovieType;
@@ -85,5 +88,34 @@ public class BookingController {
             return AgeClass.ADULT;
         }
 
+    }
+
+    // get transaction id based on current time and cineplex and cinema code
+    public String getTransactionID(Showtime selectedShowtime) {
+        int hour = LocalTime.now().getHour();
+        int minute = LocalTime.now().getMinute();
+        int year = LocalDate.now().getYear();
+        int month = LocalDate.now().getMonthValue();
+        int day = LocalDate.now().getDayOfMonth();
+        String cinemaName = selectedShowtime.getCinema().getName();
+        String cinemaID = cinemaName.substring(cinemaName.length() - 1);
+        String cineplexName = selectedShowtime.getCineplex().getName();
+        String cineplexID = cineplexName.substring(0, 2).toUpperCase();
+        String id = String.format("%s%s%04d%02d%02d%02d%02d", cineplexID, cinemaID, year, month, day, hour, minute);
+        return id;
+    }
+
+    // testing
+    public static void main(String[] args) {
+        int hour = LocalTime.now().getHour();
+        int minute = LocalTime.now().getMinute();
+        int year = LocalDate.now().getYear();
+        int month = LocalDate.now().getMonthValue();
+        int day = LocalDate.now().getDayOfMonth();
+        String cinemaID = "2";
+        String cineplexID = "JU";
+
+        String id = String.format("%s%s%04d%02d%02d%02d%02d", cineplexID, cinemaID, year, month, day, hour, minute);
+        System.out.println(id);
     }
 }

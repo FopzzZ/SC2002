@@ -1,14 +1,25 @@
 package Entity;
 
-public class Booking {
+import java.io.Serializable;
+
+import Controller.UserController;
+import Entity.User.User;
+
+public class Booking implements Serializable {
     private Ticket ticket;
     private String name;
     private String mobileNumber;
     private String email;
     private String transactionID;
 
-    public Booking() {
-
+    public Booking(Ticket ticket, String userEmail, String transactionID) {
+        this.ticket = ticket;
+        this.transactionID = transactionID;
+        UserController userController = new UserController();
+        User user = userController.getUser(userEmail);
+        this.name = user.getName();
+        this.mobileNumber = user.getMobileNumber();
+        this.email = userEmail;
     }
 
     public Booking(Ticket ticket, String name, String mobileNumber, String email, String transactionID) {
