@@ -3,8 +3,8 @@ package Entity.Movie;
 import java.io.Serializable;
 
 public class Review implements Serializable {
-    double rating;
-    String content;
+    private double rating;
+    private String content;
 
     public Review(double rating, String content) {
         this.rating = rating;
