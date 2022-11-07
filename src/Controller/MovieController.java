@@ -109,6 +109,52 @@ public class MovieController {
         }
         System.out.printf("Total %d movies.\n", tempList.size());
     }
+    
+    public void filterByDirector(String Director) {
+        ArrayList<Movie> tempList = new ArrayList<Movie>();
+        for (Movie movie : movieList) {
+            if (movie.getDirector().equals(Director)) {
+                tempList.add(movie);
+            }
+        }
+        ;
+        for (int i = 0; i < tempList.size(); ++i) {
+            System.out.printf("Movie %d: %s\n", i + 1, tempList.get(i).getTitle());
+        }
+        System.out.printf("Total %d movies.\n", tempList.size());
+    }
+    
+    public void filterByCast(String Cast) {
+        ArrayList<Movie> tempList = new ArrayList<Movie>();
+        ArrayList<String> castList = new ArrayList<String>();
+        for (Movie movie : movieList) {
+            castList = movie.getCast();
+            for(String actor : castList) {
+                if (actor.equals(Cast)) {
+                tempList.add(movie);
+                }
+            }
+        }
+        ;
+        for (int i = 0; i < tempList.size(); ++i) {
+            System.out.printf("Movie %d: %s\n", i + 1, tempList.get(i).getTitle());
+        }
+        System.out.printf("Total %d movies.\n", tempList.size());
+    }
+    
+    public void filterByRating(String Rating) {
+        ArrayList<Movie> tempList = new ArrayList<Movie>();
+        for (Movie movie : movieList) {
+            if (movie.getRating().equals(Rating)) {
+                tempList.add(movie);
+            }
+        }
+        ;
+        for (int i = 0; i < tempList.size(); ++i) {
+            System.out.printf("Movie %d: %s\n", i + 1, tempList.get(i).getTitle());
+        }
+        System.out.printf("Total %d movies.\n", tempList.size());
+    }
 
     public void updateMovieByTitle(String title) {
         int index = searchWithTitle(title);
