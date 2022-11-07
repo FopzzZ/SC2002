@@ -124,7 +124,7 @@ public class Movie implements Serializable {
                 case 6:
                     int cont = 0;
                     while(cont == 0) {
-                        System.out.println("Enter name of cast member (Enter "Done" to stop): ");
+                        System.out.println("Enter name of cast member (Enter 'Done' to stop): ");
                         content = InputController.getStringFromUser();
                         if(content.equals("Done")) {
                             cont = 1;
