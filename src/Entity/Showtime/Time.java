@@ -2,7 +2,6 @@ package Entity.Showtime;
 
 import java.io.Serializable;
 import java.util.Calendar;
-import java.util.Date;
 
 //Could be replace with 
 public class Time implements Serializable {

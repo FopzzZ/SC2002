@@ -55,6 +55,7 @@ public class ShowtimeController {
         for (Showtime showtime : showtimeList) {
             if (showtime.matchExceptSeatplan(updatedShowtime)) {
                 showtime.setSeatPlan(updatedShowtime.getSeatplan());
+                found = true;
             }
         }
         if (!found) {

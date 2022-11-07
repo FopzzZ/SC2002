@@ -1,7 +1,5 @@
 package Controller;
 
-import java.nio.file.attribute.AclEntryFlag;
-
 import Entity.Cinema.CinemaType;
 import Entity.Movie.Movie;
 import Entity.Movie.MovieType;
@@ -69,14 +67,14 @@ public class BookingController {
     }
 
     private AgeClass getAgeClass(User user, Showtime showtime) { // TODO this is just a rough one
-        int showtimeYear, showtimeMonth, showtimeDay;
+        int showtimeYear; // showtimeMonth, showtimeDay;
         showtimeYear = showtime.getStartTime().getYear();
-        showtimeMonth = showtime.getStartTime().getMonth();
-        showtimeDay = showtime.getStartTime().getDay();
+        // showtimeMonth = showtime.getStartTime().getMonth();
+        // showtimeDay = showtime.getStartTime().getDay();
         String dob = user.getDateOfBirth();
-        int dobYear, dobMonth, dobDay;
-        dobDay = Integer.parseInt(dob.substring(0, 2));
-        dobMonth = Integer.parseInt(dob.substring(2, 4));
+        int dobYear; // dobMonth, dobDay;
+        // dobDay = Integer.parseInt(dob.substring(0, 2));
+        // dobMonth = Integer.parseInt(dob.substring(2, 4));
         dobYear = Integer.parseInt(dob.substring(4, 8));
         int roughAge = showtimeYear - dobYear;
         if (roughAge > 65) {

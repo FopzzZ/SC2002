@@ -54,7 +54,7 @@ public class BookTicketUI {
         UserController userController = new UserController();
         double ticketPrice = bookingController.getTicketPrice(selectedMovie, selectedShowtime,
                 userController.getUser(userEmail));
-        System.out.println("Ticket price is " + ticketPrice);
+        System.out.println("Ticket price is $" + ticketPrice);
         System.out.println("Confirm booking? (Y/N)");
         if (InputController.getYesOrNoFromUser()) {
             showtimeController.updateSeatingPlan(selectedShowtime);
