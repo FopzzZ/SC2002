@@ -122,9 +122,17 @@ public class Movie implements Serializable {
                     this.setSynopsis(content);
                     break;
                 case 6:
-                    System.out.println("Enter name of cast member: ");
-                    content = InputController.getStringFromUser();
-                    this.addCast(content);
+                    int cont = 0;
+                    while(cont == 0) {
+                        System.out.println("Enter name of cast member (Enter "Done" to stop): ");
+                        content = InputController.getStringFromUser();
+                        if(content.equals("Done")) {
+                            cont = 1;
+                        }
+                        else {
+                            this.addCast(content);
+                        }
+                    }
                     break;
                 case 7:
                     break;
