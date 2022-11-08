@@ -190,21 +190,24 @@ public class MovieController {
         System.out.printf("Total %d movies.\n", movieList.size());
     }
 
-    public void listByRating() {
+    public void listTop5ByRating() {
         ArrayList<Movie> tempList = new ArrayList<Movie>();
         tempList = readFromDB();
         ArrayList<Movie> topList = new ArrayList<Movie>();
         double highestRating = 0;
 
         while (topList.size() < 5) {
+            if (tempList.size() == 0) {
+                break;
+            }
             highestRating = 0;
             for (int i = 0; i < tempList.size(); i++) {
-                if (tempList.get(i).getOverallReviewsRating() > highestRating) {
-                    highestRating = tempList.get(i).getOverallReviewsRating();
+                if (tempList.get(i).getAverageRating() > highestRating) {
+                    highestRating = tempList.get(i).getAverageRating();
                 }
             }
             for (int i = 0; i < tempList.size(); i++) {
-                if (tempList.get(i).getOverallReviewsRating() == highestRating) {
+                if (tempList.get(i).getAverageRating() == highestRating) {
                     topList.add(tempList.get(i));
                     tempList.remove(i);
                 }
@@ -213,7 +216,7 @@ public class MovieController {
         System.out.println("Top movies by rating:");
         for (int i = 0; i < topList.size(); ++i) {
             System.out.printf("Movie rated no.%d: %s (rating: %s)\n", i + 1, topList.get(i).getTitle(),
-                    topList.get(i).getOverallReviewsRating());
+                    topList.get(i).getAverageRating());
         }
     }
 

@@ -9,12 +9,12 @@ public class RateMovieUI {
         MovieController movieController = new MovieController();
         movieController.listMovies();
         System.out.println("Select movie to review");
-        int ID = InputController.getIntFromUser();
+        int selection = InputController.getIntFromUser();
         System.out.println("Please enter your rating for the movie");
         int rating = InputController.getIntFromUser();
         System.out.println("Please enter your review");
         String reviewContent = InputController.getStringFromUser();
-        movieController.addUserReview(ID - 1, rating, reviewContent);
+        movieController.addUserReview(selection - 1, rating, reviewContent);
 
     }
 

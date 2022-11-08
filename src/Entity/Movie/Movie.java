@@ -41,11 +41,14 @@ public class Movie implements Serializable {
         this.showtimes = new ArrayList<Showtime>();
     }
 
-    public double getOverallReviewsRating() {
+    public double getAverageRating() { // returns average rating
         double sum = 0;
-        if (reviews.size() > 1)
-            for (Review review : reviews)
+        if (reviews.size() > 0) {
+            for (Review review : reviews) {
                 sum += review.getRating();
+            }
+            sum /= reviews.size();
+        }
 
         return sum;
     }

@@ -3,6 +3,7 @@ package Boundary.UserMenu;
 import Boundary.SearchMovieUI;
 import Boundary.ViewMovieDetailsUI;
 import Controller.InputController;
+import Controller.MovieController;
 import Controller.UserController;
 
 public class UserMenuUI {
@@ -49,7 +50,7 @@ public class UserMenuUI {
                     break;
                 case 7:
                     rateMovie();
-                    return;
+                    break;
                 case 8:
                     return;
             }
@@ -82,8 +83,9 @@ public class UserMenuUI {
         userController.getUser(userEmail).printBookingHistory();
     }
 
-    private void listTop5Ranking() { // TODO
-
+    private void listTop5Ranking() {
+        MovieController movieController = new MovieController();
+        movieController.listTop5ByRating();
     }
 
     private void rateMovie() {
