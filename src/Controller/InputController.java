@@ -59,12 +59,11 @@ public class InputController {
     }
 
     public static String getEmailFromUser() {
-        String pattern = "^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$"; // TODO change regex
         String input = "";
         boolean validInput = false;
         while (!validInput) {
             input = getStringFromUser();
-            if (input.matches(pattern)) {
+            if (EmailCheckController.isValid(input)) {
                 validInput = true;
             } else {
                 System.out.println("Please enter a valid email!");
@@ -118,7 +117,7 @@ public class InputController {
         return input.charAt(0);
     }
 
-    public static String getDateOfBirthFromUser() { // TODO make more specific so accepts valid date
+    public static String getDateOfBirthFromUser() {
         String input = "";
         boolean validInput = false;
         while (!validInput) {

@@ -13,10 +13,4 @@ public class DoBCheckController {
     return doBPattern.matcher(dateOfBirth).matches();
 
   }
-
-  public static void main(String[] args) {
-    System.out.println(DoBCheckController.isValid("20/02/2000"));
-    System.out.println(DoBCheckController.isValid("20/02/1981"));
-    System.out.println(DoBCheckController.isValid("20/11/2000"));
-  }
 }

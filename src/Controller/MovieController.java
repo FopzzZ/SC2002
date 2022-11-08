@@ -101,7 +101,7 @@ public class MovieController {
         }
         return tempList;
     }
-    
+
     public ArrayList<Movie> filterByDirector(String Director) {
         ArrayList<Movie> tempList = new ArrayList<Movie>();
         for (Movie movie : movieList) {
@@ -111,21 +111,21 @@ public class MovieController {
         }
         return tempList;
     }
-    
+
     public ArrayList<Movie> filterByCast(String Cast) {
         ArrayList<Movie> tempList = new ArrayList<Movie>();
         ArrayList<String> castList = new ArrayList<String>();
         for (Movie movie : movieList) {
             castList = movie.getCast();
-            for(String actor : castList) {
+            for (String actor : castList) {
                 if (actor.equals(Cast)) {
-                tempList.add(movie);
+                    tempList.add(movie);
                 }
             }
         }
         return tempList;
     }
-    
+
     public ArrayList<Movie> filterByRating(String Rating) {
         ArrayList<Movie> tempList = new ArrayList<Movie>();
         for (Movie movie : movieList) {
@@ -189,22 +189,22 @@ public class MovieController {
         }
         System.out.printf("Total %d movies.\n", movieList.size());
     }
-    
+
     public void listByRating() {
         ArrayList<Movie> tempList = new ArrayList<Movie>();
         tempList = readFromDB();
         ArrayList<Movie> topList = new ArrayList<Movie>();
         double highestRating = 0;
-        
-        while(topList.size() < 5) {
+
+        while (topList.size() < 5) {
             highestRating = 0;
-            for(int i = 0; i < tempList.size(); i++) {
-                if(tempList.get(i).getOverallReviewsRating() > highestRating) {
+            for (int i = 0; i < tempList.size(); i++) {
+                if (tempList.get(i).getOverallReviewsRating() > highestRating) {
                     highestRating = tempList.get(i).getOverallReviewsRating();
                 }
             }
-            for(int i = 0; i < tempList.size(); i++) {
-                if(tempList.get(i).getOverallReviewsRating() == highestRating) {
+            for (int i = 0; i < tempList.size(); i++) {
+                if (tempList.get(i).getOverallReviewsRating() == highestRating) {
                     topList.add(tempList.get(i));
                     tempList.remove(i);
                 }
@@ -212,24 +212,15 @@ public class MovieController {
         }
         System.out.println("Top movies by rating:");
         for (int i = 0; i < topList.size(); ++i) {
-            System.out.printf("Movie rated no.%d: %s (rating: %s)\n", i + 1, topList.get(i).getTitle(), topList.get(i).getOverallReviewsRating());
+            System.out.printf("Movie rated no.%d: %s (rating: %s)\n", i + 1, topList.get(i).getTitle(),
+                    topList.get(i).getOverallReviewsRating());
         }
     }
 
-    public void getUserReview() {
-        System.out.println("Enter the title of the movie");
-        String title = InputController.getStringFromUser();
-       
-        int index = searchWithTitle(title);
-        if (index == -1) {
-            System.out.println("No such movie");
-            return;
-        }
-        System.out.println("Please enter your rating for the movie");
-        int rating = InputController.getIntFromUser();
-        System.out.println("Please enter your review");
-        String content = InputController.getStringFromUser();
-        movieList.get(index).addReview(rating, content);
+    public void addUserReview(int index, int rating, String reviewContent) {
+        movieList.get(index).addReview(rating, reviewContent);
+        System.out.println("Review added successfully"); // test
+        writeToDB(movieList);
     }
 
     public void showDetail(String title) {

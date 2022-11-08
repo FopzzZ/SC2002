@@ -43,7 +43,7 @@ public class Movie implements Serializable {
 
     public double getOverallReviewsRating() {
         double sum = 0;
-        if (reviews.size() > 1) 
+        if (reviews.size() > 1)
             for (Review review : reviews)
                 sum += review.getRating();
 
@@ -132,13 +132,12 @@ public class Movie implements Serializable {
                     break;
                 case 6:
                     int cont = 0;
-                    while(cont == 0) {
+                    while (cont == 0) {
                         System.out.println("Enter name of cast member (Enter 'Done' to stop): ");
                         content = InputController.getStringFromUser();
-                        if(content.equals("Done")) {
+                        if (content.equals("Done")) {
                             cont = 1;
-                        }
-                        else {
+                        } else {
                             this.addCast(content);
                         }
                     }
@@ -249,7 +248,8 @@ public class Movie implements Serializable {
                 + "Type of movie: " + this.getType() + "\n"
                 + "Director: " + this.getDirector() + "\n"
                 + "Cast: " + castS + "\n"
-                + "Overall rating: " + this.getOverallReviewsRatingToString() + "\n"
+                + "Overall rating: " + this.getOverallReviewsRatingToString() + "\n" // TODO get rating from review and
+                                                                                     // average
                 + "Reviews: " + reviewS + "\n";
 
         return ret;
