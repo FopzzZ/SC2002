@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import Controller.InputController;
 import Controller.MovieController;
+import Entity.Movie.MovieRating;
 import Entity.Movie.MovieStatus;
 import Entity.Movie.MovieType;
 
@@ -75,9 +76,9 @@ public class ModifyMovieMenuUI {
             castNames.add(castInput);
             castInput = InputController.getStringFromUser();
         }
-        // implement reviewer rating or nah?
+        // TODO implement movie rating
         movieController.createNewMovie(movieTitle, showingStatus, movieSynopsis, movieType,
-                movieDirector, castNames);
+                MovieRating.G, movieDirector, castNames);
     }
 
     private void updateMovieListing() {

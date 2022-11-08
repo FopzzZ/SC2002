@@ -11,17 +11,19 @@ public class Movie implements Serializable {
     private String movieTitle, synopsis, director;
     private MovieType type;
     private MovieStatus status;
-    private double rating;
+    private MovieRating rating;
     private ArrayList<String> cast;
     private ArrayList<Review> reviews;
+    private double reviewScore;
     private ArrayList<Showtime> showtimes;
 
     public Movie() {
         this.movieTitle = "";
         this.status = MovieStatus.Coming;
         this.type = MovieType.Common;
+        this.rating = MovieRating.G;
         this.synopsis = "";
-        this.rating = 0;
+        this.reviewScore = 0;
         this.director = "";
         this.cast = new ArrayList<String>();
         this.reviews = new ArrayList<Review>();
@@ -29,19 +31,21 @@ public class Movie implements Serializable {
     }
 
     public Movie(String movieTitle, String synposis, String director, MovieType type, MovieStatus status,
+            MovieRating rating,
             ArrayList<String> cast, ArrayList<Review> review) {
         this.movieTitle = movieTitle;
         this.status = status;
         this.type = type;
+        this.rating = rating;
         this.synopsis = synposis;
         this.director = director;
         this.cast = cast;
         this.reviews = review;
         this.showtimes = new ArrayList<Showtime>();
-        this.rating = 0;
+        this.reviewScore = 0;
     }
 
-    public double getAverageRating() { // returns average rating
+    public double getAverageReviewScore() { // returns average review score
         double sum = 0;
         if (reviews.size() > 0) {
             for (Review review : reviews) {
@@ -179,7 +183,7 @@ public class Movie implements Serializable {
 
     public void addReview(double rating, String content) {
         this.reviews.add(new Review(rating, content));
-        this.rating = getAverageRating();
+        this.reviewScore = getAverageReviewScore();
     }
 
     public void addShowtime(Showtime showtime) {
@@ -218,8 +222,12 @@ public class Movie implements Serializable {
         return this.type;
     }
 
-    public double getRating() {
+    public MovieRating getRating() {
         return this.rating;
+    }
+
+    public double getReviewScore() {
+        return this.reviewScore;
     }
 
     public String toString() {
@@ -248,8 +256,7 @@ public class Movie implements Serializable {
                 + "Type of movie: " + this.getType() + "\n"
                 + "Director: " + this.getDirector() + "\n"
                 + "Cast: " + castS + "\n"
-                + "Overall rating: " + this.getOverallReviewsRatingToString() + "\n" // TODO get rating from review and
-                                                                                     // average
+                + "Overall rating: " + this.getReviewScore() + "\n"
                 + "Reviews: " + reviewS + "\n";
 
         return ret;

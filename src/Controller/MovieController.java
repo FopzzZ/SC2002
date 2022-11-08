@@ -18,8 +18,9 @@ public class MovieController {
     }
 
     public void createNewMovie(String movieTitle, MovieStatus status, String synopsis, MovieType type,
+            MovieRating rating,
             String director, ArrayList<String> cast) {
-        Movie movie = new Movie(movieTitle, synopsis, director, type, status, cast,
+        Movie movie = new Movie(movieTitle, synopsis, director, type, status, rating, cast,
                 new ArrayList<Review>());
         addMovie(movie);
     }
@@ -126,10 +127,10 @@ public class MovieController {
         return tempList;
     }
 
-    public ArrayList<Movie> filterByRating(double Rating) {
+    public ArrayList<Movie> filterByRating(MovieRating Rating) {
         ArrayList<Movie> tempList = new ArrayList<Movie>();
         for (Movie movie : movieList) {
-            if (movie.getRating() == (Rating)) {
+            if (movie.getRating().equals(Rating)) {
                 tempList.add(movie);
             }
         }
@@ -202,12 +203,12 @@ public class MovieController {
             }
             highestRating = 0;
             for (int i = 0; i < tempList.size(); i++) {
-                if (tempList.get(i).getAverageRating() > highestRating) {
-                    highestRating = tempList.get(i).getAverageRating();
+                if (tempList.get(i).getAverageReviewScore() > highestRating) {
+                    highestRating = tempList.get(i).getAverageReviewScore();
                 }
             }
             for (int i = 0; i < tempList.size(); i++) {
-                if (tempList.get(i).getAverageRating() == highestRating) {
+                if (tempList.get(i).getAverageReviewScore() == highestRating) {
                     topList.add(tempList.get(i));
                     tempList.remove(i);
                 }
@@ -216,7 +217,7 @@ public class MovieController {
         System.out.println("Top movies by rating:");
         for (int i = 0; i < topList.size(); ++i) {
             System.out.printf("Movie rated no.%d: %s (rating: %s)\n", i + 1, topList.get(i).getTitle(),
-                    topList.get(i).getAverageRating());
+                    topList.get(i).getAverageReviewScore());
         }
     }
 
@@ -272,12 +273,12 @@ public class MovieController {
         movieController.clearDatabase();
         movieController.createNewMovie("John Cena", MovieStatus.Showing, "now u see me",
                 MovieType.Common,
-                "dk", cast);
+                MovieRating.G, "dk", cast);
         movieController.createNewMovie("Nemo", MovieStatus.Showing, "now u see me",
                 MovieType.Common,
-                "dk", cast);
+                MovieRating.G, "dk", cast);
         movieController.createNewMovie("Bob bones", MovieStatus.Showing, "now u see me",
                 MovieType.Common,
-                "dk", cast);
+                MovieRating.G, "dk", cast);
     }
 }

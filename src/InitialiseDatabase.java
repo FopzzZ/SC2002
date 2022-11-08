@@ -8,6 +8,7 @@ import Controller.UserController;
 import Entity.Cinema.Cinema;
 import Entity.Cineplex.Cineplex;
 import Entity.Movie.Movie;
+import Entity.Movie.MovieRating;
 import Entity.Movie.MovieStatus;
 import Entity.Movie.MovieType;
 import Entity.Showtime.Time;
@@ -44,13 +45,13 @@ public class InitialiseDatabase {
         movieController.clearDatabase();
         movieController.createNewMovie("John Cena", MovieStatus.Showing, "now u see me",
                 MovieType.Common,
-                "dk", cast);
+                MovieRating.G, "dk", cast);
         movieController.createNewMovie("Nemo", MovieStatus.Showing, "now u see me",
                 MovieType.Common,
-                "dk", cast);
+                MovieRating.G, "dk", cast);
         movieController.createNewMovie("Bob bones", MovieStatus.Showing, "now u see me",
                 MovieType.Common,
-                "dk", cast);
+                MovieRating.G, "dk", cast);
 
         // initialise showtimes
         addShowtime("202207111600", "202207111800", false);
