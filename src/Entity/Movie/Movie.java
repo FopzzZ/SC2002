@@ -80,13 +80,14 @@ public class Movie implements Serializable {
         while (input != 7) {
             System.out.println("1: Title");
             System.out.println("2: Status(Coming Soon/Preview/Now Showing/End of Showing)");
-            System.out.println("3: Type(Blockbuster/3D)");
-            System.out.println("4: Director");
-            System.out.println("5: Synopsis");
-            System.out.println("6: Add Cast");
-            System.out.println("7: Exit");
+            System.out.println("3: Type(Blockbuster/3D/Common)");
+            System.out.println("4: Rating(G/PG/PG13/NC16/M18/R21)");
+            System.out.println("5: Director");
+            System.out.println("6: Synopsis");
+            System.out.println("7: Add Cast");
+            System.out.println("8: Exit");
             System.out.println("Select attribute to edit");
-            input = InputController.getIntFromUser(1, 7);
+            input = InputController.getIntFromUser(1, 8);
 
             switch (input) {
                 case 1:
@@ -114,7 +115,7 @@ public class Movie implements Serializable {
                     }
                     break;
                 case 3:
-                    System.out.println("Enter movie type (Blockbuster/3D): ");
+                    System.out.println("Enter movie type (Blockbuster/3D/Common): ");
                     content = InputController.getStringFromUser();
                     switch (content) {
                         case "Blockbuster":
@@ -123,21 +124,50 @@ public class Movie implements Serializable {
                         case "3D":
                             this.setType(MovieType.ThreeD);
                             break;
+                        case "Common":
+                            this.setType(MovieType.Common);
+                            break;
                         default:
                             break;
                     }
                     break;
                 case 4:
+                    System.out.println("Enter movie rating (G/PG/PG13/NC16/M18/R21): ");
+                    content = InputController.getStringFromUser();
+                    switch (content) {
+                        case "G":
+                            this.setRating(MovieRating.G);
+                            break;
+                        case "PG":
+                            this.setRating(MovieRating.PG);
+                            break;
+                        case "PG13":
+                            this.setRating(MovieRating.PG13);
+                            break;
+                        case "NC16":
+                            this.setRating(MovieRating.NC16);
+                            break;
+                        case "M18":
+                            this.setRating(MovieRating.M18);
+                            break;
+                        case "R21":
+                            this.setRating(MovieRating.R21);
+                            break;
+                        default:
+                            break;
+                    }
+                    break;
+                case 5:
                     System.out.println("Enter director's name: ");
                     content = InputController.getStringFromUser();
                     this.setDirector(content);
                     break;
-                case 5:
+                case 6:
                     System.out.println("Enter synopsis: ");
                     content = InputController.getStringFromUser();
                     this.setSynopsis(content);
                     break;
-                case 6:
+                case 7:
                     int cont = 0;
                     while (cont == 0) {
                         System.out.println("Enter name of cast member (Enter 'Done' to stop): ");
@@ -149,7 +179,7 @@ public class Movie implements Serializable {
                         }
                     }
                     break;
-                case 7:
+                case 8:
                     break;
             }
         }
@@ -167,6 +197,10 @@ public class Movie implements Serializable {
 
     public void setStatus(MovieStatus status) {
         this.status = status;
+    }
+
+    public void setRating(MovieRating rating) {
+        this.rating = rating;
     }
 
     public void setSynopsis(String synopsis) {
@@ -256,7 +290,7 @@ public class Movie implements Serializable {
                 + "Type of movie: " + this.getType() + "\n"
                 + "Director: " + this.getDirector() + "\n"
                 + "Cast: " + castS + "\n"
-                + "Overall rating: " + this.getReviewScore() + "\n"
+                + "Overall score: " + this.getReviewScore() + "\n"
                 + "Reviews: " + reviewS + "\n";
 
         return ret;
