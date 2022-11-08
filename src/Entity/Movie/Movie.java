@@ -11,7 +11,7 @@ public class Movie implements Serializable {
     private String movieTitle, synopsis, director;
     private MovieType type;
     private MovieStatus status;
-    private String rating;
+    private double rating;
     private ArrayList<String> cast;
     private ArrayList<Review> reviews;
     private ArrayList<Showtime> showtimes;
@@ -21,7 +21,7 @@ public class Movie implements Serializable {
         this.status = MovieStatus.Coming;
         this.type = MovieType.Common;
         this.synopsis = "";
-        this.rating = "normal";
+        this.rating = 0;
         this.director = "";
         this.cast = new ArrayList<String>();
         this.reviews = new ArrayList<Review>();
@@ -29,16 +29,16 @@ public class Movie implements Serializable {
     }
 
     public Movie(String movieTitle, String synposis, String director, MovieType type, MovieStatus status,
-            String rating, ArrayList<String> cast, ArrayList<Review> review) {
+            ArrayList<String> cast, ArrayList<Review> review) {
         this.movieTitle = movieTitle;
         this.status = status;
         this.type = type;
         this.synopsis = synposis;
-        this.rating = rating;
         this.director = director;
         this.cast = cast;
         this.reviews = review;
         this.showtimes = new ArrayList<Showtime>();
+        this.rating = 0;
     }
 
     public double getAverageRating() { // returns average rating
@@ -165,10 +165,6 @@ public class Movie implements Serializable {
         this.status = status;
     }
 
-    public void setRating(String rating) {
-        this.rating = rating;
-    }
-
     public void setSynopsis(String synopsis) {
         this.synopsis = synopsis;
     }
@@ -183,6 +179,7 @@ public class Movie implements Serializable {
 
     public void addReview(double rating, String content) {
         this.reviews.add(new Review(rating, content));
+        this.rating = getAverageRating();
     }
 
     public void addShowtime(Showtime showtime) {
@@ -221,7 +218,7 @@ public class Movie implements Serializable {
         return this.type;
     }
 
-    public String getRating() {
+    public double getRating() {
         return this.rating;
     }
 

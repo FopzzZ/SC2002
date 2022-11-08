@@ -76,7 +76,7 @@ public class ModifyMovieMenuUI {
             castInput = InputController.getStringFromUser();
         }
         // implement reviewer rating or nah?
-        movieController.createNewMovie(movieTitle, showingStatus, movieSynopsis, "4", movieType,
+        movieController.createNewMovie(movieTitle, showingStatus, movieSynopsis, movieType,
                 movieDirector, castNames);
     }
 
@@ -92,9 +92,9 @@ public class ModifyMovieMenuUI {
         System.out.println("Select movie to remove: ");
         int ID = InputController.getIntFromUser();
         boolean success = movieController.removeMovieByID(ID);
-        if(success) 
+        if (success)
             System.out.println("Movie has been removed");
-        else 
+        else
             System.out.println("The movie does not exist.");
     }
 }

@@ -17,9 +17,9 @@ public class MovieController {
             movieList = readFromDB();
     }
 
-    public void createNewMovie(String movieTitle, MovieStatus status, String synposis, String rating, MovieType type,
+    public void createNewMovie(String movieTitle, MovieStatus status, String synopsis, MovieType type,
             String director, ArrayList<String> cast) {
-        Movie movie = new Movie(movieTitle, synposis, director, type, status, rating, cast,
+        Movie movie = new Movie(movieTitle, synopsis, director, type, status, cast,
                 new ArrayList<Review>());
         addMovie(movie);
     }
@@ -126,10 +126,10 @@ public class MovieController {
         return tempList;
     }
 
-    public ArrayList<Movie> filterByRating(String Rating) {
+    public ArrayList<Movie> filterByRating(double Rating) {
         ArrayList<Movie> tempList = new ArrayList<Movie>();
         for (Movie movie : movieList) {
-            if (movie.getRating().equals(Rating)) {
+            if (movie.getRating() == (Rating)) {
                 tempList.add(movie);
             }
         }
@@ -271,13 +271,13 @@ public class MovieController {
         MovieController movieController = new MovieController();
         movieController.clearDatabase();
         movieController.createNewMovie("John Cena", MovieStatus.Showing, "now u see me",
-                "4", MovieType.Common,
+                MovieType.Common,
                 "dk", cast);
         movieController.createNewMovie("Nemo", MovieStatus.Showing, "now u see me",
-                "4", MovieType.Common,
+                MovieType.Common,
                 "dk", cast);
         movieController.createNewMovie("Bob bones", MovieStatus.Showing, "now u see me",
-                "4", MovieType.Common,
+                MovieType.Common,
                 "dk", cast);
     }
 }

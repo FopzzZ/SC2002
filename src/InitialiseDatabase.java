@@ -43,13 +43,13 @@ public class InitialiseDatabase {
         MovieController movieController = new MovieController();
         movieController.clearDatabase();
         movieController.createNewMovie("John Cena", MovieStatus.Showing, "now u see me",
-                "4", MovieType.Common,
+                MovieType.Common,
                 "dk", cast);
         movieController.createNewMovie("Nemo", MovieStatus.Showing, "now u see me",
-                "4", MovieType.Common,
+                MovieType.Common,
                 "dk", cast);
         movieController.createNewMovie("Bob bones", MovieStatus.Showing, "now u see me",
-                "4", MovieType.Common,
+                MovieType.Common,
                 "dk", cast);
 
         // initialise showtimes
