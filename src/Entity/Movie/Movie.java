@@ -41,7 +41,16 @@ public class Movie implements Serializable {
         this.showtimes = new ArrayList<Showtime>();
     }
 
-    public String getOverallReviewsRating() {
+    public double getOverallReviewsRating() {
+        double sum = 0;
+        if (reviews.size() > 1) 
+            for (Review review : reviews)
+                sum += review.getRating();
+
+        return sum;
+    }
+
+    public String getOverallReviewsRatingToString() {
         double sum = 0;
         if (reviews.size() > 1) {
             for (Review review : reviews) {
@@ -140,24 +149,6 @@ public class Movie implements Serializable {
         }
 
         return false;
-    }
-    
-    public void getUserReview() {
-        System.out.println("Enter the title of the movie");
-        String title = InputController.getStringFromUser();
-       
-        int index = MovieController.searchWithTitle(title);
-        if (index == -1) {
-            System.out.println("No such movie");
-            return;
-        }
-        System.out.println("Please enter your rating for the movie");
-        int rating = InputController.getIntFromUser();
-        System.out.println("Please enter your review");
-        String content = InputController.getStringFromUser();
-        
-        Review newReview = new Review(rating, content);
-        movieList.get(index).reviews.add(newReview);
     }
 
     public void setTitle(String movieTitle) {
@@ -258,7 +249,7 @@ public class Movie implements Serializable {
                 + "Type of movie: " + this.getType() + "\n"
                 + "Director: " + this.getDirector() + "\n"
                 + "Cast: " + castS + "\n"
-                + "Overall rating: " + this.getOverallReviewsRating() + "\n"
+                + "Overall rating: " + this.getOverallReviewsRatingToString() + "\n"
                 + "Reviews: " + reviewS + "\n";
 
         return ret;

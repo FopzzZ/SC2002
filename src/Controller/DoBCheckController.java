@@ -12,7 +12,7 @@ public class DoBCheckController {
     Pattern doBPattern = Pattern.compile(doBRegex);
         if (dateOfBirth == null)
             return false;
-        return doBPattern.matcher(dateofBirth).matches();
+        return doBPattern.matcher(dateOfBirth).matches();
     
   }
 }
