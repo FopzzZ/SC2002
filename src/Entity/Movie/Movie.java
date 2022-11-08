@@ -141,6 +141,24 @@ public class Movie implements Serializable {
 
         return false;
     }
+    
+    public void getUserReview() {
+        System.out.println("Enter the title of the movie");
+        String title = InputController.getStringFromUser();
+       
+        int index = MovieController.searchWithTitle(title);
+        if (index == -1) {
+            System.out.println("No such movie");
+            return;
+        }
+        System.out.println("Please enter your rating for the movie");
+        int rating = InputController.getIntFromUser();
+        System.out.println("Please enter your review");
+        String content = InputController.getStringFromUser();
+        
+        Review newReview = new Review(rating, content);
+        movieList.get(index).reviews.add(newReview);
+    }
 
     public void setTitle(String movieTitle) {
         this.movieTitle = movieTitle;
