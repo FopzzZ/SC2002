@@ -65,7 +65,7 @@ public class BookTicketUI {
             Ticket ticket = new Ticket(ticketPrice, selectedShowtime);
             String transactionID = bookingController.getTransactionID(selectedShowtime);
             Booking booking = new Booking(ticket, userEmail, transactionID);
-            // userController.addBookingToHistory(booking, userEmail);
+            userController.addBookingToHistory(booking, userEmail);
         } else {
             return;
         }

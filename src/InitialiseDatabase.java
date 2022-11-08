@@ -19,8 +19,8 @@ public class InitialiseDatabase {
         // initialise user list
         UserController userController = new UserController();
         userController.clearDatabase();
-        userController.addUser("bob@gmail.com", "99128412", "Bob", "20022000");
-        userController.addUser("john@gmail.com", "96729103", "John", "26031961");
+        userController.addUser("bob@gmail.com", "99128412", "Bob", "20/02/2000");
+        userController.addUser("john@gmail.com", "96729103", "John", "26/03/1961");
 
         // initialise admin list
         AdminController adminController = new AdminController();

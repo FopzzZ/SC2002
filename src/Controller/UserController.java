@@ -2,6 +2,8 @@ package Controller;
 
 import java.util.ArrayList;
 import java.io.*;
+
+import Entity.Booking;
 import Entity.User.User;
 
 public class UserController {
@@ -43,18 +45,18 @@ public class UserController {
     }
 
     public boolean addUser(String email, String mobileNumber, String name, String dateOfBirth) {
-        User newUser = new User(email, mobileNumber, name, dateOfBirth);
-        if(!EmailCheckController.isValid(email)) {
+        if (!EmailCheckController.isValid(email)) {
             System.out.println("Enter a valid email address");
             return false;
         }
-        if(!DoBCheckController.isValid(dateOfBirth)) {
+        if (!DoBCheckController.isValid(dateOfBirth)) {
             System.out.println("Enter a valid date of birth (dd/mm/yyyy)");
             return false;
         }
-        
+        User newUser = new User(email, mobileNumber, name, dateOfBirth);
         userList.add(newUser);
         writeToDB(userList);
+        System.out.println("User added successfully");
         return true;
     }
 
@@ -64,6 +66,7 @@ public class UserController {
 
     public User getUser(String email) {
         for (User user : userList) {
+            System.out.println(user.getEmail());
             if (user.getEmail().equals(email)) {
                 return user;
             }
@@ -80,12 +83,13 @@ public class UserController {
         System.out.println("Clearing user database");
     }
 
-    // for adding users
-    public static void main(String[] args) {
-        UserController userController = new UserController();
-        userController.clearDatabase();
-        userController.addUser("bob@gmail.com", "99128412", "Bob", "20022000");
-        userController.addUser("john@gmail.com", "96729103", "John", "26031961");
+    public void addBookingToHistory(Booking booking, String userEmail) {
+        for (User user : userList) {
+            if (user.getEmail().equals(userEmail)) {
+                user.addBooking(booking);
+            }
+        }
+        writeToDB(userList);
     }
 
 }
