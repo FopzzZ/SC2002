@@ -32,7 +32,7 @@ public class ShowtimeController {
         System.out.printf("Total %d showtimes.\n", showtimeList.size());
     }
 
-    public void showAllFilteredShowtimes(Cineplex cineplex) {
+    public void showAllFilteredShowtimesByCineplex(Cineplex cineplex) {
         filteredShowtimeList = new ArrayList<Showtime>();
         for (Showtime showtime : showtimeList) {
             if (showtime.getCineplex().getName().equals(cineplex.getName())) {

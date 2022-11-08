@@ -21,7 +21,7 @@ public class CheckSeatAvailabilityUI {
         int movieChoice = InputController.getIntFromUser();
         Movie selectedMovie = movieController.getMovie(movieChoice - 1);
         ShowtimeController showtimeController = new ShowtimeController(selectedMovie);
-        showtimeController.showAllFilteredShowtimes(selectedCineplex);
+        showtimeController.showAllFilteredShowtimesByCineplex(selectedCineplex);
         if (showtimeController.getFilteredShowtimeList().size() == 0) {
             System.out.println("No available showtimes");
             return;

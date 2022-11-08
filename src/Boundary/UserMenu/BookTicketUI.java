@@ -31,7 +31,7 @@ public class BookTicketUI {
         int movieChoice = InputController.getIntFromUser();
         Movie selectedMovie = movieController.getMovie(movieChoice - 1);
         ShowtimeController showtimeController = new ShowtimeController(selectedMovie);
-        showtimeController.showAllFilteredShowtimes(selectedCineplex);
+        showtimeController.showAllFilteredShowtimesByCineplex(selectedCineplex);
         if (showtimeController.getFilteredShowtimeList().size() == 0) {
             System.out.println("No available showtimes");
             return;
@@ -65,7 +65,7 @@ public class BookTicketUI {
             Ticket ticket = new Ticket(ticketPrice, selectedShowtime);
             String transactionID = bookingController.getTransactionID(selectedShowtime);
             Booking booking = new Booking(ticket, userEmail, transactionID);
-            userController.addBookingToHistory(booking, userEmail);
+            // userController.addBookingToHistory(booking, userEmail);
         } else {
             return;
         }

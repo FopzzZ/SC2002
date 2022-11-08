@@ -119,12 +119,11 @@ public class InputController {
     }
 
     public static String getDateOfBirthFromUser() { // TODO make more specific so accepts valid date
-        String pattern = "[\\d]{8}";
         String input = "";
         boolean validInput = false;
         while (!validInput) {
             input = getStringFromUser();
-            if (input.matches(pattern)) {
+            if (DoBCheckController.isValid(input)) {
                 validInput = true;
             } else {
                 System.out.println("Please enter a valid date of birth!");

@@ -1,5 +1,7 @@
 package Boundary;
 
+import java.util.ArrayList;
+
 import Controller.*;
 import Entity.Movie.*;
 
@@ -20,6 +22,7 @@ public class SearchMovieUI {
                     "4. Filter by movie status\n" +
                     "5. Back to main menu\n");
             System.out.print("Select action: ");
+            ArrayList<Movie> selectedMovies = new ArrayList<Movie>();
             switch (InputController.getIntFromUser(1, 5)) {
                 case 1:
                     showAllMovies();
@@ -30,15 +33,24 @@ public class SearchMovieUI {
 
                     break;
                 case 3:
-                    filterByType();
+                    selectedMovies = filterByType();
+                    showAllMoviesTitle(selectedMovies);
                     break;
                 case 4:
-                    filterByStatus();
+                    selectedMovies = filterByStatus();
+                    showAllMoviesTitle(selectedMovies);
                     break;
                 case 5:
                     return;
             }
         }
+    }
+
+    private void showAllMoviesTitle(ArrayList<Movie> movies) {
+        for(int i = 0; i < movies.size(); ++i) {
+            System.out.printf("Movie %d: %s\n", i + 1, movies.get(i).getTitle());
+        }
+        System.out.printf("Total %d movies.\n", movies.size());
     }
 
     public void showAllMovies() {
@@ -51,7 +63,7 @@ public class SearchMovieUI {
         movieController.showDetail(title);
     }
 
-    public void filterByType() {
+    public ArrayList<Movie> filterByType() {
         System.out.println(
                 "1. Blockbuster\n" +
                         "2. 3-D\n" +
@@ -61,20 +73,18 @@ public class SearchMovieUI {
         int choice = InputController.getIntFromUser(1, 4);
         switch (choice) {
             case 1:
-                movieController.filterByType(MovieType.Blockbuster);
-                break;
+                return movieController.filterByType(MovieType.Blockbuster);
             case 2:
-                movieController.filterByType(MovieType.ThreeD);
-                break;
+                return movieController.filterByType(MovieType.ThreeD);
             case 3:
-                movieController.filterByType(MovieType.Common);
-                break;
+                return movieController.filterByType(MovieType.Common);
             case 4:
                 break;
         }
+        return new ArrayList<Movie>();
     }
 
-    public void filterByStatus() {
+    public ArrayList<Movie> filterByStatus() {
         System.out.println(
                 "1. Coming Soon\n" +
                         "2. Preview\n" +
@@ -85,19 +95,16 @@ public class SearchMovieUI {
         int choice = InputController.getIntFromUser(1, 5);
         switch (choice) {
             case 1:
-                movieController.filterByStatus(MovieStatus.Coming);
-                break;
+                return movieController.filterByStatus(MovieStatus.Coming);
             case 2:
-                movieController.filterByStatus(MovieStatus.Preview);
-                break;
+                return movieController.filterByStatus(MovieStatus.Preview);
             case 3:
-                movieController.filterByStatus(MovieStatus.Showing);
-                break;
+                return movieController.filterByStatus(MovieStatus.Showing);
             case 4:
-                movieController.filterByStatus(MovieStatus.Ended);
-                break;
+                return movieController.filterByStatus(MovieStatus.Ended);
             case 5:
                 break;
         }
+        return new ArrayList<Movie>();
     }
 }

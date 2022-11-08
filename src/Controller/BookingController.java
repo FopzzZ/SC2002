@@ -78,7 +78,8 @@ public class BookingController {
         int dobYear; // dobMonth, dobDay;
         // dobDay = Integer.parseInt(dob.substring(0, 2));
         // dobMonth = Integer.parseInt(dob.substring(2, 4));
-        dobYear = Integer.parseInt(dob.substring(4, 8));
+        //dob: 19/19/1919
+        dobYear = Integer.parseInt(dob.substring(6, 10));
         int roughAge = showtimeYear - dobYear;
         if (roughAge > 65) {
             return AgeClass.SENIORCITIZEN;

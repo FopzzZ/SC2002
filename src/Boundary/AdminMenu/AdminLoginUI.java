@@ -8,7 +8,7 @@ public class AdminLoginUI {
 
     public void main() {
         boolean validLogin, exit = false;
-        while (true && exit == false) {
+        while (exit == false) {
             System.out.println("Please enter your username: ");
             username = InputController.getStringFromUser(); // get username
             System.out.println("Please enter your password: ");

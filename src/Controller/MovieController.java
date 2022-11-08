@@ -79,7 +79,7 @@ public class MovieController {
         if (ID > movieList.size()) {
             return -1;
         }
-        return ID;
+        return ID - 1;
     }
 
     public ArrayList<Movie> filterByType(MovieType type) {

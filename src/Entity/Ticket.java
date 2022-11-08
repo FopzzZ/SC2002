@@ -20,5 +20,5 @@ public class Ticket implements Serializable {
     public Showtime getShowtime() {
         return this.showtime;
     }
-
+    
 }
