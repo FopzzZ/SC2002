@@ -189,6 +189,33 @@ public class MovieController {
         }
         System.out.printf("Total %d movies.\n", movieList.size());
     }
+    
+    public void listByRating() {
+        ArrayList<movie> tempList = new ArrayList<movie>();
+        tempList = readFromDB();
+        ArrayList<movie> topList = new ArrayList<movie>();
+        int highestRating = 0;
+        
+        while(topList.size() < 5) {
+            highestRating = 0;
+            for(int i = 0; i < tempList.size(); i++) {
+                if(tempList[i].getRating() > highestRating) {
+                    highestRating = tempList[i].getRating();
+                }
+            }
+            for(int i = 0; i < tempList.size(); i++) {
+                if(tempList[i].getRating() == highestRating) {
+                    topList.add(tempList[i]);
+                    tempList.remove(i);
+                }
+            }
+        }
+        System.out.println("Top movies by rating:");
+        for (int i = 0; i < topList.size(); ++i) {
+            System.out.printf("Movie rated no.%d: %s (rating: %s)\n", i + 1, topList.get(i).getTitle(), topList.get(i).getRating();
+        }
+        
+    }
 
     public void showDetail(String title) {
         int index = searchWithTitle(title);
