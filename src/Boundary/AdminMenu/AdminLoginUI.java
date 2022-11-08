@@ -4,7 +4,7 @@ import Controller.AdminLoginController;
 import Controller.InputController;
 
 public class AdminLoginUI {
-    private String username, password; // decide on username or email
+    private String username, password; // admin uses username
 
     public void main() {
         boolean validLogin, exit = false;
