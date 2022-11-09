@@ -86,8 +86,8 @@ public class InputController {
         return input;
     }
 
-    public static String getMobileNumberFromUser() { // 8 digit mobile number
-        String pattern = "[\\d]{8}";
+    public static String getMobileNumberFromUser() {
+        String pattern = "[\\d]{8}"; // 8 digit mobile number
         String input = "";
         boolean validInput = false;
         while (!validInput) {
