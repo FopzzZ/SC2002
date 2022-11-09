@@ -5,6 +5,10 @@ import Controller.UserLoginController;
 
 public class UserLoginUI {
     public void main() {
+        System.out.println("\n" +
+                "----------------\n" +
+                "|Customer Login|\n" +
+                "----------------\n");
         System.out.println("Please enter your email:");
         String userEmail = InputController.getEmailFromUser();
         UserLoginController userLoginController = new UserLoginController(userEmail);
