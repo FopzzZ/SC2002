@@ -55,9 +55,9 @@ public class InitialiseDatabase {
                 MovieRating.G, "dk", cast);
 
         // initialise showtimes
-        addShowtime("202207111600", "202207111800", false);
-        addShowtime("202208111600", "202208111800", false);
-        addShowtime("202209111600", "202209111800", false);
+        addShowtime("202211111600", "202211111800", false);
+        addShowtime("202211121600", "202211121800", false);
+        addShowtime("202212111600", "202212111800", false);
 
         // initialise surcharges and discounts
         BookingController bookingController = new BookingController();
