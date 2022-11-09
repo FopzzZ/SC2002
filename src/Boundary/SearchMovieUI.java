@@ -17,10 +17,12 @@ public class SearchMovieUI {
                     "| Search/List Movies |\n" +
                     "----------------------\n" +
                     "1. List all movie titles\n" +
-                    "2. Search by movie title\n" +
-                    "3. Filter by movie type\n" +
-                    "4. Filter by movie status\n" +
-                    "5. Back to main menu\n");
+                    "2. List Top 5 ranking\n" +
+                    "3. List Top 5 ticket sales\n" +
+                    "4. Search by movie title\n" +
+                    "5. Filter by movie type\n" +
+                    "6. Filter by movie status\n" +
+                    "7. Back to main menu\n");
             System.out.print("Select action: ");
             ArrayList<Movie> selectedMovies = new ArrayList<Movie>();
             switch (InputController.getIntFromUser(1, 5)) {
@@ -28,19 +30,27 @@ public class SearchMovieUI {
                     showAllMovies();
 
                     break;
-                case 2:
+                case 2: 
+                    listTop5Ranking();
+                    
+                    break;
+                case 3:
+                    listTop5ByTicketSales();
+
+                    break;
+                case 4:
                     searchByTitle();
 
                     break;
-                case 3:
+                case 5:
                     selectedMovies = filterByType();
                     showAllMoviesTitle(selectedMovies);
                     break;
-                case 4:
+                case 6:
                     selectedMovies = filterByStatus();
                     showAllMoviesTitle(selectedMovies);
                     break;
-                case 5:
+                case 7:
                     return;
             }
         }
@@ -55,6 +65,16 @@ public class SearchMovieUI {
 
     public void showAllMovies() {
         movieController.listMovies();
+    }
+
+    private void listTop5Ranking() {
+        MovieController movieController = new MovieController();
+        movieController.listTop5ByRating();
+    }
+
+    private void listTop5ByTicketSales() {
+        MovieController movieController = new MovieController();
+        movieController.listTop5ByTicketSales();
     }
 
     public void searchByTitle() {
