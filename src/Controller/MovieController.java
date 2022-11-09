@@ -70,7 +70,7 @@ public class MovieController {
 
     public int searchWithTitle(String title) { // returns index of movie in movieList
         for (int i = 0; i < movieList.size(); ++i) {
-            if (movieList.get(i).getTitle().equals(title))
+            if (movieList.get(i).getTitle().toUpperCase().equals(title.toUpperCase()))
                 return i;
         }
         return -1;
