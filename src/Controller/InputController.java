@@ -72,7 +72,7 @@ public class InputController {
         return input;
     }
 
-    public static String getTimeFromUser() { // TODO make more specific so accepts valid time
+    public static String getTimeFromUser() {
         String input = "";
         boolean validInput = false;
         while (!validInput) {
