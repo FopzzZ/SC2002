@@ -2,6 +2,8 @@ package Boundary;
 
 import java.util.ArrayList;
 
+import javax.swing.event.SwingPropertyChangeSupport;
+
 import Controller.*;
 import Entity.Movie.*;
 
@@ -25,30 +27,58 @@ public class SearchMovieUI {
                     "7. Back to main menu\n");
             System.out.print("Select action: ");
             ArrayList<Movie> selectedMovies = new ArrayList<Movie>();
-            switch (InputController.getIntFromUser(1, 5)) {
+            switch (InputController.getIntFromUser(1, 7)) {
                 case 1:
+                    System.out.println("\n" +
+                            "-------------------\n" +
+                            "| Movie Catalogue |\n" +
+                            "-------------------");
                     showAllMovies();
-
                     break;
-                case 2: 
+                case 2:
                     listTop5Ranking();
-                    
                     break;
                 case 3:
                     listTop5ByTicketSales();
-
                     break;
                 case 4:
                     searchByTitle();
-
                     break;
                 case 5:
                     selectedMovies = filterByType();
-                    showAllMoviesTitle(selectedMovies);
+                    if (!selectedMovies.isEmpty()) {
+                        int dashLength = selectedMovies.get(0).getType().toString().length();
+                        System.out.println();
+                        for (int i = 0; i < dashLength + 11; i++) {
+                            System.out.print("-");
+                        }
+                        System.out.println("\n| " + selectedMovies.get(0).getType() + " Movies |");
+                        for (int i = 0; i < dashLength + 11; i++) {
+                            System.out.print("-");
+                        }
+                        System.out.println();
+                        showAllMoviesTitle(selectedMovies);
+                    } else {
+                        System.out.println("\nThere are no movies under this type.");
+                    }
                     break;
                 case 6:
                     selectedMovies = filterByStatus();
-                    showAllMoviesTitle(selectedMovies);
+                    if (!selectedMovies.isEmpty()) {
+                        int dashLength = selectedMovies.get(0).getStatus().toString().length();
+                        System.out.println();
+                        for (int i = 0; i < dashLength + 11; i++) {
+                            System.out.print("-");
+                        }
+                        System.out.println("\n| " + selectedMovies.get(0).getStatus() + " Movies |");
+                        for (int i = 0; i < dashLength + 11; i++) {
+                            System.out.print("-");
+                        }
+                        System.out.println();
+                        showAllMoviesTitle(selectedMovies);
+                    } else {
+                        System.out.println("\nThere are no movies under this status.");
+                    }
                     break;
                 case 7:
                     return;
@@ -57,7 +87,7 @@ public class SearchMovieUI {
     }
 
     private void showAllMoviesTitle(ArrayList<Movie> movies) {
-        for(int i = 0; i < movies.size(); ++i) {
+        for (int i = 0; i < movies.size(); ++i) {
             System.out.printf("Movie %d: %s\n", i + 1, movies.get(i).getTitle());
         }
         System.out.printf("Total %d movies.\n", movies.size());

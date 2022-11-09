@@ -48,7 +48,7 @@ public class MovieController {
             ObjectInputStream ois = new ObjectInputStream(new FileInputStream(dataBaseFilePath));
             ArrayList<Movie> movieListing = (ArrayList<Movie>) ois.readObject();
             ois.close();
-            System.out.println("Reading from movies database"); // for testing
+            System.out.println("Reading from movies database"); // TODO for testing (remove it ltr)
             return movieListing;
         } catch (ClassNotFoundException | IOException e) {
             System.out.println(e); // for testing
@@ -228,19 +228,23 @@ public class MovieController {
                 }
             }
         }
-        System.out.println("Top movies by rating:");
+        // System.out.println("Top movies by rating:");
+        System.out.println("\n" +
+                "-------------------------\n" +
+                "| Top 5 Movies (Rating) |\n" +
+                "-------------------------");
         for (int i = 0; i < topList.size(); ++i) {
             System.out.printf("Movie rated no.%d: %s (rating: %s)\n", i + 1, topList.get(i).getTitle(),
                     topList.get(i).getAverageReviewScore());
         }
     }
-    
+
     public void listTop5ByTicketSales() {
         ArrayList<Movie> tempList = new ArrayList<Movie>();
         tempList = readFromDB();
         ArrayList<Movie> topList = new ArrayList<Movie>();
         double highestSales = 0;
-        
+
         while (topList.size() < 5) {
             if (tempList.size() == 0) {
                 break;
@@ -258,7 +262,11 @@ public class MovieController {
                 }
             }
         }
-        System.out.println("Top movies by sales:");
+        // System.out.println("Top movies by sales:");
+        System.out.println("\n" +
+                "------------------------\n" +
+                "| Top 5 Movies (Sales) |\n" +
+                "------------------------");
         for (int i = 0; i < topList.size(); ++i) {
             System.out.printf("No.%d Most sold movie: %s (sales: %s)\n", i + 1, topList.get(i).getTitle(),
                     topList.get(i).getTicketSales());
@@ -273,9 +281,13 @@ public class MovieController {
 
     public void showDetail(String title) {
         int index = searchWithTitle(title);
-        if (index != -1)
+        if (index != -1) {
+            System.out.println("\n" +
+                    "-----------------\n" +
+                    "| Movie Details |\n" +
+                    "-----------------");
             System.out.println(movieList.get(index).toString());
-        else
+        } else
             System.out.println("No movie found.");
     }
 
