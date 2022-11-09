@@ -16,7 +16,7 @@ public class Movie implements Serializable {
     private ArrayList<Review> reviews;
     private double reviewScore;
     private ArrayList<Showtime> showtimes;
-    Private double ticketSales;
+    private double ticketSales;
 
     public Movie() {
         this.movieTitle = "";
