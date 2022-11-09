@@ -1,16 +1,30 @@
 package Controller;
 
-import java.util.regex.Pattern;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+import java.time.format.ResolverStyle;
 
 public class DoBCheckController {
 
-  public static boolean isValid(String dateOfBirth) {
-    String doBRegex = "^[0-3]?[0-9]/[0-3]?[0-9]/(?:[0-9]{2})?[0-9]{2}$";
+    public static boolean isValid(final String date) {
 
-    Pattern doBPattern = Pattern.compile(doBRegex);
-    if (dateOfBirth == null)
-      return false;
-    return doBPattern.matcher(dateOfBirth).matches();
+        boolean valid = false;
 
-  }
+        try {
+
+            // ResolverStyle.STRICT for 30, 31 days checking, and also leap year.
+            LocalDate.parse(date,
+                    DateTimeFormatter.ofPattern("d-M-uuuu")
+                            .withResolverStyle(ResolverStyle.STRICT));
+
+            valid = true;
+
+        } catch (DateTimeParseException e) {
+            e.printStackTrace();
+            valid = false;
+        }
+
+        return valid;
+    }
 }

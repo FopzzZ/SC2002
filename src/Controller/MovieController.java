@@ -163,6 +163,12 @@ public class MovieController {
         writeToDB(movieList);
     }
 
+    public void addTickectSales(String title, double price) {
+        int index = searchWithTitle(title);
+        movieList.get(index).addTicketSales(price);
+        writeToDB(movieList);
+    }
+
     // return false if no such movie, return true if removed successfully
     public boolean removeMovieByTitle(String title) {
         int index = searchWithTitle(title);
@@ -224,7 +230,7 @@ public class MovieController {
         }
         System.out.println("Top movies by rating:");
         for (int i = 0; i < topList.size(); ++i) {
-            System.out.printf("Movie rated no.%d: %s (rating: %s)\n", i + 1, topList.get(i).getTitle()),
+            System.out.printf("Movie rated no.%d: %s (rating: %s)\n", i + 1, topList.get(i).getTitle(),
                     topList.get(i).getAverageReviewScore());
         }
     }
@@ -254,7 +260,7 @@ public class MovieController {
         }
         System.out.println("Top movies by sales:");
         for (int i = 0; i < topList.size(); ++i) {
-            System.out.printf("No.%d Most sold movie: %s (sales: %s)\n", i + 1, topList.get(i).getTitle()),
+            System.out.printf("No.%d Most sold movie: %s (sales: %s)\n", i + 1, topList.get(i).getTitle(),
                     topList.get(i).getTicketSales());
         }
     }
