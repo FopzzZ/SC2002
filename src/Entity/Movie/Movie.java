@@ -16,6 +16,7 @@ public class Movie implements Serializable {
     private ArrayList<Review> reviews;
     private double reviewScore;
     private ArrayList<Showtime> showtimes;
+    Private double ticketSales;
 
     public Movie() {
         this.movieTitle = "";
@@ -28,6 +29,7 @@ public class Movie implements Serializable {
         this.cast = new ArrayList<String>();
         this.reviews = new ArrayList<Review>();
         this.showtimes = new ArrayList<Showtime>();
+        this.ticketSales = 0;
     }
 
     public Movie(String movieTitle, String synposis, String director, MovieType type, MovieStatus status,
@@ -43,6 +45,7 @@ public class Movie implements Serializable {
         this.reviews = review;
         this.showtimes = new ArrayList<Showtime>();
         this.reviewScore = 0;
+        this.ticketSales = 0;
     }
 
     public double getAverageReviewScore() { // returns average review score
@@ -263,6 +266,11 @@ public class Movie implements Serializable {
     public double getReviewScore() {
         return this.reviewScore;
     }
+    
+    public double getTicketSales() {
+        return this.ticketSales;
+    }
+    
 
     public String toString() {
         String castS = new String();
