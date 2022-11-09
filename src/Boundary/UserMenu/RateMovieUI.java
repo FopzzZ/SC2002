@@ -8,13 +8,19 @@ public class RateMovieUI {
     public void main() {
         MovieController movieController = new MovieController();
         movieController.listMovies();
-        System.out.println("Select movie to review");
-        int selection = InputController.getIntFromUser();
-        System.out.println("Please enter your rating for the movie");
-        int rating = InputController.getIntFromUser();
+        int selection = -1;
+        do {
+            System.out.println("Select movie to review");
+            selection = InputController.getIntFromUser();
+            selection = movieController.searchWithID(selection);
+            if (selection == -1)
+                System.out.println("Invalid input! Please try again.");
+        } while (selection == -1);
+        System.out.println("Please enter your rating for the movie (0 to 10)");
+        int rating = InputController.getIntFromUser(0, 10);
         System.out.println("Please enter your review");
         String reviewContent = InputController.getStringFromUser();
-        movieController.addUserReview(selection - 1, rating, reviewContent);
+        movieController.addUserReview(selection, rating, reviewContent);
 
     }
 

@@ -45,6 +45,10 @@ public class ModifyMovieMenuUI {
         MovieStatus showingStatus = MovieStatus.Coming;
         MovieType movieType = MovieType.Common;
         MovieRating rating = MovieRating.G;
+        System.out.println("\n" +
+                "-----------------------\n" +
+                "| Create Movie Listing|\n" +
+                "-----------------------\n");
         System.out.println("Enter movie title: ");
         movieTitle = InputController.getStringFromUser();
         System.out.println("Select showing status:\n" +
@@ -110,6 +114,10 @@ public class ModifyMovieMenuUI {
 
     private void updateMovieListing() {
         movieController.listMovies();
+        System.out.println("\n" +
+                "-----------------------\n" +
+                "| Update Movie Listing|\n" +
+                "-----------------------\n");
         System.out.println("Select movie to update: ");
         int ID = InputController.getIntFromUser();
         movieController.updateMovieByID(ID);
@@ -117,6 +125,10 @@ public class ModifyMovieMenuUI {
 
     private void removeMovieListing() { // deletes off database for now
         movieController.listMovies();
+        System.out.println("\n" +
+                "-----------------------\n" +
+                "| Remove Movie Listing|\n" +
+                "-----------------------\n");
         System.out.println("Select movie to remove: ");
         int ID = InputController.getIntFromUser();
         boolean success = movieController.removeMovieByID(ID);
