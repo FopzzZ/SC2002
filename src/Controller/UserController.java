@@ -66,7 +66,7 @@ public class UserController {
 
     public User getUser(String email) {
         for (User user : userList) {
-            System.out.println(user.getEmail());
+            // System.out.println(user.getEmail());
             if (user.getEmail().equals(email)) {
                 return user;
             }

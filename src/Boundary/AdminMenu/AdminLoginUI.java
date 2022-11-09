@@ -11,7 +11,7 @@ public class AdminLoginUI {
         System.out.println("\n" +
                 "---------------\n" +
                 "| Admin Login |\n" +
-                "---------------\n");
+                "---------------");
         while (exit == false) {
             System.out.println("Please enter your username: ");
             username = InputController.getStringFromUser(); // get username
@@ -31,9 +31,10 @@ public class AdminLoginUI {
                     continue;
                 }
             } else {
-                System.out.println("You have logged in sucessfully.\n\n");
+                System.out.println("You have logged in sucessfully.");
                 AdminMenuUI adminMenuUI = new AdminMenuUI();
                 adminMenuUI.main();
+                return;
             }
         }
     }

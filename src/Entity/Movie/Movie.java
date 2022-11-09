@@ -270,11 +270,10 @@ public class Movie implements Serializable {
     public double getReviewScore() {
         return this.reviewScore;
     }
-    
+
     public double getTicketSales() {
         return this.ticketSales;
     }
-    
 
     public String toString() {
         String castS = new String();
@@ -290,7 +289,8 @@ public class Movie implements Serializable {
             reviewS = "N/A";
         } else {
             for (int i = 0; i < this.getReviews().size(); ++i) {
-                reviewS += "\n\n" + this.getReviews().get(i).getContent();
+                reviewS += "\n\n" + (i + 1) + ". (" + this.getReviews().get(i).getRating() + ") - "
+                        + this.getReviews().get(i).getContent();
             }
         }
 

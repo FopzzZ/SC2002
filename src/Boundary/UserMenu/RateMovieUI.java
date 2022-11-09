@@ -10,15 +10,15 @@ public class RateMovieUI {
         movieController.listMovies();
         int selection = -1;
         do {
-            System.out.println("Select movie to review");
+            System.out.print("\nSelect movie to review: ");
             selection = InputController.getIntFromUser();
             selection = movieController.searchWithID(selection);
             if (selection == -1)
                 System.out.println("Invalid input! Please try again.");
         } while (selection == -1);
-        System.out.println("Please enter your rating for the movie (0 to 10)");
+        System.out.print("Please enter your rating for the movie (0 to 10): ");
         int rating = InputController.getIntFromUser(0, 10);
-        System.out.println("Please enter your review");
+        System.out.print("Please enter your review: ");
         String reviewContent = InputController.getStringFromUser();
         movieController.addUserReview(selection, rating, reviewContent);
 

@@ -191,6 +191,10 @@ public class MovieController {
     }
 
     public void listMovies() {
+        System.out.println("\n" +
+                "-------------------\n" +
+                "| Movie Catalogue |\n" +
+                "-------------------");
         for (int i = 0; i < movieList.size(); ++i) {
             System.out.printf("Movie %d: %s\n", i + 1, movieList.get(i).getTitle());
         }

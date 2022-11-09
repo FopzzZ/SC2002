@@ -29,6 +29,10 @@ public class User implements Serializable {
     }
 
     public void printBookingHistory() {
+        System.out.println("\n" +
+                "-------------------\n" +
+                "| Booking History |\n" +
+                "-------------------");
         if (bookingHistory.size() == 0) {
             System.out.println("Booking history is empty");
             return;

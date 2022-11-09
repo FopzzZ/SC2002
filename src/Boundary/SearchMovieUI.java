@@ -2,7 +2,7 @@ package Boundary;
 
 import java.util.ArrayList;
 
-import javax.swing.event.SwingPropertyChangeSupport;
+//import javax.swing.event.SwingPropertyChangeSupport;
 
 import Controller.*;
 import Entity.Movie.*;
@@ -29,10 +29,6 @@ public class SearchMovieUI {
             ArrayList<Movie> selectedMovies = new ArrayList<Movie>();
             switch (InputController.getIntFromUser(1, 7)) {
                 case 1:
-                    System.out.println("\n" +
-                            "-------------------\n" +
-                            "| Movie Catalogue |\n" +
-                            "-------------------");
                     showAllMovies();
                     break;
                 case 2:
@@ -108,7 +104,7 @@ public class SearchMovieUI {
     }
 
     public void searchByTitle() {
-        System.out.println("Enter movie title to search:");
+        System.out.print("Enter movie title to search: ");
         title = InputController.getStringFromUser();
         movieController.showDetail(title);
     }

@@ -24,10 +24,10 @@ public class UserMenuUI {
                     "3. Check seat availability\n" +
                     "4. Book ticket\n" +
                     "5. View booking history\n" +
-                    "6. List Top 5 ranking\n" +
-                    "7. List Top 5 ticket sales\n" +
-                    "8. Rate a movie\n" +
-                    "9. Log out\n");
+                    // "6. List Top 5 ranking\n" +
+                    // "7. List Top 5 ticket sales\n" +
+                    "6. Rate a movie\n" +
+                    "7. Log out\n");
             System.out.print("Select action: ");
             int choice = InputController.getIntFromUser(1, 9);
             switch (choice) {
@@ -46,15 +46,19 @@ public class UserMenuUI {
                 case 5:
                     viewBookingHistory();
                     break;
+                /*
+                 * case 6:
+                 * listTop5Ranking();
+                 * break;
+                 * case 7:
+                 * listTop5ByTicketSales();
+                 * break;
+                 */
                 case 6:
-                    listTop5Ranking();
+                    rateMovie();
                     break;
                 case 7:
-                    listTop5ByTicketSales();
-                    break;
-                case 8:
-                    rateMovie();
-                case 9:
+                    System.out.println("Logged out successfully!");
                     return;
             }
         }
