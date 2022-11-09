@@ -73,15 +73,14 @@ public class InputController {
     }
 
     public static String getTimeFromUser() { // TODO make more specific so accepts valid time
-        String pattern = "[\\d]{12}";
         String input = "";
         boolean validInput = false;
         while (!validInput) {
             input = getStringFromUser();
-            if (input.matches(pattern)) {
+            if (DateTimeCheckController.isValid(input)) {
                 validInput = true;
             } else {
-                System.out.println("Please enter a valid time!");
+                System.out.println("Please enter a valid date and time (YYYYMMddHHmm)");
             }
         }
         return input;
