@@ -228,6 +228,36 @@ public class MovieController {
                     topList.get(i).getAverageReviewScore());
         }
     }
+    
+    public void listTop5ByTicketSales() {
+        ArrayList<Movie> tempList = new ArrayList<Movie>();
+        tempList = readFromDB();
+        ArrayList<Movie> topList = new ArrayList<Movie>();
+        double highestSales = 0;
+        
+        while (topList.size() < 5) {
+            if (tempList.size() == 0) {
+                break;
+            }
+            highestSales = 0;
+            for (int i = 0; i < tempList.size(); i++) {
+                if (tempList.get(i).getTicketSales() > highestSales) {
+                    highestSales = tempList.get(i).getTicketSales();
+                }
+            }
+            for (int i = 0; i < tempList.size(); i++) {
+                if (tempList.get(i).getTicketSales() == highestSales) {
+                    topList.add(tempList.get(i));
+                    tempList.remove(i);
+                }
+            }
+        }
+        System.out.println("Top movies by sales:");
+        for (int i = 0; i < topList.size(); ++i) {
+            System.out.printf("No.%d Most sold movie: %s (sales: %s)\n", i + 1, topList.get(i).getTitle()),
+                    topList.get(i).getTicketSales());
+        }
+    }
 
     public void addUserReview(int index, int rating, String reviewContent) {
         movieList.get(index).addReview(rating, reviewContent);
