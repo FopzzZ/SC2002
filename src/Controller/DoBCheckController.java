@@ -21,7 +21,7 @@ public class DoBCheckController {
             valid = true;
 
         } catch (DateTimeParseException e) {
-            e.printStackTrace();
+            //e.printStackTrace();
             valid = false;
         }
 
