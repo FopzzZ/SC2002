@@ -15,7 +15,7 @@ public class DoBCheckController {
 
             // ResolverStyle.STRICT for 30, 31 days checking, and also leap year.
             LocalDate.parse(date,
-                    DateTimeFormatter.ofPattern("d-M-uuuu")
+                    DateTimeFormatter.ofPattern("d/M/uuuu")
                             .withResolverStyle(ResolverStyle.STRICT));
 
             valid = true;
