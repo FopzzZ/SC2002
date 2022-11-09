@@ -25,10 +25,11 @@ public class UserMenuUI {
                     "4. Book ticket\n" +
                     "5. View booking history\n" +
                     "6. List Top 5 ranking\n" +
-                    "7. Rate a movie\n" +
-                    "8. Log out\n");
+                    "7. List Top 5 ticket sales\n" +
+                    "8. Rate a movie\n" +
+                    "9. Log out\n");
             System.out.print("Select action: ");
-            int choice = InputController.getIntFromUser(1, 8);
+            int choice = InputController.getIntFromUser(1, 9);
             switch (choice) {
                 case 1:
                     searchListMovies();
@@ -49,9 +50,11 @@ public class UserMenuUI {
                     listTop5Ranking();
                     break;
                 case 7:
-                    rateMovie();
+                    listTop5ByTicketSales();
                     break;
                 case 8:
+                    rateMovie();
+                case 9:
                     return;
             }
         }
@@ -86,6 +89,11 @@ public class UserMenuUI {
     private void listTop5Ranking() {
         MovieController movieController = new MovieController();
         movieController.listTop5ByRating();
+    }
+
+    private void listTop5ByTicketSales() {
+        MovieController movieController = new MovieController();
+        movieController.listTop5ByTicketSales();
     }
 
     private void rateMovie() {

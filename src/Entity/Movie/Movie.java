@@ -16,7 +16,7 @@ public class Movie implements Serializable {
     private ArrayList<Review> reviews;
     private double reviewScore;
     private ArrayList<Showtime> showtimes;
-    Private double ticketSales;
+    private double ticketSales;
 
     public Movie() {
         this.movieTitle = "";
@@ -216,6 +216,10 @@ public class Movie implements Serializable {
 
     public void addCast(String cast) {
         this.cast.add(cast);
+    }
+
+    public void addTicketSales(double ticketPrice) {
+        this.ticketSales += ticketPrice;
     }
 
     public void addReview(double rating, String content) {
