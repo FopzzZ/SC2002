@@ -293,9 +293,13 @@ public class MovieController {
 
     public void showDetailByID(int ID) {
         int index = searchWithID(ID);
-        if (index != -1)
+        if (index != -1) {
+            System.out.println("\n" +
+                    "-----------------\n" +
+                    "| Movie Details |\n" +
+                    "-----------------");
             System.out.println(movieList.get(index).toString());
-        else
+        } else
             System.out.println("No movie found.");
     }
 
