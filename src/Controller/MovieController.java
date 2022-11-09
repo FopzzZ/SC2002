@@ -191,6 +191,14 @@ public class MovieController {
         System.out.printf("Total %d movies.\n", movieList.size());
     }
 
+    public void listEndedMovies() {
+        ArrayList<Movie> tempList = filterByStatus(MovieStatus.Ended);
+        for (int i = 0; i < tempList.size(); ++i) {
+            System.out.printf("Movie %d: %s\n", i + 1, tempList.get(i).getTitle());
+        }
+        System.out.printf("Total %d movies.\n", tempList.size());
+    }
+
     public void listTop5ByRating() {
         ArrayList<Movie> tempList = new ArrayList<Movie>();
         tempList = readFromDB();
