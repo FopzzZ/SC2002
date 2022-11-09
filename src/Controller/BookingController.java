@@ -1,7 +1,9 @@
 package Controller;
 
+import java.io.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.ArrayList;
 
 import Entity.Cinema.CinemaType;
 import Entity.Movie.Movie;
@@ -11,25 +13,173 @@ import Entity.User.AgeClass;
 import Entity.User.User;
 
 public class BookingController {
+    double goldclassSurcharge, platinumSurcharge, imaxSurcharge, blockbusterSurcharge,
+            threedSurcharge, childDiscount,
+            seniorCitizenDiscount, weekendSurcharge, holidaySurcharge, defaultTicketPrice;
+
+    private final static String DataBaseFilePath = "DataBase/Surcharges.txt";
+    private static ArrayList<Double> surchargeList;
+
     public BookingController() {
+        surchargeList = new ArrayList<Double>();
+        File dbFile = new File(DataBaseFilePath);
+        if (dbFile.exists()) {
+            surchargeList = readFromDB();
+            update();
+
+        }
+
+    }
+
+    public void update() {
+        if (surchargeList.size() == 10) {
+            this.goldclassSurcharge = surchargeList.get(0);
+            this.platinumSurcharge = surchargeList.get(1);
+            this.imaxSurcharge = surchargeList.get(2);
+            this.blockbusterSurcharge = surchargeList.get(3);
+            this.threedSurcharge = surchargeList.get(4);
+            this.childDiscount = surchargeList.get(5);
+            this.seniorCitizenDiscount = surchargeList.get(6);
+            this.weekendSurcharge = surchargeList.get(7);
+            this.holidaySurcharge = surchargeList.get(8);
+            this.defaultTicketPrice = surchargeList.get(9);
+        }
+
+    }
+
+    @SuppressWarnings("unchecked")
+    public ArrayList<Double> readFromDB() {
+        try {
+            ObjectInputStream ois = new ObjectInputStream(new FileInputStream(DataBaseFilePath));
+            ArrayList<Double> surchargeList = (ArrayList<Double>) ois.readObject();
+            ois.close();
+            return surchargeList;
+        } catch (ClassNotFoundException | IOException e) {
+            System.out.println("Error when reading from surcharge DB");
+            System.out.println(e);
+        }
+        return new ArrayList<Double>();
+    }
+
+    public void writeToDB(ArrayList<Double> surchargeList) {
+        try {
+            ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(DataBaseFilePath));
+            out.writeObject(surchargeList);
+            out.flush();
+            out.close();
+            update();
+        } catch (IOException e) {
+            System.out.print(e.toString());
+            System.out.println("Error when writing to surcharge DB");
+        }
+    }
+
+    public void clearDatabase() {
+        while (surchargeList.size() > 0) {
+            surchargeList.remove(0);
+        }
+        writeToDB(surchargeList);
+        System.out.println("Clearing surcharge database");
+    }
+
+    public void editClassSurcharge(double goldclassSurcharge, double platinumSurcharge, double imaxSurcharge) {
+        surchargeList.remove(0);
+        surchargeList.add(0, goldclassSurcharge);
+        surchargeList.remove(1);
+        surchargeList.add(1, platinumSurcharge);
+        surchargeList.remove(2);
+        surchargeList.add(2, imaxSurcharge);
+        writeToDB(surchargeList);
+        update();
+    }
+
+    public void editTypeSurcharge(double blockbusterSurcharge, double threedSurcharge) {
+        surchargeList.remove(3);
+        surchargeList.add(3, blockbusterSurcharge);
+        surchargeList.remove(4);
+        surchargeList.add(4, threedSurcharge);
+        writeToDB(surchargeList);
+        update();
+    }
+
+    public void editAgeDiscount(double childDiscount, double seniorCitizenDiscount) {
+        surchargeList.remove(5);
+        surchargeList.add(5, childDiscount);
+        surchargeList.remove(6);
+        surchargeList.add(6, seniorCitizenDiscount);
+        writeToDB(surchargeList);
+        update();
+    }
+
+    public void editWeekendSurcharge(double weekendSurcharge, double holidaySurcharge) {
+        surchargeList.remove(7);
+        surchargeList.add(7, weekendSurcharge);
+        surchargeList.remove(8);
+        surchargeList.add(8, holidaySurcharge);
+        writeToDB(surchargeList);
+        update();
+    }
+
+    public void editDefaultTicketPrice(double defaultTicketPrice) {
+        surchargeList.remove(9);
+        surchargeList.add(9, defaultTicketPrice);
+        writeToDB(surchargeList);
+        update();
+    }
+
+    public void printSurcharges() {
+        System.out.println("goldclassSurcharge: " + goldclassSurcharge);
+        System.out.println("platinumSurcharge: " + platinumSurcharge);
+        System.out.println("imaxSurcharge: " + imaxSurcharge);
+        System.out.println("blockbusterSurcharge: " + blockbusterSurcharge);
+        System.out.println("threedSurcharge: " + threedSurcharge);
+        System.out.println("childDiscount: " + childDiscount);
+        System.out.println("seniorCitizenDiscount: " + seniorCitizenDiscount);
+        System.out.println("weekendSurcharge: " + weekendSurcharge);
+        System.out.println("holidaySurcharge: " + holidaySurcharge);
+        System.out.println("defaultTicketPrice: " + defaultTicketPrice);
+    }
+
+    public void setSurcharges(double goldclassSurcharge, double platinumSurcharge, double imaxSurcharge,
+            double blockbusterSurcharge, double threedSurcharge, double childDiscount,
+            double seniorCitizenDiscount, double weekendSurcharge, double holidaySurcharge, double defaultTicketPrice) {
+        ArrayList<Double> surchargeList = new ArrayList<Double>();
+        surchargeList.add(goldclassSurcharge);
+        surchargeList.add(platinumSurcharge);
+        surchargeList.add(holidaySurcharge);
+        surchargeList.add(blockbusterSurcharge);
+        surchargeList.add(threedSurcharge);
+        surchargeList.add(childDiscount);
+        surchargeList.add(seniorCitizenDiscount);
+        surchargeList.add(weekendSurcharge);
+        surchargeList.add(holidaySurcharge);
+        surchargeList.add(defaultTicketPrice);
+        writeToDB(surchargeList);
+        update();
+    }
+
+    // test
+    public static void main(String[] args) {
+        BookingController bookingController = new BookingController();
+        bookingController.printSurcharges();
 
     }
 
     // get ticket price based on type of movie,class of cinema, age, day of week or
     // public holiday
-    public double getTicketPrice(Movie movie, Showtime showtime, User user) { // TODO add seat type
-        double defaultPrice = 8.0; // for normal class cinema, common movie type, adult and weekday (Mon-Thur)
+    public double getTicketPrice(Movie movie, Showtime showtime, User user) {
+        double defaultPrice = defaultTicketPrice;
         // add price based on cinemaClass
         CinemaType cinemaClass = showtime.getCinema().getType();
         switch (cinemaClass) {
             case GOLDCLASS:
-                defaultPrice += 2.0;
+                defaultPrice += goldclassSurcharge;
                 break;
             case PLATINUM:
-                defaultPrice += 4.0;
+                defaultPrice += platinumSurcharge;
                 break;
             case IMAX:
-                defaultPrice += 5.0;
+                defaultPrice += imaxSurcharge;
                 break;
             case NORMAL:
                 break;
@@ -38,10 +188,10 @@ public class BookingController {
         MovieType movieType = movie.getType();
         switch (movieType) {
             case Blockbuster:
-                defaultPrice += 2.0;
+                defaultPrice += blockbusterSurcharge;
                 break;
             case ThreeD:
-                defaultPrice += 3.0;
+                defaultPrice += threedSurcharge;
                 break;
             case Common:
                 break;
@@ -50,22 +200,27 @@ public class BookingController {
         AgeClass ageClass = getAgeClass(user, showtime);
         switch (ageClass) {
             case CHILD:
-                defaultPrice -= 5;
+                defaultPrice -= childDiscount;
                 break;
             case SENIORCITIZEN:
-                defaultPrice -= 5;
+                defaultPrice -= seniorCitizenDiscount;
                 break;
             case ADULT:
                 break;
         }
-        int dayOfWeek = showtime.getStartTime().getDayOfWeek();
-        switch (dayOfWeek) {
-            case 1, 2, 3:
-                defaultPrice += 2.0;
-                break;
-            case 4, 5, 6, 7:
-                break;
+        if (showtime.getIsHoliday()) {
+            defaultPrice += holidaySurcharge;
+        } else {
+            int dayOfWeek = showtime.getStartTime().getDayOfWeek();
+            switch (dayOfWeek) {
+                case 1, 2, 3:
+                    defaultPrice += weekendSurcharge;
+                    break;
+                case 4, 5, 6, 7:
+                    break;
+            }
         }
+
         return defaultPrice;
     }
 
@@ -78,7 +233,7 @@ public class BookingController {
         int dobYear; // dobMonth, dobDay;
         // dobDay = Integer.parseInt(dob.substring(0, 2));
         // dobMonth = Integer.parseInt(dob.substring(2, 4));
-        //dob: 19/19/1919
+        // dob: 19/19/1919
         dobYear = Integer.parseInt(dob.substring(6, 10));
         int roughAge = showtimeYear - dobYear;
         if (roughAge > 65) {
@@ -104,19 +259,5 @@ public class BookingController {
         String cineplexID = cineplexName.substring(0, 2).toUpperCase();
         String id = String.format("%s%s%04d%02d%02d%02d%02d", cineplexID, cinemaID, year, month, day, hour, minute);
         return id;
-    }
-
-    // testing
-    public static void main(String[] args) {
-        int hour = LocalTime.now().getHour();
-        int minute = LocalTime.now().getMinute();
-        int year = LocalDate.now().getYear();
-        int month = LocalDate.now().getMonthValue();
-        int day = LocalDate.now().getDayOfMonth();
-        String cinemaID = "2";
-        String cineplexID = "JU";
-
-        String id = String.format("%s%s%04d%02d%02d%02d%02d", cineplexID, cinemaID, year, month, day, hour, minute);
-        System.out.println(id);
     }
 }

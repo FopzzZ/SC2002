@@ -130,4 +130,24 @@ public class InputController {
         }
         return input;
     }
+
+    public static double getDoubleFromUser() { // should work
+        String pattern = "[0-9]+[.]?[0-9]{0,2}?";
+        String input = "";
+        boolean validInput = false;
+        while (!validInput) {
+            input = getStringFromUser();
+            if (input.matches(pattern)) {
+                validInput = true;
+            } else {
+                System.out.println("Please enter a valid amount!");
+            }
+        }
+        return Double.parseDouble(input);
+    }
+
+    public static void main(String[] args) {
+        double test = InputController.getDoubleFromUser();
+        System.out.println(test);
+    }
 }

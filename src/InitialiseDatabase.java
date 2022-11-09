@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 
 import Controller.AdminController;
+import Controller.BookingController;
 import Controller.CineplexController;
 import Controller.MovieController;
 import Controller.ShowtimeController;
@@ -57,6 +58,13 @@ public class InitialiseDatabase {
         addShowtime("202207111600", "202207111800", false);
         addShowtime("202208111600", "202208111800", false);
         addShowtime("202209111600", "202209111800", false);
+
+        // initialise surcharges and discounts
+        BookingController bookingController = new BookingController();
+        bookingController.clearDatabase();
+        bookingController.setSurcharges(2, 4, 5,
+                2, 3, 5,
+                5, 2, 3, 8);
     }
 
     public static void addShowtime(String start, String end, boolean isHoliday) {
