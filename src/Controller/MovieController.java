@@ -163,6 +163,12 @@ public class MovieController {
         writeToDB(movieList);
     }
 
+    public void addTickectSales(String title, double price) {
+        int index = searchWithTitle(title);
+        movieList.get(index).addTicketSales(price);
+        writeToDB(movieList);
+    }
+
     // return false if no such movie, return true if removed successfully
     public boolean removeMovieByTitle(String title) {
         int index = searchWithTitle(title);

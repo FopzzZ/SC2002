@@ -61,7 +61,7 @@ public class BookTicketUI {
         System.out.println("Confirm booking? (Y/N)");
         if (InputController.getYesOrNoFromUser()) {
             selectedMovie.addTicketSales(ticketPrice);
-            movieController.writeToDB(movieController.getMovieList());
+            movieController.addTickectSales(selectedMovie.getTitle(), ticketPrice);
             showtimeController.updateSeatingPlan(selectedShowtime);
             selectedShowtime.getSeatplan().showSeatplan();
             Ticket ticket = new Ticket(ticketPrice, selectedShowtime);
