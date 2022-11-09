@@ -224,7 +224,7 @@ public class MovieController {
         }
         System.out.println("Top movies by rating:");
         for (int i = 0; i < topList.size(); ++i) {
-            System.out.printf("Movie rated no.%d: %s (rating: %s)\n", i + 1, topList.get(i).getTitle(),
+            System.out.printf("Movie rated no.%d: %s (rating: %s)\n", i + 1, topList.get(i).getTitle()),
                     topList.get(i).getAverageReviewScore());
         }
     }
