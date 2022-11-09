@@ -9,9 +9,9 @@ public class AdminLoginUI {
     public void main() {
         boolean validLogin, exit = false;
         System.out.println("\n" +
-                "-------------\n" +
-                "|Admin Login|\n" +
-                "-------------\n");
+                "---------------\n" +
+                "| Admin Login |\n" +
+                "---------------\n");
         while (exit == false) {
             System.out.println("Please enter your username: ");
             username = InputController.getStringFromUser(); // get username
