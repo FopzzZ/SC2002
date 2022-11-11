@@ -5,7 +5,7 @@ import java.io.Serializable;
 import Entity.Cinema.*;
 import Entity.Seat.*;
 
-public class Showtime implements Serializable {
+public class Showtime implements Serializable, Comparable<Showtime> {
     private boolean isHoliday;
     private Time startTime;
     private Time endTime;
@@ -84,6 +84,20 @@ public class Showtime implements Serializable {
 
     public Cineplex getCineplex() {
         return this.cineplex;
+    }
+
+    public int compareTo(Showtime y) {
+        if(this.getStartTime().getYear() != y.startTime.getYear())
+            return this.getStartTime().getYear()<y.getStartTime().getYear()? -1 : 1;
+        if(this.getStartTime().getMonth() != y.startTime.getMonth())
+            return this.startTime.getMonth() < y.getStartTime().getMonth()? -1 : 1;
+        if(this.getStartTime().getDay() != y.startTime.getDay()) 
+            return this.getStartTime().getDay() < y.getStartTime().getDay()? -1 : 1;
+        if(this.getStartTime().getHour() != y.startTime.getHour()) 
+            return this.getStartTime().getHour() < y.getStartTime().getHour()? -1 : 1;
+        if(this.getStartTime().getMinutes() != y.startTime.getMinutes()) 
+            return this.getStartTime().getMinutes() < y.getStartTime().getMinutes()? -1 : 1;
+        return 0;
     }
 
     public String toString() {
