@@ -23,7 +23,7 @@ public class CineplexController {
             ObjectInputStream ois = new ObjectInputStream(new FileInputStream(dataBaseFilePath));
             ArrayList<Cineplex> cineplexList = (ArrayList<Cineplex>) ois.readObject();
             ois.close();
-            System.out.println("Reading from cineplex database"); // for testing
+            // System.out.println("Reading from cineplex database");
             return cineplexList;
         } catch (ClassNotFoundException | IOException e) {
             System.out.println(e); // for testing
@@ -37,7 +37,7 @@ public class CineplexController {
             out.writeObject(cineplexList);
             out.flush();
             out.close();
-            System.out.println("Updating cineplex database"); // for testing
+            // System.out.println("Updating cineplex database");
         } catch (IOException e) {
             System.out.println(e); // for testing
         }
@@ -85,7 +85,7 @@ public class CineplexController {
             cineplexList.remove(0);
         }
         writeToDB(cineplexList);
-        System.out.println("Clearing cineplex database");
+        // System.out.println("Clearing cineplex database");
     }
 
 }

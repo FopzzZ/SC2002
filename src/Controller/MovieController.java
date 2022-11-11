@@ -48,7 +48,7 @@ public class MovieController {
             ObjectInputStream ois = new ObjectInputStream(new FileInputStream(dataBaseFilePath));
             ArrayList<Movie> movieListing = (ArrayList<Movie>) ois.readObject();
             ois.close();
-            System.out.println("Reading from movies database"); // TODO for testing (remove it ltr)
+            // System.out.println("Reading from movies database");
             return movieListing;
         } catch (ClassNotFoundException | IOException e) {
             System.out.println(e); // for testing
@@ -62,7 +62,7 @@ public class MovieController {
             out.writeObject(movielist);
             out.flush();
             out.close();
-            System.out.println("Updating movies database"); // for testing
+            // System.out.println("Updating movies database"); // for testing
         } catch (IOException e) {
             System.out.println(e); // print error
         }
@@ -200,8 +200,6 @@ public class MovieController {
         }
         System.out.printf("Total %d movies.\n", movieList.size());
     }
-
-
 
     public void listTop5ByRating() {
         ArrayList<Movie> tempList = new ArrayList<Movie>();

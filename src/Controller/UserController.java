@@ -46,17 +46,17 @@ public class UserController {
 
     public boolean addUser(String email, String mobileNumber, String name, String dateOfBirth) {
         if (!EmailCheckController.isValid(email)) {
-            System.out.println("Invalid email address");
+            // System.out.println("Invalid email address");
             return false;
         }
         if (!DoBCheckController.isValid(dateOfBirth)) {
-            System.out.println("Invalid date of birth (dd/mm/yyyy)");
+            // System.out.println("Invalid date of birth (dd/mm/yyyy)");
             return false;
         }
         User newUser = new User(email, mobileNumber, name, dateOfBirth);
         userList.add(newUser);
         writeToDB(userList);
-        System.out.println("User added successfully");
+        // System.out.println("User added successfully");
         return true;
     }
 
@@ -80,7 +80,7 @@ public class UserController {
             userList.remove(0);
         }
         writeToDB(userList);
-        System.out.println("Clearing user database");
+        // System.out.println("Clearing user database");
     }
 
     public void addBookingToHistory(Booking booking, String userEmail) {
