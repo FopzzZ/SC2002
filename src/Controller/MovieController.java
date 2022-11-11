@@ -140,7 +140,7 @@ public class MovieController {
     public void updateMovieByTitle(String title) {
         int index = searchWithTitle(title);
         if (index == -1) {
-            System.out.println("No such movie");
+            System.out.println("No such movie!");
             return;
         }
         boolean isDeleted = movieList.get(index).updateDetail();
@@ -153,7 +153,7 @@ public class MovieController {
     public void updateMovieByID(int ID) {
         int index = searchWithID(ID);
         if (index == -1) {
-            System.out.println("No such movie");
+            System.out.println("No such movie!");
             return;
         }
         boolean isDeleted = movieList.get(index).updateDetail();

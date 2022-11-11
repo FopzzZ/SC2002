@@ -112,27 +112,29 @@ public class ModifyMovieMenuUI {
 
     private void updateMovieListing() {
         System.out.println("\n" +
-                "-----------------------\n" +
-                "| Update Movie Listing|\n" +
-                "-----------------------\n");
+                "------------------------\n" +
+                "| Update Movie Listing |\n" +
+                "------------------------\n" +
+                "Enter non-existent movie index to exit");
         movieController.listMovies();
-        System.out.println("Select movie to update: ");
+        System.out.print("\nSelect movie to update: ");
         int ID = InputController.getIntFromUser();
         movieController.updateMovieByID(ID);
     }
 
     private void removeMovieListing() { // deletes off database for now
-        movieController.listMovies();
         System.out.println("\n" +
-                "-----------------------\n" +
-                "| Remove Movie Listing|\n" +
-                "-----------------------\n");
-        System.out.println("Select movie to remove: ");
+                "------------------------\n" +
+                "| Remove Movie Listing |\n" +
+                "------------------------\n" +
+                "Enter non-existent movie index to exit");
+        movieController.listMovies();
+        System.out.print("\nSelect movie to remove: ");
         int ID = InputController.getIntFromUser();
         boolean success = movieController.removeMovieByID(ID);
         if (success)
-            System.out.println("Movie has been removed");
+            System.out.println("Movie has been removed!");
         else
-            System.out.println("The movie does not exist.");
+            System.out.println("No such movie!");
     }
 }
