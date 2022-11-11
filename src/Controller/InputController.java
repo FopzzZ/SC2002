@@ -131,7 +131,7 @@ public class InputController {
     }
 
     public static double getDoubleFromUser() { // should work
-        String pattern = "[0-9]+[.]?[0-9]{0,2}?";
+        String pattern = "[-]?[0-9]+[.]?[0-9]{0,2}?";
         String input = "";
         boolean validInput = false;
         while (!validInput) {
