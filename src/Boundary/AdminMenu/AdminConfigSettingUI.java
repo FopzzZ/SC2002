@@ -7,6 +7,29 @@ public class AdminConfigSettingUI {
 
     public void main() {
         bookingController = new BookingController();
+        
+         while (true) {
+            System.out.println("\n" +
+                    "------------------------\n" +
+                    "| Admin Settings |\n" +
+                    "------------------------\n" +
+                    "1. Modify ticket prices\n" +
+                    "2. Modify cineplex\n" +
+                    "3. Back to main menu\n");
+            System.out.println("Select action: ");
+            switch (InputController.getIntFromUser(1, 3)) {
+                case 1:
+                    modifyTicketPrices();
+                    break;
+                case 2:
+                    modifyCineplex();
+                    break;
+                case 3:
+                    return;
+            }
+    }
+    
+    private void modifyTicketPrices() {
         while (true) {
             System.out.println("\n" +
                     "------------------------\n" +
@@ -16,9 +39,9 @@ public class AdminConfigSettingUI {
                     "2. Modify movie type surcharge\n" +
                     "3. Modify holiday/weekend surcharge\n" +
                     "4. Modify student/senior citizen discount\n" +
-                    "5. Modify default ticket price\n" +
+                    "5. Modify basic ticket price\n" +
                     "6. Check current surcharges and discounts\n" +
-                    "7. Back to main menu\n");
+                    "7. Back to admin settings\n");
             System.out.println("Select action: ");
             switch (InputController.getIntFromUser(1, 7)) {
                 case 1:
@@ -41,9 +64,64 @@ public class AdminConfigSettingUI {
                     break;
                 case 7:
                     return;
-
             }
         }
+    }
+    
+    private void modifyCineplex() {
+        while (true) {
+            System.out.println("\n" +
+                    "------------------------\n" +
+                    "| Modify cineplexes |\n" +
+                    "------------------------\n" +
+                    "1. Add cineplex\n" +
+                    "2. Remove cineplex\n" +
+                    "3. Configure cineplex\n" +
+                    "4. Back to admin settings");
+            System.out.println("Select action: ");
+            switch (InputController.getIntFromUser(1, 5)) {
+                case 1:
+                    addCineplex();
+                    break;
+                case 2:
+                    removeCineplex();
+                    break;
+                case 3:
+                    configureCineplex();
+                    break;
+                case 4:
+                    return;
+                      
+            }
+    }
+        
+    private void configureCineplex() {
+         String cineplexName;
+         System.out.println("Enter the cineplex you wish to configure:");
+         cineplexName = InputController.getStringFromUser();
+         while (true) {
+            System.out.println("\n" +
+                    "------------------------\n" +
+                    "| Configure cineplex |\n" +
+                    "------------------------\n" +
+                    "1. Add cinema\n" +
+                    "2. Change cinema type\n" +
+                    "3. Back to modify cineplex");
+            System.out.println("Select action: ");
+            switch (InputController.getIntFromUser(1, 4)) {
+                case 1:
+                    addCinema(cineplexName);
+                    break;
+                case 2:
+                    removeCinema(cineplexName);
+                    break;
+                case 3:
+                    changeCinemaType(cineplexName);
+                    break;
+                case 4:
+                    return;
+                      
+            }
     }
 
     private void modifyClassSurcharge() {
@@ -78,18 +156,42 @@ public class AdminConfigSettingUI {
 
     private void modifyAgeDiscount() {
         double childDiscount, seniorCitizenDiscount;
-        System.out.print("Enter child discount: ");
+        System.out.print("Enter student discount: ");
         childDiscount = InputController.getDoubleFromUser();
         System.out.print("Enter senior citizen: ");
         seniorCitizenDiscount = InputController.getDoubleFromUser();
         bookingController.editAgeDiscount(childDiscount, seniorCitizenDiscount);
     }
 
-    private void modifyDefaultTicketPrice() {
+    private void modifyBasicTicketPrice() {
         double defaultTicketPrice;
         System.out.print("Enter default ticket price: ");
         defaultTicketPrice = InputController.getDoubleFromUser();
         bookingController.editDefaultTicketPrice(defaultTicketPrice);
+    }
+    
+    private static void addCineplex() {
+        String cineplexName;
+        System.out.println("Enter cineplex name: ");
+        cineplexName = InputController.getStringFromUser();
+        CineplexController.addNewCineplex(cineplexName);
+    }
+    
+     private static void removeCineplex() {
+        String cineplexName;
+        System.out.println("Enter cineplex name: ");
+        cineplexName = InputController.getStringFromUser();
+        CineplexController.removeCineplex(cineplexName);
+    }
+    
+    private static void addCinema(String cineplexName) {
+        CineplexController.addCinema(cineplexName);
+        System.out.println("cinema added");
+    }
+        
+    public static void changeCinemaType(String cineplexName) {
+        CineplexController.changeCinemaType(cineplexName);
+        System.out.println("Cinema type changed");
     }
 
     public static void main(String[] args) {
@@ -101,4 +203,7 @@ public class AdminConfigSettingUI {
         AdminConfigSettingUI adminConfigSettingUI = new AdminConfigSettingUI();
         adminConfigSettingUI.main();
     }
+    
+    
+    
 }
