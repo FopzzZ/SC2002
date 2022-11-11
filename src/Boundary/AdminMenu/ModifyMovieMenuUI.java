@@ -98,7 +98,7 @@ public class ModifyMovieMenuUI {
         movieSynopsis = InputController.getStringFromUser();
         System.out.println("Enter director's name: ");
         movieDirector = InputController.getStringFromUser();
-        System.out.println("Enter a cast's name: (Enter Done when done)");
+        System.out.println("Enter a cast's name: (Enter 'Done' when done)");
         castInput = InputController.getStringFromUser();
         while (!castInput.equals("Done")) {
             castNames.add(castInput);

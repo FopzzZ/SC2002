@@ -79,7 +79,8 @@ public class Movie implements Serializable {
 
     public boolean updateDetail() { // move to movieController/adminMenuUI
         int input = 0;
-        String content;
+        String content; 
+        int index = 0;
         while (input != 7) {
             System.out.println("1: Title");
             System.out.println("2: Status(Coming Soon/Preview/Now Showing/End of Showing)");
@@ -91,7 +92,7 @@ public class Movie implements Serializable {
             System.out.println("8: Exit");
             System.out.println("Select attribute to edit");
             input = InputController.getIntFromUser(1, 8);
-
+           
             switch (input) {
                 case 1:
                     System.out.println("Enter movie title: ");
@@ -99,35 +100,35 @@ public class Movie implements Serializable {
                     this.setTitle(content);
                     break;
                 case 2:
-                    System.out.println("Enter movie status (Coming Soon/Preview/Now Showing/End of Showing): ");
-                    content = InputController.getStringFromUser();
-                    switch (content) {
-                        case "Coming Soon":
+                    System.out.println("Enter movie status (1. Coming Soon / 2. Preview / 3. Now Showing / 4. End of Showing): ");
+                    index = InputController.getIntFromUser(1, 4);
+                    switch (index) {
+                        case 1:
                             this.setStatus(MovieStatus.Coming);
                             break;
-                        case "Preview":
+                        case 2:
                             this.setStatus(MovieStatus.Preview);
                             break;
-                        case "Now Showing":
+                        case 3:
                             this.setStatus(MovieStatus.Showing);
                             break;
-                        case "End of Showing":
+                        case 4:
                             return true;
                         default:
                             break;
                     }
                     break;
                 case 3:
-                    System.out.println("Enter movie type (Blockbuster/3D/Common): ");
-                    content = InputController.getStringFromUser();
-                    switch (content) {
-                        case "Blockbuster":
+                    System.out.println("Enter movie type (1. Blockbuster / 2. Three-D / 3. Common): ");
+                    index = InputController.getIntFromUser(1, 3);
+                    switch (index) {
+                        case 1:
                             this.setType(MovieType.Blockbuster);
                             break;
-                        case "3D":
+                        case 2:
                             this.setType(MovieType.ThreeD);
                             break;
-                        case "Common":
+                        case 3:
                             this.setType(MovieType.Common);
                             break;
                         default:
@@ -135,25 +136,25 @@ public class Movie implements Serializable {
                     }
                     break;
                 case 4:
-                    System.out.println("Enter movie rating (G/PG/PG13/NC16/M18/R21): ");
-                    content = InputController.getStringFromUser();
-                    switch (content) {
-                        case "G":
+                    System.out.println("Enter movie rating (1. G / 2. PG / 3. PG13 / 4. NC16 / 5. M18 / 6. R21): ");
+                    index = InputController.getIntFromUser(1,6);
+                    switch (index) {
+                        case 1:
                             this.setRating(MovieRating.G);
                             break;
-                        case "PG":
+                        case 2:
                             this.setRating(MovieRating.PG);
                             break;
-                        case "PG13":
+                        case 3:
                             this.setRating(MovieRating.PG13);
                             break;
-                        case "NC16":
+                        case 4:
                             this.setRating(MovieRating.NC16);
                             break;
-                        case "M18":
+                        case 5:
                             this.setRating(MovieRating.M18);
                             break;
-                        case "R21":
+                        case 6:
                             this.setRating(MovieRating.R21);
                             break;
                         default:

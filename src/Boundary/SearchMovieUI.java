@@ -24,10 +24,11 @@ public class SearchMovieUI {
                     "4. Search by movie title\n" +
                     "5. Filter by movie type\n" +
                     "6. Filter by movie status\n" +
-                    "7. Back to main menu\n");
+                    "7. Filter by movie rate\n" +
+                    "8. Back to main menu\n");
             System.out.print("Select action: ");
             ArrayList<Movie> selectedMovies = new ArrayList<Movie>();
-            switch (InputController.getIntFromUser(1, 7)) {
+            switch (InputController.getIntFromUser(1, 8)) {
                 case 1:
                     showAllMovies();
                     break;
@@ -77,6 +78,24 @@ public class SearchMovieUI {
                     }
                     break;
                 case 7:
+                    selectedMovies = filterByRating();
+                    if (!selectedMovies.isEmpty()) {
+                        int dashLength = selectedMovies.get(0).getStatus().toString().length();
+                        System.out.println();
+                        for (int i = 0; i < dashLength + 11; i++) {
+                            System.out.print("-");
+                        }
+                        System.out.println("\n| " + selectedMovies.get(0).getStatus() + " Movies |");
+                        for (int i = 0; i < dashLength + 11; i++) {
+                            System.out.print("-");
+                        }
+                        System.out.println();
+                        showAllMoviesTitle(selectedMovies);
+                    } else {
+                        System.out.println("\nThere are no movies under this rating.");
+                    }
+                break;
+                case 8:
                     return;
             }
         }
@@ -147,6 +166,27 @@ public class SearchMovieUI {
                 return movieController.filterByStatus(MovieStatus.Showing);
             case 4:
                 break;
+        }
+        return new ArrayList<Movie>();
+    }
+    
+    public ArrayList<Movie> filterByRating() {
+        System.out.println("1. G\n2. PG\n3. PG13\n4. NC16\n5. M18\n6. R21\n");
+        System.out.print("Select rating to filter by: ");
+        int choice = InputController.getIntFromUser(1, 6);
+        switch (choice) {
+            case 1:
+                return movieController.filterByRating(MovieRating.G);
+            case 2:
+                return movieController.filterByRating(MovieRating.PG);
+            case 3:
+                return movieController.filterByRating(MovieRating.PG13);
+            case 4:
+                return movieController.filterByRating(MovieRating.NC16);
+            case 5:
+                return movieController.filterByRating(MovieRating.M18);
+            case 6:
+                return movieController.filterByRating(MovieRating.R21);
         }
         return new ArrayList<Movie>();
     }
