@@ -59,7 +59,7 @@ public class ShowtimeController {
             }
         }
         if (!found) {
-            System.out.println("Showtime not found error");
+            System.out.println("Error, showtime not found");
         }
         movieController.updateShowtime(movie, showtimeList);
     }

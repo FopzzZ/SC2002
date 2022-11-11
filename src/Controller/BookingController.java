@@ -79,7 +79,7 @@ public class BookingController {
             surchargeList.remove(0);
         }
         writeToDB(surchargeList);
-        System.out.println("Clearing surcharge database");
+        // System.out.println("Clearing surcharge database");
     }
 
     public void editClassSurcharge(double goldclassSurcharge, double platinumSurcharge, double imaxSurcharge) {
@@ -128,16 +128,16 @@ public class BookingController {
     }
 
     public void printSurcharges() {
-        System.out.println("goldclassSurcharge: " + goldclassSurcharge);
-        System.out.println("platinumSurcharge: " + platinumSurcharge);
-        System.out.println("imaxSurcharge: " + imaxSurcharge);
-        System.out.println("blockbusterSurcharge: " + blockbusterSurcharge);
-        System.out.println("threedSurcharge: " + threedSurcharge);
-        System.out.println("childDiscount: " + childDiscount);
-        System.out.println("seniorCitizenDiscount: " + seniorCitizenDiscount);
-        System.out.println("weekendSurcharge: " + weekendSurcharge);
-        System.out.println("holidaySurcharge: " + holidaySurcharge);
-        System.out.println("defaultTicketPrice: " + defaultTicketPrice);
+        System.out.println("Gold Class Surcharge: " + goldclassSurcharge);
+        System.out.println("Platinum Surcharge: " + platinumSurcharge);
+        System.out.println("IMAX Surcharge: " + imaxSurcharge);
+        System.out.println("Blockbuster Surcharge: " + blockbusterSurcharge);
+        System.out.println("3D Surcharge: " + threedSurcharge);
+        System.out.println("Student Discount: " + childDiscount);
+        System.out.println("Senior Citizen Discount: " + seniorCitizenDiscount);
+        System.out.println("Weekend Surcharge: " + weekendSurcharge);
+        System.out.println("Holiday Surcharge: " + holidaySurcharge);
+        System.out.println("Basic Ticket Price: " + defaultTicketPrice);
     }
 
     public void setSurcharges(double goldclassSurcharge, double platinumSurcharge, double imaxSurcharge,
