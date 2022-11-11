@@ -3,7 +3,7 @@ package Boundary.UserMenu;
 import Boundary.SearchMovieUI;
 import Boundary.ViewMovieDetailsUI;
 import Controller.InputController;
-import Controller.MovieController;
+// import Controller.MovieController;
 import Controller.UserController;
 
 public class UserMenuUI {
@@ -90,15 +90,15 @@ public class UserMenuUI {
         userController.getUser(userEmail).printBookingHistory();
     }
 
-    private void listTop5Ranking() {
-        MovieController movieController = new MovieController();
-        movieController.listTop5ByRating();
-    }
+    // private void listTop5Ranking() {
+    //     MovieController movieController = new MovieController();
+    //     movieController.listTop5ByRating();
+    // }
 
-    private void listTop5ByTicketSales() {
-        MovieController movieController = new MovieController();
-        movieController.listTop5ByTicketSales();
-    }
+    // private void listTop5ByTicketSales() {
+    //     MovieController movieController = new MovieController();
+    //     movieController.listTop5ByTicketSales();
+    // }
 
     private void rateMovie() {
         RateMovieUI rateMovieUI = new RateMovieUI();
