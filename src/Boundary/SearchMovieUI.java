@@ -135,8 +135,7 @@ public class SearchMovieUI {
                 "1. Coming Soon\n" +
                         "2. Preview\n" +
                         "3. Now Showing\n" +
-                        "4. End of Showing\n" +
-                        "5. Back\n");
+                        "4. Back\n");
         System.out.print("Select status to filter by: ");
         int choice = InputController.getIntFromUser(1, 5);
         switch (choice) {
@@ -147,8 +146,6 @@ public class SearchMovieUI {
             case 3:
                 return movieController.filterByStatus(MovieStatus.Showing);
             case 4:
-                return movieController.filterByStatus(MovieStatus.Ended);
-            case 5:
                 break;
         }
         return new ArrayList<Movie>();

@@ -3,8 +3,7 @@ package Entity.Movie;
 public enum MovieStatus {
     Coming("Coming Soon"),
     Preview("Preview"),
-    Showing("Now Showing"),
-    Ended("End of showing");
+    Showing("Now Showing");
 
     private final String text;
 
