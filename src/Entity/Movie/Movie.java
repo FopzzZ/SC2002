@@ -136,7 +136,7 @@ public class Movie implements Serializable {
                     }
                     break;
                 case 4:
-                    System.out.println("Enter movie rating (1. G/ 2. PG / 3. PG13 / 4. NC16 / 5. M18 / 6. R21): ");
+                    System.out.println("Enter movie rating (1. G / 2. PG / 3. PG13 / 4. NC16 / 5. M18 / 6. R21): ");
                     index = InputController.getIntFromUser(1,6);
                     switch (index) {
                         case 1:
