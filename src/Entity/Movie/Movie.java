@@ -279,7 +279,7 @@ public class Movie implements Serializable {
         String castS = new String();
         for (int i = 0; i < this.getCast().size(); ++i) {
             if (i != 0)
-                castS += ",";
+                castS += ", ";
             castS += this.getCast().get(i);
         }
 
