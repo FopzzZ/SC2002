@@ -25,14 +25,30 @@ public class Seat implements Serializable {
         this.relatedSeat = null;
     }
 
+    /**
+    * Method to set the row number of seat
+    *
+    * @param Integer that has the row number    
+    */
+       
     public void setRowNumber(int rowNumber) {
         this.rowNumber = rowNumber;
     }
+    /**
+    * Method to set the column number of seat
+    *
+    * @param Integer that has the column number    
+    */
 
     public void setColumnNumber(int columnNumber) {
         this.columnNumber = columnNumber;
     }
-
+     /**
+    * Method to set the column number of seat
+    *
+    * @param Integer that has the column number    
+    */
+    
     public void setSeatType(SeatType seatType) {
         this.seatType = seatType;
     }
