@@ -13,7 +13,7 @@ import Entity.User.AgeClass;
 import Entity.User.User;
 
 public class BookingController {
-    double goldclassSurcharge, platinumSurcharge, imaxSurcharge, blockbusterSurcharge,
+    private double goldclassSurcharge, platinumSurcharge, imaxSurcharge, blockbusterSurcharge,
             threedSurcharge, childDiscount,
             seniorCitizenDiscount, weekendSurcharge, holidaySurcharge, defaultTicketPrice;
 
@@ -131,7 +131,7 @@ public class BookingController {
         System.out.println("\n" +
                 "------------------\n" +
                 "| All Surcharges |\n" +
-                "------------------\n");
+                "------------------");
         System.out.println("Gold Class Surcharge: " + goldclassSurcharge);
         System.out.println("Platinum Surcharge: " + platinumSurcharge);
         System.out.println("IMAX Surcharge: " + imaxSurcharge);
@@ -265,5 +265,9 @@ public class BookingController {
         String cineplexID = cineplexName.substring(0, 2).toUpperCase();
         String id = String.format("%s%s%04d%02d%02d%02d%02d", cineplexID, cinemaID, year, month, day, hour, minute);
         return id;
+    }
+
+    public double getDefaultPrice() {
+        return defaultTicketPrice;
     }
 }
