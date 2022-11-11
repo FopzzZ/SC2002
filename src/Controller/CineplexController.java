@@ -83,6 +83,44 @@ public class CineplexController {
     public ArrayList<Cineplex> getCineplexList() {
         return cineplexList;
     }
+    
+    public void addCinema(String cineplexName) {
+        String cinemaName;
+        int cinemaNumber = cineplexName.getCinemas().size() + 1;
+        cinemaName = String.format("Cinema %d", cinemaNumber); 
+        Cinema newCinema = new Cinema (cinemaName);
+        writeToDB(cineplexList);
+    }
+    
+    public void changeCinemaType(String cineplexName) {
+        int cinemaNumber = 0;
+        listCinemas(cineplexName);
+        cinemaNumber = InputController.getIntFromUser(1, cineplexName.getCinemas.size());
+        
+        System.out.printf("Current cinema type: %s\n", cineplexName.getCinemas()[cinemaNumber].getType());
+        System.out.println("Select new cinema type: \n" +
+                           "1. Gold Class\n" + 
+                           "2. Platinum\n" + 
+                           "3. IMAX\n" +
+                           "4. Normal\n");
+        
+        switch(InputController.getIntFromUser(1, 4)) {
+            case 1:
+                cineplexName.getCinemas()[cinemaNumber].setType(CinemaType.GOLDCLASS);
+                break;
+            case 2:
+                cineplexName.getCinemas()[cinemaNumber].setType(CinemaType.PLATINUM);
+                break;
+            case 3:
+                cineplexName.getCinemas()[cinemaNumber].setType(CinemaType.IMAX);
+                break;
+            case 4:
+                cineplexName.getCinemas()[cinemaNumber].setType(CinemaType.NORMAL);
+                break;
+        }
+        writeToDB(cineplexList);
+        
+    }
 
     public void listCinemas(Cineplex cineplex) {
         ArrayList<Cinema> cinemaList = cineplex.getCinemas();
