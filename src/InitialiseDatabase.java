@@ -27,8 +27,8 @@ public class InitialiseDatabase {
         // initialise admin list
         AdminController adminController = new AdminController();
         adminController.clearDatabase();
-        adminController.create("bobby1", "bobby");
-        adminController.create("john1", "john");
+        adminController.create("bobby", "bobby1");
+        adminController.create("john", "john1");
 
         // initialise cineplex list
 
@@ -54,7 +54,7 @@ public class InitialiseDatabase {
         movieController.createNewMovie("Batman Begins", MovieStatus.Showing,
                 "After witnessing his parents' death, Bruce learns the art of fighting to confront injustice. When he returns to Gotham as Batman, he must stop a secret society that intends to destroy the city.",
                 MovieType.Common,
-                MovieRating.G, "Christopher Nolan", cast1);
+                MovieRating.PG13, "Christopher Nolan", cast1);
 
         // second movie
         ArrayList<String> cast2 = new ArrayList<String>();
@@ -68,19 +68,27 @@ public class InitialiseDatabase {
         movieController.createNewMovie("Inception", MovieStatus.Showing,
                 "Cobb steals information from his targets by entering their dreams. Saito offers to wipe clean Cobb's criminal history as payment for performing an inception on his sick competitor's son.",
                 MovieType.Common,
-                MovieRating.G, "Christopher Nolan", cast2);
+                MovieRating.PG13, "Christopher Nolan", cast2);
 
         // third movie
         ArrayList<String> cast3 = new ArrayList<String>();
-        cast3.add("");
-        movieController.createNewMovie("Bob bones", MovieStatus.Showing, "now u see me",
+        cast3.add("Owen Wilson");
+        cast3.add("Paul Newman");
+        cast3.add("Larry the Cable Guy");
+        cast3.add("Bonnie Hunt");
+        cast3.add("Tony Shalhoub");
+        cast3.add("John Ratzenberger");
+        cast3.add("Joe Ranft");
+        cast3.add("George Carlin");
+        movieController.createNewMovie("Cars", MovieStatus.Showing,
+                "Lightning McQueen, a racing car, learns a hard lesson in life when he damages a lot of property in Radiator Springs. His task is to repair the damage done before he can get back on the road.",
                 MovieType.Common,
-                MovieRating.G, "dk", cast3);
+                MovieRating.G, "John Lasseter", cast3);
 
         // initialise showtimes
-        addShowtime("202211111600", "202211111800", false);
-        addShowtime("202211121600", "202211121800", false);
-        addShowtime("202212111600", "202212111800", false);
+        addShowtime(0, 0, 0, "202211111600", "202211111800", false);
+        addShowtime(0, 0, 1, "202211121600", "202211121800", false);
+        addShowtime(0, 0, 2, "202212111600", "202212111800", false);
 
         // initialise surcharges and discounts
         BookingController bookingController = new BookingController();
@@ -90,22 +98,18 @@ public class InitialiseDatabase {
                 5, 2, 3, 8);
     }
 
-    public static void addShowtime(String start, String end, boolean isHoliday) {
+    public static void addShowtime(int movieIndex, int cineplexIndex, int cinemaIndex, String start, String end,
+            boolean isHoliday) {
         MovieController movieController = new MovieController();
         CineplexController cineplexController = new CineplexController();
-        ArrayList<Movie> movieList = movieController.getMovieList();
+        Movie movie = movieController.getMovie(movieIndex);
         Time startTime = new Time(start);
         Time endTime = new Time(end);
-        int index = 0;
-        for (Movie movie : movieList) {
-            ShowtimeController showtimeController = new ShowtimeController(movie);
-            for (int i = 0; i < cineplexController.getCineplexList().size(); i++) {
-                Cineplex selectedCineplex = cineplexController.getCineplexList().get(i);
-                Cinema selectedCinema = cineplexController.getCinemaList(selectedCineplex).get(index);
-                showtimeController.create(movie, startTime, endTime, selectedCineplex, selectedCinema, isHoliday);
+        ShowtimeController showtimeController = new ShowtimeController(movie);
 
-            }
-            index++;
-        }
+        Cineplex selectedCineplex = cineplexController.getCineplexList().get(cineplexIndex);
+        Cinema selectedCinema = cineplexController.getCinemaList(selectedCineplex).get(cinemaIndex);
+        showtimeController.create(movie, startTime, endTime, selectedCineplex, selectedCinema, isHoliday);
+
     }
 }
