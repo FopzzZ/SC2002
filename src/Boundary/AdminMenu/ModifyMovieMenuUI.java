@@ -115,7 +115,7 @@ public class ModifyMovieMenuUI {
                 "------------------------\n" +
                 "| Update Movie Listing |\n" +
                 "------------------------\n" +
-                "Enter non-existent movie index to exit");
+                "Enter non-existent movie index to exit!");
         movieController.listMovies();
         System.out.print("\nSelect movie to update: ");
         int ID = InputController.getIntFromUser();
@@ -127,7 +127,7 @@ public class ModifyMovieMenuUI {
                 "------------------------\n" +
                 "| Remove Movie Listing |\n" +
                 "------------------------\n" +
-                "Enter non-existent movie index to exit");
+                "Enter non-existent movie index to exit!");
         movieController.listMovies();
         System.out.print("\nSelect movie to remove: ");
         int ID = InputController.getIntFromUser();

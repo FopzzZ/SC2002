@@ -25,8 +25,9 @@ public class ModifyShowtimeMenuUI {
         cineplexController = new CineplexController();
         movieController = new MovieController();
         movieController.listMovies();
-        System.out.println("Select movie to modify showtimes:");
-        selectedMovie = movieController.getMovie(InputController.getIntFromUser() - 1);
+        System.out.print("\nSelect movie to modify showtimes: ");
+        selectedMovie = movieController
+                .getMovie(InputController.getIntFromUser(1, movieController.getlistMovies().size()) - 1);
         showtimeController = new ShowtimeController(selectedMovie);
         while (true) {
             System.out.println("\n" +
@@ -37,8 +38,8 @@ public class ModifyShowtimeMenuUI {
                     "2. Create showtime\n" +
                     "3. Update showtime\n" +
                     "4. Remove showtime\n" +
-                    "5. Back to main menu\n");
-            System.out.println("Select action: ");
+                    "5. Back to main menu");
+            System.out.print("\nSelect action: ");
             switch (InputController.getIntFromUser(1, 5)) {
                 case 1:
                     showtimeController.showAllShowtimes();
@@ -60,18 +61,22 @@ public class ModifyShowtimeMenuUI {
     }
 
     private void createMovieShowtime() {
-        System.out.println("Enter start time in the format YYYYMMDDHHMM:");
+        System.out.print("\nEnter start time in the format YYYYMMddHHmm: ");
         Time startTime = new Time(InputController.getTimeFromUser());
-        System.out.println("Enter end time in the format YYYYMMDDHHMM:");
+        System.out.print("\nEnter end time in the format YYYYMMddHHmm: ");
         Time endTime = new Time(InputController.getTimeFromUser());
         cineplexController.listCineplex();
-        System.out.println("Select cineplex:");
+        System.out.print("\nSelect cineplex: ");
         Cineplex selectedCineplex = cineplexController.getCineplexList().get(InputController.getIntFromUser() - 1);
+        System.out.println("\n" +
+                "-----------\n" +
+                "| Cinemas |\n" +
+                "-----------");
         cineplexController.listCinemas(selectedCineplex);
-        System.out.println("Select cinema:");
+        System.out.print("\nSelect cinema: ");
         Cinema selectedCinema = cineplexController.getCinemaList(selectedCineplex)
                 .get(InputController.getIntFromUser() - 1);
-        System.out.println("Is this on a holiday? (Y/N)");
+        System.out.print("\nIs this on a holiday? (Y/N): ");
         boolean isHoliday = InputController.getYesOrNoFromUser();
         showtimeController.create(selectedMovie, startTime, endTime, selectedCineplex, selectedCinema, isHoliday);
 
@@ -79,20 +84,24 @@ public class ModifyShowtimeMenuUI {
 
     private void updateMovieShowtime() {
         showtimeController.showAllShowtimes();
-        System.out.println("Select showtime to update:");
+        System.out.print("\nSelect showtime to update: ");
         int selection = InputController.getIntFromUser();
-        System.out.println("Enter start time in the format YYYYMMDDHHMM:");
+        System.out.print("\nEnter start time in the format YYYYMMddHHmm: ");
         Time startTime = new Time(InputController.getTimeFromUser());
-        System.out.println("Enter end time in the format YYYYMMDDHHMM:");
+        System.out.print("\nEnter end time in the format YYYYMMddHHmm: ");
         Time endTime = new Time(InputController.getTimeFromUser());
         cineplexController.listCineplex();
-        System.out.println("Select cineplex:");
+        System.out.print("\nSelect cineplex: ");
         Cineplex selectedCineplex = cineplexController.getCineplexList().get(InputController.getIntFromUser() - 1);
+        System.out.println("\n" +
+                "-----------\n" +
+                "| Cinemas |\n" +
+                "-----------");
         cineplexController.listCinemas(selectedCineplex);
-        System.out.println("Select cinema:");
+        System.out.print("\nSelect cinema: ");
         Cinema selectedCinema = cineplexController.getCinemaList(selectedCineplex)
                 .get(InputController.getIntFromUser() - 1);
-        System.out.println("Is this on a holiday? (Y/N)");
+        System.out.print("\nIs this on a holiday? (Y/N): ");
         boolean isHoliday = InputController.getYesOrNoFromUser();
         Showtime newShowtime = new Showtime(startTime, endTime, selectedCineplex, selectedCinema, isHoliday);
         showtimeController.updateShowtime(selection - 1, newShowtime);
@@ -101,7 +110,7 @@ public class ModifyShowtimeMenuUI {
 
     private void removeMovieShowtime() {
         showtimeController.showAllShowtimes();
-        System.out.println("Select showtime to remove:");
+        System.out.print("Select showtime to remove: ");
         int selection = InputController.getIntFromUser();
         showtimeController.removeShowtime(selection - 1);
     }
