@@ -18,6 +18,11 @@ public class Movie implements Serializable {
     private ArrayList<Showtime> showtimes;
     private double ticketSales;
 
+    /**
+    * A constructor for the Movie Class where default values are assigned to parameters
+    * 
+    */
+
     public Movie() {
         this.movieTitle = "";
         this.status = MovieStatus.Coming;
@@ -31,6 +36,19 @@ public class Movie implements Serializable {
         this.showtimes = new ArrayList<Showtime>();
         this.ticketSales = 0;
     }
+
+    /**
+    * A constructor for the Movie Class
+    * 
+    * @param movieTitle Determines the title of the movie
+    * @param synopsis Determines the synopsis of the movie
+    * @param director Determines the director of the movie
+    * @param type Determines the type of the movie
+    * @param status Determines the status of the movie
+    * @param rating Determines the rating of the movie
+    * @param cast Determines the cast of the movie
+    * @param review Determines the reviews of the movie
+    */
 
     public Movie(String movieTitle, String synposis, String director, MovieType type, MovieStatus status,
             MovieRating rating,
