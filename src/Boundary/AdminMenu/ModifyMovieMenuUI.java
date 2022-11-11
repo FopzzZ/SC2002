@@ -54,9 +54,8 @@ public class ModifyMovieMenuUI {
         System.out.println("Select showing status:\n" +
                 "1. Coming Soon\n" +
                 "2. Preview\n" +
-                "3. Now Showing\n" +
-                "4. End of Showing");
-        switch (InputController.getIntFromUser(1, 4)) {
+                "3. Now Showing\n");
+        switch (InputController.getIntFromUser(1, 3)) {
             case 1:
                 showingStatus = MovieStatus.Coming;
                 break;
@@ -65,9 +64,6 @@ public class ModifyMovieMenuUI {
                 break;
             case 3:
                 showingStatus = MovieStatus.Showing;
-                break;
-            case 4:
-                showingStatus = MovieStatus.Ended;
                 break;
 
         }
@@ -102,9 +98,9 @@ public class ModifyMovieMenuUI {
         movieSynopsis = InputController.getStringFromUser();
         System.out.println("Enter director's name: ");
         movieDirector = InputController.getStringFromUser();
-        System.out.println("Enter a cast's name: (Enter END when done)");
+        System.out.println("Enter a cast's name: (Enter Done when done)");
         castInput = InputController.getStringFromUser();
-        while (!castInput.equals("END")) {
+        while (!castInput.equals("Done")) {
             castNames.add(castInput);
             castInput = InputController.getStringFromUser();
         }
