@@ -110,7 +110,6 @@ public class ShowtimeController {
         if (0 <= index & index < getShowtimeList().size()) {
             return true;
         }
-        System.out.printf("Please enter a number from 1 to %d\n", getShowtimeList().size());
         return false;
     }
 }
