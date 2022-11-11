@@ -31,18 +31,19 @@ public class Time implements Serializable {
 
     public String toString() {
         String ret = "";
-        ret = "" + this.year + "  ";
-        if(this.month <= 9) ret += "0";
-        ret += "" + this.month;
-        ret += "-" ;
-        if(this.day <= 9 ) ret += "0";
-        ret = ret + this.day;
-        ret = ret + ", ";
-        if(this.hour <= 9) ret += "0";
-        ret = ret + this.hour;
-        ret = ret + ":";
-        if(minutes <= 9) ret += "0";
-        ret = ret + this.minutes;
+        ret = this.year + "-";
+        if (this.month <= 9)
+            ret += "0";
+        ret += this.month + "-";
+        if (this.day <= 9)
+            ret += "0";
+        ret += this.day + ", ";
+        if (this.hour <= 9)
+            ret += "0";
+        ret += this.hour + ":";
+        if (this.minutes <= 9)
+            ret += "0";
+        ret += this.minutes;
         return ret;
     }
 
@@ -61,7 +62,7 @@ public class Time implements Serializable {
     public int getHour() {
         return this.hour;
     }
-    
+
     public int getMinutes() {
         return this.minutes;
     }

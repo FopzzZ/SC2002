@@ -30,7 +30,7 @@ public class ShowtimeController {
         for (int i = 0; i < showtimeList.size(); ++i) {
             System.out.printf("Showtime %d: %s\n", i + 1, showtimeList.get(i).toString());
         }
-        System.out.printf("Total %d showtimes.\n", showtimeList.size());
+        System.out.printf("Total %d showtimes\n\n", showtimeList.size());
     }
 
     public void showAllFilteredShowtimesByCineplex(Cineplex cineplex) {
@@ -43,7 +43,7 @@ public class ShowtimeController {
         for (int i = 0; i < filteredShowtimeList.size(); ++i) {
             System.out.printf("Showtime %d: %s\n", i + 1, filteredShowtimeList.get(i).toString());
         }
-        System.out.printf("Total %d showtimes.\n", filteredShowtimeList.size());
+        System.out.printf("Total %d showtimes\n\n", filteredShowtimeList.size());
     }
 
     public void updateShowtime(int index, Showtime showtime) {

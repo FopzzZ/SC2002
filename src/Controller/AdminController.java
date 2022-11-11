@@ -53,7 +53,7 @@ public class AdminController {
             adminList.remove(0);
         }
         writeToDB(adminList);
-        // System.out.println("Clearing admin database");
+        System.out.println("Clearing admin database");
     }
 
     public ArrayList<Admin> getAdminList() {

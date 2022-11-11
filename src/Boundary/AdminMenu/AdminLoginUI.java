@@ -13,9 +13,9 @@ public class AdminLoginUI {
                 "| Admin Login |\n" +
                 "---------------");
         while (exit == false) {
-            System.out.println("Please enter your username: ");
+            System.out.print("Please enter your username: ");
             username = InputController.getStringFromUser(); // get username
-            System.out.println("Please enter your password: ");
+            System.out.print("Please enter your password: ");
             password = InputController.getStringFromUser();
             AdminLoginController adminLoginController = new AdminLoginController(username);
             validLogin = adminLoginController.verify(password);

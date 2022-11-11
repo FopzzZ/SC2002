@@ -23,12 +23,13 @@ public class BookTicketUI {
         CineplexController cineplexController = new CineplexController();
         MovieController movieController = new MovieController();
         cineplexController.listCineplex();
-        System.out.print("Select cineplex:");
+        System.out.print("Select cineplex: ");
         int cineplexChoice = InputController.getIntFromUser();
         Cineplex selectedCineplex = cineplexController.getCineplexList().get(cineplexChoice - 1);
         movieController.listMovies();
-        System.out.print("Select movie:");
+        System.out.print("Select movie: ");
         int movieChoice = InputController.getIntFromUser();
+        System.out.println();
         Movie selectedMovie = movieController.getMovie(movieChoice - 1);
         ShowtimeController showtimeController = new ShowtimeController(selectedMovie);
         showtimeController.showAllFilteredShowtimesByCineplex(selectedCineplex);
@@ -40,16 +41,16 @@ public class BookTicketUI {
         Showtime selectedShowtime = showtimeController.getFilteredShowtimeList()
                 .get(InputController.getIntFromUser() - 1);
         selectedShowtime.getSeatplan().showSeatplan();
-        System.out.print("Select row number:");
+        System.out.print("Select row number: ");
         int rowNumber = InputController.getIntFromUser(1, 9);
-        System.out.print("Select column letter:");
+        System.out.print("Select column letter: ");
         int colNumber = (int) InputController.getCapitalLetterFromUser() - 64;
         while (selectedShowtime.getSeatplan().occupy(rowNumber, colNumber) == false) {
             System.out.println("Seat is already occupied. Please select another seat");
             selectedShowtime.getSeatplan().showSeatplan();
-            System.out.print("Select row number:");
+            System.out.print("Select row number: ");
             rowNumber = InputController.getIntFromUser(1, 9);
-            System.out.print("Select column letter:");
+            System.out.print("Select column letter: ");
             colNumber = (int) InputController.getCapitalLetterFromUser() - 64;
         }
         BookingController bookingController = new BookingController();

@@ -79,7 +79,7 @@ public class BookingController {
             surchargeList.remove(0);
         }
         writeToDB(surchargeList);
-        // System.out.println("Clearing surcharge database");
+        System.out.println("Clearing surcharge database");
     }
 
     public void editClassSurcharge(double goldclassSurcharge, double platinumSurcharge, double imaxSurcharge) {

@@ -80,7 +80,7 @@ public class UserController {
             userList.remove(0);
         }
         writeToDB(userList);
-        // System.out.println("Clearing user database");
+        System.out.println("Clearing user database");
     }
 
     public void addBookingToHistory(Booking booking, String userEmail) {

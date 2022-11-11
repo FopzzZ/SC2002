@@ -87,16 +87,16 @@ public class Showtime implements Serializable, Comparable<Showtime> {
     }
 
     public int compareTo(Showtime y) {
-        if(this.getStartTime().getYear() != y.startTime.getYear())
-            return this.getStartTime().getYear()<y.getStartTime().getYear()? -1 : 1;
-        if(this.getStartTime().getMonth() != y.startTime.getMonth())
-            return this.startTime.getMonth() < y.getStartTime().getMonth()? -1 : 1;
-        if(this.getStartTime().getDay() != y.startTime.getDay()) 
-            return this.getStartTime().getDay() < y.getStartTime().getDay()? -1 : 1;
-        if(this.getStartTime().getHour() != y.startTime.getHour()) 
-            return this.getStartTime().getHour() < y.getStartTime().getHour()? -1 : 1;
-        if(this.getStartTime().getMinutes() != y.startTime.getMinutes()) 
-            return this.getStartTime().getMinutes() < y.getStartTime().getMinutes()? -1 : 1;
+        if (this.getStartTime().getYear() != y.startTime.getYear())
+            return this.getStartTime().getYear() < y.getStartTime().getYear() ? -1 : 1;
+        if (this.getStartTime().getMonth() != y.startTime.getMonth())
+            return this.startTime.getMonth() < y.getStartTime().getMonth() ? -1 : 1;
+        if (this.getStartTime().getDay() != y.startTime.getDay())
+            return this.getStartTime().getDay() < y.getStartTime().getDay() ? -1 : 1;
+        if (this.getStartTime().getHour() != y.startTime.getHour())
+            return this.getStartTime().getHour() < y.getStartTime().getHour() ? -1 : 1;
+        if (this.getStartTime().getMinutes() != y.startTime.getMinutes())
+            return this.getStartTime().getMinutes() < y.getStartTime().getMinutes() ? -1 : 1;
         return 0;
     }
 
@@ -112,6 +112,7 @@ public class Showtime implements Serializable, Comparable<Showtime> {
                 + "End time: " + this.getEndTime().toString() + "\n"
                 + "Cineplex: " + this.getCineplex().getName() + "\n"
                 + "Cinema: " + this.getCinema().getName() + "\n"
+                + "Cinema type: " + this.getCinema().getType().toString() + "\n"
                 + "Is a holiday: " + isHoliday + "\n";
         return ret;
     }

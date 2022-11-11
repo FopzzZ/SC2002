@@ -198,7 +198,7 @@ public class MovieController {
         for (int i = 0; i < movieList.size(); ++i) {
             System.out.printf("Movie %d: %s\n", i + 1, movieList.get(i).getTitle());
         }
-        System.out.printf("Total %d movies.\n", movieList.size());
+        System.out.printf("Total %d movies\n", movieList.size());
     }
 
     public void listTop5ByRating() {

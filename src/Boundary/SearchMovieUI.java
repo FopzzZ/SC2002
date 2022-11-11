@@ -24,7 +24,7 @@ public class SearchMovieUI {
                     "4. Search by movie title\n" +
                     "5. Filter by movie type\n" +
                     "6. Filter by movie status\n" +
-                    "7. Filter by movie rate\n" +
+                    "7. Filter by movie rating\n" +
                     "8. Back to main menu\n");
             System.out.print("Select action: ");
             ArrayList<Movie> selectedMovies = new ArrayList<Movie>();
@@ -56,7 +56,7 @@ public class SearchMovieUI {
                         System.out.println();
                         showAllMoviesTitle(selectedMovies);
                     } else {
-                        System.out.println("\nThere are no movies under this type.");
+                        System.out.println("\nThere are no movies with this type.");
                     }
                     break;
                 case 6:
@@ -74,7 +74,7 @@ public class SearchMovieUI {
                         System.out.println();
                         showAllMoviesTitle(selectedMovies);
                     } else {
-                        System.out.println("\nThere are no movies under this status.");
+                        System.out.println("\nThere are no movies with this status.");
                     }
                     break;
                 case 7:
@@ -92,9 +92,9 @@ public class SearchMovieUI {
                         System.out.println();
                         showAllMoviesTitle(selectedMovies);
                     } else {
-                        System.out.println("\nThere are no movies under this rating.");
+                        System.out.println("\nThere are no movies with this rating.");
                     }
-                break;
+                    break;
                 case 8:
                     return;
             }
@@ -105,7 +105,7 @@ public class SearchMovieUI {
         for (int i = 0; i < movies.size(); ++i) {
             System.out.printf("Movie %d: %s\n", i + 1, movies.get(i).getTitle());
         }
-        System.out.printf("Total %d movies.\n", movies.size());
+        System.out.printf("Total %d movies\n", movies.size());
     }
 
     public void showAllMovies() {
@@ -169,7 +169,7 @@ public class SearchMovieUI {
         }
         return new ArrayList<Movie>();
     }
-    
+
     public ArrayList<Movie> filterByRating() {
         System.out.println("1. G\n2. PG\n3. PG13\n4. NC16\n5. M18\n6. R21\n");
         System.out.print("Select rating to filter by: ");

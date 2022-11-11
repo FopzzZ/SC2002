@@ -13,13 +13,13 @@ public class AdminConfigSettingUI {
 
         while (true) {
             System.out.println("\n" +
-                    "------------------------\n" +
+                    "------------------\n" +
                     "| Admin Settings |\n" +
-                    "------------------------\n" +
+                    "------------------\n" +
                     "1. Modify ticket prices\n" +
                     "2. Modify cineplex\n" +
                     "3. Back to main menu\n");
-            System.out.println("Select action: ");
+            System.out.print("Select action: ");
             switch (InputController.getIntFromUser(1, 3)) {
                 case 1:
                     modifyTicketPrices();
@@ -46,7 +46,7 @@ public class AdminConfigSettingUI {
                     "5. Modify basic ticket price\n" +
                     "6. Check current surcharges and discounts\n" +
                     "7. Back to admin settings\n");
-            System.out.println("Select action: ");
+            System.out.print("Select action: ");
             switch (InputController.getIntFromUser(1, 7)) {
                 case 1:
                     modifyClassSurcharge();
@@ -75,14 +75,14 @@ public class AdminConfigSettingUI {
     private void modifyCineplex() {
         while (true) {
             System.out.println("\n" +
-                    "------------------------\n" +
+                    "---------------------\n" +
                     "| Modify cineplexes |\n" +
-                    "------------------------\n" +
+                    "---------------------\n" +
                     "1. Add cineplex\n" +
                     "2. Remove cineplex\n" +
                     "3. Configure cineplex\n" +
-                    "4. Back to admin settings");
-            System.out.println("Select action: ");
+                    "4. Back to admin settings\n");
+            System.out.print("Select action: ");
             switch (InputController.getIntFromUser(1, 5)) {
                 case 1:
                     addCineplex();
@@ -107,13 +107,13 @@ public class AdminConfigSettingUI {
         Cineplex selectedCineplex = cineplexController.getCineplexList().get(selection - 1);
         while (true) {
             System.out.println("\n" +
-                    "------------------------\n" +
+                    "----------------------\n" +
                     "| Configure cineplex |\n" +
-                    "------------------------\n" +
+                    "----------------------\n" +
                     "1. Add cinema\n" +
                     "2. Change cinema type\n" +
-                    "3. Back to modify cineplex");
-            System.out.println("Select action: ");
+                    "3. Back to modify cineplex\n");
+            System.out.print("Select action: ");
             switch (InputController.getIntFromUser(1, 3)) {
                 case 1:
                     addCinema(selectedCineplex);
@@ -191,7 +191,7 @@ public class AdminConfigSettingUI {
 
     private void addCinema(Cineplex cineplex) {
         cineplexController.addCinema(cineplex);
-        System.out.println("cinema added");
+        System.out.println("Cinema added");
     }
 
     public void changeCinemaType(Cineplex cineplex) {
