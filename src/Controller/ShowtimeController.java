@@ -21,6 +21,7 @@ public class ShowtimeController {
 
     public void create(Movie movie, Time startTime, Time endTime, Cineplex cineplex, Cinema cinema, boolean isHoliday) {
         showtimeList.add(new Showtime(startTime, endTime, cineplex, cinema, isHoliday));
+        sortShowtimesByStartTime();
         movieController.updateShowtime(movie, showtimeList);
 
     } // adds a showtime to movie
@@ -47,7 +48,12 @@ public class ShowtimeController {
 
     public void updateShowtime(int index, Showtime showtime) {
         showtimeList.get(index).update(showtime);
+        sortShowtimesByStartTime();
         movieController.updateShowtime(movie, showtimeList);
+    }
+
+    private void sortShowtimesByStartTime() {
+        showtimeList.sort(null);
     }
 
     public void updateSeatingPlan(Showtime updatedShowtime) { // TODO make better, now is temp solution

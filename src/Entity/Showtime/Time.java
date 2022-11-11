@@ -58,6 +58,14 @@ public class Time implements Serializable {
         return this.day;
     }
 
+    public int getHour() {
+        return this.hour;
+    }
+    
+    public int getMinutes() {
+        return this.minutes;
+    }
+
     // 1 is fri, 4 is mon, 5 is tue
     public int getDayOfWeek() {
         Calendar c = Calendar.getInstance();
