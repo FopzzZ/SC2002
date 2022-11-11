@@ -128,6 +128,10 @@ public class BookingController {
     }
 
     public void printSurcharges() {
+        System.out.println("\n" +
+                "------------------\n" +
+                "| All Surcharges |\n" +
+                "------------------\n");
         System.out.println("Gold Class Surcharge: " + goldclassSurcharge);
         System.out.println("Platinum Surcharge: " + platinumSurcharge);
         System.out.println("IMAX Surcharge: " + imaxSurcharge);

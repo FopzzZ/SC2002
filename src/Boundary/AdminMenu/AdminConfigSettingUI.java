@@ -84,7 +84,7 @@ public class AdminConfigSettingUI {
                     "3. Configure cineplex\n" +
                     "4. Back to admin settings\n");
             System.out.print("Select action: ");
-            switch (InputController.getIntFromUser(1, 5)) {
+            switch (InputController.getIntFromUser(1, 4)) {
                 case 1:
                     addCineplex();
                     break;
@@ -102,6 +102,10 @@ public class AdminConfigSettingUI {
     }
 
     private void modifyClassSurcharge() {
+        System.out.println("\n" +
+                "---------------------------------\n" +
+                "| Update Cinema Class Surcharge |\n" +
+                "---------------------------------\n");
         double goldclassSurcharge, platinumSurcharge, imaxSurcharge;
         System.out.print("Enter Gold Class surcharge: ");
         goldclassSurcharge = InputController.getDoubleFromUser();
@@ -114,6 +118,10 @@ public class AdminConfigSettingUI {
     }
 
     private void modifyTypeSurcharge() {
+        System.out.println("\n" +
+                "--------------------------------\n" +
+                "| Update Movie Type Surcharge |\n" +
+                "--------------------------------\n");
         double blockbusterSurcharge, threedSurcharge;
         System.out.print("Enter Blockbuster surcharge: ");
         blockbusterSurcharge = InputController.getDoubleFromUser();
@@ -123,6 +131,10 @@ public class AdminConfigSettingUI {
     }
 
     private void modifyWeekendSurcharge() {
+        System.out.println("\n" +
+                "-------------------------------------\n" +
+                "| Update Holiday/Weekend Surcharge |\n" +
+                "-------------------------------------\n");
         double weekendSurcharge, holidaySurcharge;
         System.out.print("Enter weekend surcharge: ");
         weekendSurcharge = InputController.getDoubleFromUser();
@@ -132,6 +144,10 @@ public class AdminConfigSettingUI {
     }
 
     private void modifyAgeDiscount() {
+        System.out.println("\n" +
+                "----------------------------------\n" +
+                "| Update Student/Senior Discount |\n" +
+                "----------------------------------\n");
         double childDiscount, seniorCitizenDiscount;
         System.out.print("Enter student discount: ");
         childDiscount = InputController.getDoubleFromUser();
@@ -141,6 +157,10 @@ public class AdminConfigSettingUI {
     }
 
     private void modifyDefaultTicketPrice() {
+        System.out.println("\n" +
+                "---------------------\n" +
+                "| Update Base Price |\n" +
+                "---------------------\n");
         double defaultTicketPrice;
         System.out.print("Enter basic ticket price: ");
         defaultTicketPrice = InputController.getDoubleFromUser();
