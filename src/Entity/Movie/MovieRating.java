@@ -1,3 +1,8 @@
+/**
+Represents the different categories of movie ratings.
+*/
+
+
 package Entity.Movie;
 
 public enum MovieRating {
