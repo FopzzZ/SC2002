@@ -103,38 +103,15 @@ public class CineplexController {
         writeToDB(cineplexList);
     }
 
-    public void changeCinemaType(Cineplex cineplex) {
-        listCinemas(cineplex);
-        System.out.print("Select cinema to change type: ");
-        int selection = InputController.getIntFromUser(1, cineplex.getCinemas().size());
-        CinemaType newType = CinemaType.NORMAL;
-        System.out.printf("Current cinema type: %s\n", cineplex.getCinemas().get(selection - 1).getType());
-        System.out.print("Select new cinema type: \n" +
-                "1. Gold Class\n" +
-                "2. Platinum\n" +
-                "3. IMAX\n" +
-                "4. Normal\n");
-        switch (InputController.getIntFromUser(1, 4)) {
-            case 1:
-                newType = CinemaType.GOLDCLASS;
-                break;
-            case 2:
-                newType = CinemaType.PLATINUM;
-                break;
-            case 3:
-                newType = CinemaType.IMAX;
-                break;
-            case 4:
-                newType = CinemaType.NORMAL;
-                break;
-        }
+    public void changeCinemaType(Cineplex cineplex, int cinemaIndex, CinemaType newType) {
+
         int index = 0;
         boolean found = false;
         for (Cineplex c : cineplexList) {
 
             if (c.getName().equals(cineplex.getName())) {
                 found = true;
-                cineplexList.get(index).getCinemas().get(selection - 1).setType(newType);
+                cineplexList.get(index).getCinemas().get(cinemaIndex).setType(newType);
                 ;
             }
             index++;

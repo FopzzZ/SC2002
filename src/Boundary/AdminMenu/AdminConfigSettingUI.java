@@ -1,6 +1,7 @@
 package Boundary.AdminMenu;
 
 import Controller.*;
+import Entity.Cinema.CinemaType;
 import Entity.Cineplex.Cineplex;
 
 public class AdminConfigSettingUI {
@@ -100,34 +101,6 @@ public class AdminConfigSettingUI {
         }
     }
 
-    private void configureCineplex() {
-        cineplexController.listCineplex();
-        System.out.println("Select cineplex to configure: ");
-        int selection = InputController.getIntFromUser();
-        Cineplex selectedCineplex = cineplexController.getCineplexList().get(selection - 1);
-        while (true) {
-            System.out.println("\n" +
-                    "----------------------\n" +
-                    "| Configure cineplex |\n" +
-                    "----------------------\n" +
-                    "1. Add cinema\n" +
-                    "2. Change cinema type\n" +
-                    "3. Back to modify cineplex\n");
-            System.out.print("Select action: ");
-            switch (InputController.getIntFromUser(1, 3)) {
-                case 1:
-                    addCinema(selectedCineplex);
-                    break;
-                case 2:
-                    changeCinemaType(selectedCineplex);
-                    break;
-                case 3:
-                    return;
-
-            }
-        }
-    }
-
     private void modifyClassSurcharge() {
         double goldclassSurcharge, platinumSurcharge, imaxSurcharge;
         System.out.print("Enter Gold Class surcharge: ");
@@ -189,13 +162,65 @@ public class AdminConfigSettingUI {
         cineplexController.removeCineplex(selectedCineplex);
     }
 
+    private void configureCineplex() {
+        cineplexController.listCineplex();
+        System.out.println("Select cineplex to configure: ");
+        int selection = InputController.getIntFromUser();
+        Cineplex selectedCineplex = cineplexController.getCineplexList().get(selection - 1);
+        while (true) {
+            System.out.println("\n" +
+                    "----------------------\n" +
+                    "| Configure cineplex |\n" +
+                    "----------------------\n" +
+                    "1. Add cinema\n" +
+                    "2. Change cinema type\n" +
+                    "3. Back to modify cineplex\n");
+            System.out.print("Select action: ");
+            switch (InputController.getIntFromUser(1, 3)) {
+                case 1:
+                    addCinema(selectedCineplex);
+                    break;
+                case 2:
+                    changeCinemaType(selectedCineplex);
+                    break;
+                case 3:
+                    return;
+
+            }
+        }
+    }
+
     private void addCinema(Cineplex cineplex) {
         cineplexController.addCinema(cineplex);
         System.out.println("Cinema added");
     }
 
     public void changeCinemaType(Cineplex cineplex) {
-        cineplexController.changeCinemaType(cineplex);
+        cineplexController.listCinemas(cineplex);
+        System.out.print("Select cinema to change type: ");
+        int selection = InputController.getIntFromUser(1, cineplex.getCinemas().size());
+        CinemaType newType = CinemaType.NORMAL;
+        System.out.printf("Current cinema type: %s\n", cineplex.getCinemas().get(selection - 1).getType());
+        System.out.print("Select new cinema type: \n" +
+                "1. Gold Class\n" +
+                "2. Platinum\n" +
+                "3. IMAX\n" +
+                "4. Normal\n");
+        switch (InputController.getIntFromUser(1, 4)) {
+            case 1:
+                newType = CinemaType.GOLDCLASS;
+                break;
+            case 2:
+                newType = CinemaType.PLATINUM;
+                break;
+            case 3:
+                newType = CinemaType.IMAX;
+                break;
+            case 4:
+                newType = CinemaType.NORMAL;
+                break;
+        }
+        cineplexController.changeCinemaType(cineplex, selection - 1, newType);
         System.out.println("Cinema type changed");
     }
 
