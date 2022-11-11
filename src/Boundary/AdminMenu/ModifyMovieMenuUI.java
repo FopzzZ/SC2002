@@ -22,7 +22,7 @@ public class ModifyMovieMenuUI {
                     "2. Update movie listing\n" +
                     "3. Remove movie listing\n" +
                     "4. Back to main menu\n");
-            System.out.println("Select action: ");
+            System.out.print("Select action: ");
             switch (InputController.getIntFromUser(1, 4)) {
                 case 1:
                     createMovieListing();
@@ -46,15 +46,16 @@ public class ModifyMovieMenuUI {
         MovieType movieType = MovieType.Common;
         MovieRating rating = MovieRating.G;
         System.out.println("\n" +
-                "-----------------------\n" +
-                "| Create Movie Listing|\n" +
-                "-----------------------\n");
+                "------------------------\n" +
+                "| Create Movie Listing |\n" +
+                "------------------------");
         System.out.println("Enter movie title: ");
         movieTitle = InputController.getStringFromUser();
-        System.out.println("Select showing status:\n" +
+        System.out.print("\n[Step 1]\n" +
                 "1. Coming Soon\n" +
                 "2. Preview\n" +
-                "3. Now Showing\n");
+                "3. Now Showing\n" +
+                "\nSelect showing status: ");
         switch (InputController.getIntFromUser(1, 3)) {
             case 1:
                 showingStatus = MovieStatus.Coming;
@@ -67,13 +68,14 @@ public class ModifyMovieMenuUI {
                 break;
 
         }
-        System.out.println("Select movie rating:\n" +
+        System.out.print("\n[Step 2]\n" +
                 "1. G (General)\n" +
                 "2. PG (Parental Guidance)\n" +
                 "3. PG13 (Parental Guidance 13)\n" +
                 "4. NC16 (No Children Under 16)\n" +
                 "5. M18 (Mature 18)\n" +
-                "6. R21 (Restricted 21)");
+                "6. R21 (Restricted 21)\n" +
+                "\nSelect movie rating: ");
         switch (InputController.getIntFromUser(1, 6)) {
             case 1:
                 rating = MovieRating.G;
@@ -94,13 +96,13 @@ public class ModifyMovieMenuUI {
                 rating = MovieRating.R21;
                 break;
         }
-        System.out.println("Enter synopsis: ");
+        System.out.print("\n[Step 3]\nEnter synopsis: ");
         movieSynopsis = InputController.getStringFromUser();
-        System.out.println("Enter director's name: ");
+        System.out.print("\n[Step 4]\nEnter director's name: ");
         movieDirector = InputController.getStringFromUser();
-        System.out.println("Enter a cast's name: (Enter 'Done' when done)");
+        System.out.print("\n[Step 5]\nEnter a cast's name (Enter 'DONE' when done): ");
         castInput = InputController.getStringFromUser();
-        while (!castInput.equals("Done")) {
+        while (!castInput.equals("DONE")) {
             castNames.add(castInput);
             castInput = InputController.getStringFromUser();
         }

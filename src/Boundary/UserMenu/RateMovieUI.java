@@ -11,10 +11,8 @@ public class RateMovieUI {
         int selection = -1;
         do {
             System.out.print("\nSelect movie to review: ");
-            selection = InputController.getIntFromUser();
+            selection = InputController.getIntFromUser(1, movieController.getlistMovies().size());
             selection = movieController.searchWithID(selection);
-            if (selection == -1)
-                System.out.println("Invalid input! Please try again.");
         } while (selection == -1);
         System.out.print("Please enter your rating for the movie (0 to 10): ");
         int rating = InputController.getIntFromUser(0, 10);
