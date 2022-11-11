@@ -80,12 +80,12 @@ public class SearchMovieUI {
                 case 7:
                     selectedMovies = filterByRating();
                     if (!selectedMovies.isEmpty()) {
-                        int dashLength = selectedMovies.get(0).getStatus().toString().length();
+                        int dashLength = selectedMovies.get(0).getRating().toString().length();
                         System.out.println();
                         for (int i = 0; i < dashLength + 11; i++) {
                             System.out.print("-");
                         }
-                        System.out.println("\n| " + selectedMovies.get(0).getStatus() + " Movies |");
+                        System.out.println("\n| " + selectedMovies.get(0).getRating() + " Movies |");
                         for (int i = 0; i < dashLength + 11; i++) {
                             System.out.print("-");
                         }
