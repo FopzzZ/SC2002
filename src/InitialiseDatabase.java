@@ -39,20 +39,36 @@ public class InitialiseDatabase {
         cineplexController.addNewCineplex("Orchard");
 
         // initialise movies list
-        ArrayList<String> cast = new ArrayList<String>();
-        cast.add("Cast1");
-        cast.add("Cast2");
         MovieController movieController = new MovieController();
         movieController.clearDatabase();
-        movieController.createNewMovie("John Cena", MovieStatus.Showing, "now u see me",
+
+        // first movie
+        ArrayList<String> cast1 = new ArrayList<String>();
+        cast1.add("Christian Bale");
+        cast1.add("Cillian Murphy");
+        cast1.add("Katie Holmes");
+        cast1.add("Michael Caine");
+        cast1.add("Liam Neeson");
+        cast1.add("Morgan Freeman");
+        cast1.add("Gary Oldman");
+        movieController.createNewMovie("Batman Begins", MovieStatus.Showing,
+                "After witnessing his parents' death, Bruce learns the art of fighting to confront injustice. When he returns to Gotham as Batman, he must stop a secret society that intends to destroy the city.",
                 MovieType.Common,
-                MovieRating.G, "dk", cast);
-        movieController.createNewMovie("Nemo", MovieStatus.Showing, "now u see me",
+                MovieRating.G, "Christopher Nolan", cast1);
+
+        // second movie
+        ArrayList<String> cast2 = new ArrayList<String>();
+        cast2.add("");
+        movieController.createNewMovie("Nemo", MovieStatus.Showing,
+                "Cobb steals information from his targets by entering their dreams. Saito offers to wipe clean Cobb's criminal history as payment for performing an inception on his sick competitor's son.",
                 MovieType.Common,
-                MovieRating.G, "dk", cast);
+                MovieRating.G, "dk", cast2);
+
+        // third movie
+        ArrayList<String> cast3 = new ArrayList<String>();
         movieController.createNewMovie("Bob bones", MovieStatus.Showing, "now u see me",
                 MovieType.Common,
-                MovieRating.G, "dk", cast);
+                MovieRating.G, "dk", cast3);
 
         // initialise showtimes
         addShowtime("202211111600", "202211111800", false);

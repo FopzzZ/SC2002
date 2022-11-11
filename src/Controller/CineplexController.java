@@ -56,6 +56,24 @@ public class CineplexController {
         writeToDB(cineplexList);
     }
 
+    public boolean removeCineplex(Cineplex cineplex) {
+        int index = 0;
+        boolean found = false;
+        for (Cineplex c : cineplexList) {
+            if (c.getName().equals(cineplex.getName())) {
+                cineplexList.remove(index);
+                found = true;
+                break;
+            }
+            index++;
+        }
+        if (!found) {
+            System.out.println("No such cinema");
+        }
+        writeToDB(cineplexList);
+        return found;
+    }
+
     public void listCineplex() {
         for (int i = 0; i < cineplexList.size(); ++i) {
             System.out.printf("Cineplex %d: %s\n", i + 1, cineplexList.get(i).getName());
