@@ -75,6 +75,10 @@ public class CineplexController {
     }
 
     public void listCineplex() {
+        System.out.println("\n" +
+                "--------------\n" +
+                "| Cineplexes |\n" +
+                "--------------");
         for (int i = 0; i < cineplexList.size(); ++i) {
             System.out.printf("Cineplex %d: %s\n", i + 1, cineplexList.get(i).getName());
         }

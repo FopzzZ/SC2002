@@ -156,7 +156,7 @@ public class SearchMovieUI {
                         "3. Now Showing\n" +
                         "4. Back\n");
         System.out.print("Select status to filter by: ");
-        int choice = InputController.getIntFromUser(1, 5);
+        int choice = InputController.getIntFromUser(1, 4);
         switch (choice) {
             case 1:
                 return movieController.filterByStatus(MovieStatus.Coming);

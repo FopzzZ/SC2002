@@ -27,6 +27,10 @@ public class ShowtimeController {
     } // adds a showtime to movie
 
     public void showAllShowtimes() {
+        System.out.println("\n" +
+                "-------------\n" +
+                "| Showtimes |\n" +
+                "-------------");
         for (int i = 0; i < showtimeList.size(); ++i) {
             System.out.printf("Showtime %d: %s\n", i + 1, showtimeList.get(i).toString());
         }
@@ -34,6 +38,10 @@ public class ShowtimeController {
     }
 
     public void showAllFilteredShowtimesByCineplex(Cineplex cineplex) {
+        System.out.println("\n" +
+                "-------------\n" +
+                "| Showtimes |\n" +
+                "-------------");
         filteredShowtimeList = new ArrayList<Showtime>();
         for (Showtime showtime : showtimeList) {
             if (showtime.getCineplex().getName().equals(cineplex.getName())) {

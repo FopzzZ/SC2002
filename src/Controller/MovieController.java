@@ -201,6 +201,10 @@ public class MovieController {
         System.out.printf("Total %d movies\n", movieList.size());
     }
 
+    public ArrayList<Movie> getlistMovies() {
+        return movieList;
+    }
+
     public void listTop5ByRating() {
         ArrayList<Movie> tempList = new ArrayList<Movie>();
         tempList = readFromDB();
