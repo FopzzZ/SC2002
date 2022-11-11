@@ -22,14 +22,13 @@ public class BookTicketUI {
     public void main() { // very similar to checkSeatAvailabilityUI
         CineplexController cineplexController = new CineplexController();
         MovieController movieController = new MovieController();
-
         cineplexController.listCineplex();
         System.out.print("\nSelect cineplex: ");
-        int cineplexChoice = InputController.getIntFromUser();
+        int cineplexChoice = InputController.getIntFromUser(1, cineplexController.getCineplexList().size());
         Cineplex selectedCineplex = cineplexController.getCineplexList().get(cineplexChoice - 1);
         movieController.listMovies();
         System.out.print("\nSelect movie: ");
-        int movieChoice = InputController.getIntFromUser();
+        int movieChoice = InputController.getIntFromUser(1, movieController.getlistMovies().size());
         System.out.println();
         Movie selectedMovie = movieController.getMovie(movieChoice - 1);
         ShowtimeController showtimeController = new ShowtimeController(selectedMovie);
@@ -40,7 +39,7 @@ public class BookTicketUI {
         }
         System.out.print("Select showtime:");
         Showtime selectedShowtime = showtimeController.getFilteredShowtimeList()
-                .get(InputController.getIntFromUser() - 1);
+                .get(InputController.getIntFromUser(1, showtimeController.getFilteredShowtimeList().size()) - 1);
         selectedShowtime.getSeatplan().showSeatplan();
         System.out.print("Select row number: ");
         int rowNumber = InputController.getIntFromUser(1, 9);
