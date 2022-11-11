@@ -42,6 +42,11 @@ public class User implements Serializable {
             System.out.print("\nBooking " + index + ":");
             index += 1;
             System.out.print(booking.toString());
+            System.out.println("Start time: " + booking.getTicket().getShowtime().getStartTime().toString());
+            System.out.println("Start time: " + booking.getTicket().getShowtime().getEndTime().toString());
+            System.out.println("Location: " + booking.getTicket().getShowtime().getCineplex().getName() + " Cineplex "
+                    + booking.getTicket().getShowtime().getCinema().getName());
+            System.out.println("Ticket price: " + String.format("%.2d", booking.getTicket().getPrice()));
         }
     }
 

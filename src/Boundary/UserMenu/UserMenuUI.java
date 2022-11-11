@@ -46,14 +46,6 @@ public class UserMenuUI {
                 case 5:
                     viewBookingHistory();
                     break;
-                /*
-                 * case 6:
-                 * listTop5Ranking();
-                 * break;
-                 * case 7:
-                 * listTop5ByTicketSales();
-                 * break;
-                 */
                 case 6:
                     rateMovie();
                     break;
@@ -89,16 +81,6 @@ public class UserMenuUI {
         UserController userController = new UserController();
         userController.getUser(userEmail).printBookingHistory();
     }
-
-    // private void listTop5Ranking() {
-    //     MovieController movieController = new MovieController();
-    //     movieController.listTop5ByRating();
-    // }
-
-    // private void listTop5ByTicketSales() {
-    //     MovieController movieController = new MovieController();
-    //     movieController.listTop5ByTicketSales();
-    // }
 
     private void rateMovie() {
         RateMovieUI rateMovieUI = new RateMovieUI();
