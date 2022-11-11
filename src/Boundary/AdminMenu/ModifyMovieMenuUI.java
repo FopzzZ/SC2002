@@ -109,11 +109,11 @@ public class ModifyMovieMenuUI {
     }
 
     private void updateMovieListing() {
-        movieController.listMovies();
         System.out.println("\n" +
                 "-----------------------\n" +
                 "| Update Movie Listing|\n" +
                 "-----------------------\n");
+        movieController.listMovies();
         System.out.println("Select movie to update: ");
         int ID = InputController.getIntFromUser();
         movieController.updateMovieByID(ID);

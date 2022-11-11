@@ -79,20 +79,20 @@ public class Movie implements Serializable {
 
     public boolean updateDetail() { // move to movieController/adminMenuUI
         int input = 0;
-        String content; 
+        String content;
         int index = 0;
         while (input != 7) {
             System.out.println("1: Title");
-            System.out.println("2: Status(Coming Soon/Preview/Now Showing/End of Showing)");
-            System.out.println("3: Type(Blockbuster/3D/Common)");
-            System.out.println("4: Rating(G/PG/PG13/NC16/M18/R21)");
+            System.out.println("2: Status (Coming Soon/Preview/Now Showing/End of Showing)");
+            System.out.println("3: Type (Blockbuster/3D/Common)");
+            System.out.println("4: Rating (G/PG/PG13/NC16/M18/R21)");
             System.out.println("5: Director");
             System.out.println("6: Synopsis");
             System.out.println("7: Add Cast");
             System.out.println("8: Exit");
             System.out.println("Select attribute to edit");
             input = InputController.getIntFromUser(1, 8);
-           
+
             switch (input) {
                 case 1:
                     System.out.println("Enter movie title: ");
@@ -100,7 +100,8 @@ public class Movie implements Serializable {
                     this.setTitle(content);
                     break;
                 case 2:
-                    System.out.println("Enter movie status (1. Coming Soon / 2. Preview / 3. Now Showing / 4. End of Showing): ");
+                    System.out.println(
+                            "Enter movie status (1. Coming Soon / 2. Preview / 3. Now Showing / 4. End of Showing): ");
                     index = InputController.getIntFromUser(1, 4);
                     switch (index) {
                         case 1:
@@ -137,7 +138,7 @@ public class Movie implements Serializable {
                     break;
                 case 4:
                     System.out.println("Enter movie rating (1. G / 2. PG / 3. PG13 / 4. NC16 / 5. M18 / 6. R21): ");
-                    index = InputController.getIntFromUser(1,6);
+                    index = InputController.getIntFromUser(1, 6);
                     switch (index) {
                         case 1:
                             this.setRating(MovieRating.G);
