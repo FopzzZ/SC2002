@@ -56,7 +56,7 @@ public class CineplexController {
         writeToDB(cineplexList);
     }
 
-    public boolean removeCineplex(Cineplex cineplex) {
+    public void removeCineplex(Cineplex cineplex) {
         int index = 0;
         boolean found = false;
         for (Cineplex c : cineplexList) {
@@ -71,7 +71,6 @@ public class CineplexController {
             System.out.println("No such cinema");
         }
         writeToDB(cineplexList);
-        return found;
     }
 
     public void listCineplex() {

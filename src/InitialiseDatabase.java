@@ -58,14 +58,21 @@ public class InitialiseDatabase {
 
         // second movie
         ArrayList<String> cast2 = new ArrayList<String>();
-        cast2.add("");
-        movieController.createNewMovie("Nemo", MovieStatus.Showing,
+        cast2.add("Leonardo DiCaprio");
+        cast2.add("Joseph Gordon-Levitt");
+        cast2.add("Tom Hardy");
+        cast2.add("Cillian Murphy");
+        cast2.add("Elliot Page");
+        cast2.add("Marion Cotillard");
+        cast2.add("Ken Watanabe");
+        movieController.createNewMovie("Inception", MovieStatus.Showing,
                 "Cobb steals information from his targets by entering their dreams. Saito offers to wipe clean Cobb's criminal history as payment for performing an inception on his sick competitor's son.",
                 MovieType.Common,
-                MovieRating.G, "dk", cast2);
+                MovieRating.G, "Christopher Nolan", cast2);
 
         // third movie
         ArrayList<String> cast3 = new ArrayList<String>();
+        cast3.add("");
         movieController.createNewMovie("Bob bones", MovieStatus.Showing, "now u see me",
                 MovieType.Common,
                 MovieRating.G, "dk", cast3);
