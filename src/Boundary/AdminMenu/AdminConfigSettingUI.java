@@ -1,14 +1,17 @@
 package Boundary.AdminMenu;
 
 import Controller.*;
+import Entity.Cineplex.Cineplex;
 
 public class AdminConfigSettingUI {
     BookingController bookingController;
+    CineplexController cineplexController;
 
     public void main() {
         bookingController = new BookingController();
-        
-         while (true) {
+        cineplexController = new CineplexController();
+
+        while (true) {
             System.out.println("\n" +
                     "------------------------\n" +
                     "| Admin Settings |\n" +
@@ -27,8 +30,9 @@ public class AdminConfigSettingUI {
                 case 3:
                     return;
             }
+        }
     }
-    
+
     private void modifyTicketPrices() {
         while (true) {
             System.out.println("\n" +
@@ -67,7 +71,7 @@ public class AdminConfigSettingUI {
             }
         }
     }
-    
+
     private void modifyCineplex() {
         while (true) {
             System.out.println("\n" +
@@ -91,15 +95,17 @@ public class AdminConfigSettingUI {
                     break;
                 case 4:
                     return;
-                      
+
             }
+        }
     }
-        
+
     private void configureCineplex() {
-         String cineplexName;
-         System.out.println("Enter the cineplex you wish to configure:");
-         cineplexName = InputController.getStringFromUser();
-         while (true) {
+        cineplexController.listCineplex();
+        System.out.println("Select cineplex to configure: ");
+        int selection = InputController.getIntFromUser();
+        Cineplex selectedCineplex = cineplexController.getCineplexList().get(selection - 1);
+        while (true) {
             System.out.println("\n" +
                     "------------------------\n" +
                     "| Configure cineplex |\n" +
@@ -108,20 +114,18 @@ public class AdminConfigSettingUI {
                     "2. Change cinema type\n" +
                     "3. Back to modify cineplex");
             System.out.println("Select action: ");
-            switch (InputController.getIntFromUser(1, 4)) {
+            switch (InputController.getIntFromUser(1, 3)) {
                 case 1:
-                    addCinema(cineplexName);
+                    addCinema(selectedCineplex);
                     break;
                 case 2:
-                    removeCinema(cineplexName);
+                    changeCinemaType(selectedCineplex);
                     break;
                 case 3:
-                    changeCinemaType(cineplexName);
-                    break;
-                case 4:
                     return;
-                      
+
             }
+        }
     }
 
     private void modifyClassSurcharge() {
@@ -163,34 +167,35 @@ public class AdminConfigSettingUI {
         bookingController.editAgeDiscount(childDiscount, seniorCitizenDiscount);
     }
 
-    private void modifyBasicTicketPrice() {
+    private void modifyDefaultTicketPrice() {
         double defaultTicketPrice;
-        System.out.print("Enter default ticket price: ");
+        System.out.print("Enter basic ticket price: ");
         defaultTicketPrice = InputController.getDoubleFromUser();
         bookingController.editDefaultTicketPrice(defaultTicketPrice);
     }
-    
-    private static void addCineplex() {
+
+    private void addCineplex() {
         String cineplexName;
         System.out.println("Enter cineplex name: ");
         cineplexName = InputController.getStringFromUser();
-        CineplexController.addNewCineplex(cineplexName);
+        cineplexController.addNewCineplex(cineplexName);
     }
-    
-     private static void removeCineplex() {
-        String cineplexName;
-        System.out.println("Enter cineplex name: ");
-        cineplexName = InputController.getStringFromUser();
-        CineplexController.removeCineplex(cineplexName);
+
+    private void removeCineplex() {
+        cineplexController.listCineplex();
+        System.out.println("Select cineplex to remove: ");
+        int selection = InputController.getIntFromUser();
+        Cineplex selectedCineplex = cineplexController.getCineplexList().get(selection - 1);
+        cineplexController.removeCineplex(selectedCineplex);
     }
-    
-    private static void addCinema(String cineplexName) {
-        CineplexController.addCinema(cineplexName);
+
+    private void addCinema(Cineplex cineplex) {
+        cineplexController.addCinema(cineplex);
         System.out.println("cinema added");
     }
-        
-    public static void changeCinemaType(String cineplexName) {
-        CineplexController.changeCinemaType(cineplexName);
+
+    public void changeCinemaType(Cineplex cineplex) {
+        cineplexController.changeCinemaType(cineplex);
         System.out.println("Cinema type changed");
     }
 
@@ -203,7 +208,5 @@ public class AdminConfigSettingUI {
         AdminConfigSettingUI adminConfigSettingUI = new AdminConfigSettingUI();
         adminConfigSettingUI.main();
     }
-    
-    
-    
+
 }

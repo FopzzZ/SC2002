@@ -4,6 +4,7 @@ import java.io.*;
 import java.util.ArrayList;
 
 import Entity.Cinema.Cinema;
+import Entity.Cinema.CinemaType;
 import Entity.Cineplex.Cineplex;
 
 public class CineplexController {
@@ -83,43 +84,65 @@ public class CineplexController {
     public ArrayList<Cineplex> getCineplexList() {
         return cineplexList;
     }
-    
-    public void addCinema(String cineplexName) {
-        String cinemaName;
-        int cinemaNumber = cineplexName.getCinemas().size() + 1;
-        cinemaName = String.format("Cinema %d", cinemaNumber); 
-        Cinema newCinema = new Cinema (cinemaName);
+
+    public void addCinema(Cineplex cineplex) {
+        boolean found = false;
+        int index = 0;
+        for (Cineplex c : cineplexList) {
+
+            if (c.getName().equals(cineplex.getName())) {
+                found = true;
+                cineplexList.get(index).addCinema();
+            }
+            index++;
+        }
+        if (!found) {
+            System.out.println("Error no such cineplex found");
+        }
+        // add to cineplex
         writeToDB(cineplexList);
     }
-    
-    public void changeCinemaType(String cineplexName) {
-        int cinemaNumber = 0;
-        listCinemas(cineplexName);
-        cinemaNumber = InputController.getIntFromUser(1, cineplexName.getCinemas.size());
-        
-        System.out.printf("Current cinema type: %s\n", cineplexName.getCinemas()[cinemaNumber].getType());
+
+    public void changeCinemaType(Cineplex cineplex) {
+        listCinemas(cineplex);
+        int selection = InputController.getIntFromUser(1, cineplex.getCinemas().size());
+        CinemaType newType = CinemaType.NORMAL;
+        System.out.printf("Current cinema type: %s\n", cineplex.getCinemas().get(selection - 1).getType());
         System.out.println("Select new cinema type: \n" +
-                           "1. Gold Class\n" + 
-                           "2. Platinum\n" + 
-                           "3. IMAX\n" +
-                           "4. Normal\n");
-        
-        switch(InputController.getIntFromUser(1, 4)) {
+                "1. Gold Class\n" +
+                "2. Platinum\n" +
+                "3. IMAX\n" +
+                "4. Normal\n");
+        switch (InputController.getIntFromUser(1, 4)) {
             case 1:
-                cineplexName.getCinemas()[cinemaNumber].setType(CinemaType.GOLDCLASS);
+                newType = CinemaType.GOLDCLASS;
                 break;
             case 2:
-                cineplexName.getCinemas()[cinemaNumber].setType(CinemaType.PLATINUM);
+                newType = CinemaType.PLATINUM;
                 break;
             case 3:
-                cineplexName.getCinemas()[cinemaNumber].setType(CinemaType.IMAX);
+                newType = CinemaType.IMAX;
                 break;
             case 4:
-                cineplexName.getCinemas()[cinemaNumber].setType(CinemaType.NORMAL);
+                newType = CinemaType.NORMAL;
                 break;
         }
+        int index = 0;
+        boolean found = false;
+        for (Cineplex c : cineplexList) {
+
+            if (c.getName().equals(cineplex.getName())) {
+                found = true;
+                cineplexList.get(index).getCinemas().get(selection - 1).setType(newType);
+                ;
+            }
+            index++;
+        }
+        if (!found) {
+            System.out.println("Error no such cineplex found");
+        }
         writeToDB(cineplexList);
-        
+
     }
 
     public void listCinemas(Cineplex cineplex) {

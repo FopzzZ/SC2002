@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 import Entity.Cinema.Cinema;
+import Entity.Cinema.CinemaType;
 
 public class Cineplex implements Serializable {
     private ArrayList<Cinema> cinemas;
@@ -34,6 +35,13 @@ public class Cineplex implements Serializable {
 
     public ArrayList<Cinema> getCinemas() {
         return this.cinemas;
+    }
+
+    public void addCinema() {
+        int cinemaNumber = getCinemas().size() + 1;
+        String name = String.format("Cinema %d", cinemaNumber);
+        Cinema newCinema = new Cinema(CinemaType.NORMAL, name);
+        this.cinemas.add(newCinema);
     }
 
     // notice: if no such cinema in this cineplex, it will return null
