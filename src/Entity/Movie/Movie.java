@@ -48,6 +48,12 @@ public class Movie implements Serializable {
         this.ticketSales = 0;
     }
 
+    
+    /** 
+     * A method to get the average score for a given movie from all reveiws as a double
+     * 
+     * @return double Returns the average score given by all reviews
+     */
     public double getAverageReviewScore() { // returns average review score
         double sum = 0;
         if (reviews.size() > 0) {
@@ -60,6 +66,12 @@ public class Movie implements Serializable {
         return sum;
     }
 
+    
+    /** 
+     * A method to get the average score for a given movie from all reviews as a string
+     * 
+     * @return String Returns the average score given by all reviews
+     */
     public String getOverallReviewsRatingToString() {
         double sum = 0;
         if (reviews.size() > 1) {
@@ -73,10 +85,22 @@ public class Movie implements Serializable {
         }
     }
 
+    
+    /** 
+     * A method that takes in an arraylist of showtimes and assigns it to a movie
+     * 
+     * @param showtimes Determines the showtimes assigned to a movie in the form of an arraylist
+     */
     public void updateShowtime(ArrayList<Showtime> showtimes) {
         this.showtimes = showtimes;
     }
 
+    
+    /** 
+     * A method to get the menu to update movie details
+     * 
+     * @return boolean Returns false if an error ocurred and movie details were not updated
+     */
     public boolean updateDetail() { // move to movieController/adminMenuUI
         int input = 0;
         String content;
@@ -192,91 +216,224 @@ public class Movie implements Serializable {
         return false;
     }
 
+    
+    /** 
+     * A method that takes in a string and sets it as the title of the movie
+     * 
+     * @param movieTitle Determines the title of the movie
+     */
     public void setTitle(String movieTitle) {
         this.movieTitle = movieTitle;
     }
 
+    
+    /** 
+     * A method that takes in a MovieType and sets it as the type of the movie
+     * 
+     * @param type Determines the type of the movie
+     */
     public void setType(MovieType type) {
         this.type = type;
     }
 
+    
+    /** 
+     * A method that takes in a MovieStatus and sets it as the status of the movie
+     * 
+     * @param status Determines the status of the movie
+     */
     public void setStatus(MovieStatus status) {
         this.status = status;
     }
 
+    
+    /** 
+     * A method that takes in a MovieRating and sets it as the rating of the movie
+     * 
+     * @param rating Determines the rating of the movie
+     */
     public void setRating(MovieRating rating) {
         this.rating = rating;
     }
 
+    
+    /** 
+     * A method that takes in a string and sets it as the synopsis of a movie
+     * 
+     * @param synopsis Determines the synopsis of the movie
+     */
     public void setSynopsis(String synopsis) {
         this.synopsis = synopsis;
     }
 
+    
+    /** 
+     * A method that takes in a string and sets it as the director of the movie
+     * 
+     * @param director Determines the director of the movie
+     */
     public void setDirector(String director) {
         this.director = director;
     }
 
+    
+    /** 
+     * A method that takes in a string and adds it to the cast list of the movie
+     * 
+     * @param cast Determines the cast to be added to the cast list of the movie
+     */
     public void addCast(String cast) {
         this.cast.add(cast);
     }
 
+    
+    /** 
+     * A method that takes in a double, ticket price, and adds it to the ticket sales of the movie
+     * 
+     * @param ticketPrice Determines the amount to be added to the ticket sales of the movie
+     */
     public void addTicketSales(double ticketPrice) {
         this.ticketSales += ticketPrice;
     }
 
+    
+    /** 
+     * A method that takes in a double and string, saves it to a review and adds it to the list of reviews of the movie and updates the average score of the movie
+     * 
+     * @param rating Determines the score associated with the review of the movie
+     * @param content Determines the content of the review of the movie
+     */
     public void addReview(double rating, String content) {
         this.reviews.add(new Review(rating, content));
         this.reviewScore = getAverageReviewScore();
     }
 
+    
+    /** 
+     * A method that takes in a showtime and adds it to the current list of showtimes of the movie
+     * 
+     * @param showtime Determines the showtime to be added to the movie
+     */
     public void addShowtime(Showtime showtime) {
         this.showtimes.add(showtime);
     }
 
+    
+    /** 
+     * A method that returns the title of the movie as a string
+     * 
+     * @return String This returns the title of the movie as a string
+     */
     public String getTitle() {
         return this.movieTitle;
     }
 
+    
+    /** 
+     * A method that returns the status of the movie as a MovieStatus
+     * 
+     * @return MovieStatus This returns the status of the movie as a MovieStatus
+     */
     public MovieStatus getStatus() {
         return this.status;
     }
 
+    
+    /** 
+     * A method that returns the synopsis of the movie as a string
+     * 
+     * @return String This returns the synopsis of the movie as a string
+     */
     public String getSynopsis() {
         return this.synopsis;
     }
 
+    
+    /** 
+     * A method that returns the director of the movie as a string
+     * 
+     * @return String This returns the director of the movie as a string
+     */
     public String getDirector() {
         return this.director;
     }
 
+    
+    /** 
+     * A method that returns the cast of the movie as an arraylist
+     * 
+     * @return ArrayList<String> This returns the cast of the movie as an arraylist
+     */
     public ArrayList<String> getCast() {
         return this.cast;
     }
 
+    
+    /** 
+     * A method that returns the reviews of the movie as an arraylist
+     * 
+     * @return ArrayList<Review> This returns the reviews of the movie as an arraylist
+     */
     public ArrayList<Review> getReviews() {
         return this.reviews;
     }
 
+    
+    /** 
+     * A method that returns the showtimes of the movie as an arraylist
+     * 
+     * @return ArrayList<Showtime> This returns the showtimes of the movie as an arraylist
+     */
     public ArrayList<Showtime> getShowtimes() {
         return this.showtimes;
     }
 
+    
+    /** 
+     * A method that returns the type of the movie as a MovieType
+     * 
+     * @return MovieType This returns the type of the movie as a MovieType
+     */
     public MovieType getType() {
         return this.type;
     }
 
+    
+    /** 
+     * A method that returns the rating of the movie as a MovieRating
+     * 
+     * @return MovieRating This returns the rating of the movie as a MovieRating
+     */
     public MovieRating getRating() {
         return this.rating;
     }
 
+    
+    /** 
+     * A method that returns the review score of the movie as a double
+     * 
+     * @return double This returns the review score of the movie as a double
+     */
     public double getReviewScore() {
         return this.reviewScore;
     }
 
+    
+    /** 
+     * A method that returns the total value of the tickets sold for the movie as a double
+     * 
+     * @return double This returns the total value of the tickets sold for the movie as a double
+     */
     public double getTicketSales() {
         return this.ticketSales;
     }
 
+    
+    /** 
+     * A method that returns 
+     * 
+     * @return String
+     */
     public String toString() {
         String castS = new String();
         for (int i = 0; i < this.getCast().size(); ++i) {
