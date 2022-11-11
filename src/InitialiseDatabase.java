@@ -86,17 +86,19 @@ public class InitialiseDatabase {
                                 MovieRating.G, "John Lasseter", cast3);
 
                 // initialise showtimes
+
+                // 3 showtimes for each movie
                 addShowtime(0, 0, 0, "202212131600", "202212131800", false);
-                addShowtime(0, 1, 1, "202211121600", "202211121800", false);
-                addShowtime(0, 2, 2, "202212111600", "202212111800", false);
+                addShowtime(0, 1, 0, "202212141600", "202211141800", false);
+                addShowtime(0, 2, 0, "202212151600", "202212151800", false);
 
-                addShowtime(1, 0, 0, "202211111600", "202211111800", false);
-                addShowtime(1, 1, 1, "202211121600", "202211121800", false);
-                addShowtime(1, 2, 2, "202212111600", "202212111800", false);
+                addShowtime(1, 0, 1, "202212131600", "202212131800", false);
+                addShowtime(1, 1, 1, "202212141600", "202211141800", false);
+                addShowtime(1, 2, 1, "202212151600", "202212151800", false);
 
-                addShowtime(2, 0, 0, "202211111600", "202211111800", false);
-                addShowtime(2, 1, 1, "202211121600", "202211121800", false);
-                addShowtime(2, 2, 2, "202212111600", "202212111800", false);
+                addShowtime(2, 0, 2, "202212131600", "202212131800", false);
+                addShowtime(2, 1, 2, "202212141600", "202211141800", false);
+                addShowtime(2, 2, 2, "202212151600", "202212151800", false);
 
                 // initialise surcharges and discounts
                 BookingController bookingController = new BookingController();
