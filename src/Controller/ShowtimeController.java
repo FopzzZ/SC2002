@@ -79,9 +79,13 @@ public class ShowtimeController {
         movieController.updateShowtime(movie, showtimeList);
     }
 
-    public void removeShowtime(int index) {
-        showtimeList.remove(index);
-        movieController.updateShowtime(movie, showtimeList);
+    public boolean removeShowtime(int index) {
+        if (movieController.searchWithID(index) != -1) {
+            showtimeList.remove(index);
+            movieController.updateShowtime(movie, showtimeList);
+            return true;
+        }
+        return false;
     }
 
     public ArrayList<Showtime> getShowtimeList() {

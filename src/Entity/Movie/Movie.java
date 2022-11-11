@@ -124,6 +124,8 @@ public class Movie implements Serializable {
         String content;
         int index = 0;
         while (input != 7) {
+            System.out.println("\n" +
+                    "Editing: " + this.getTitle());
             System.out.println("1: Title");
             System.out.println("2: Status (Coming Soon/Preview/Now Showing/End of Showing)");
             System.out.println("3: Type (Blockbuster/3D/Common)");
@@ -132,7 +134,7 @@ public class Movie implements Serializable {
             System.out.println("6: Synopsis");
             System.out.println("7: Add Cast");
             System.out.println("8: Exit");
-            System.out.println("Select attribute to edit");
+            System.out.print("\nSelect attribute to edit: ");
             input = InputController.getIntFromUser(1, 8);
 
             switch (input) {
@@ -227,7 +229,7 @@ public class Movie implements Serializable {
                     }
                     break;
                 case 8:
-                    break;
+                    return false;
             }
         }
 

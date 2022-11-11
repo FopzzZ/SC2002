@@ -150,17 +150,18 @@ public class MovieController {
         writeToDB(movieList);
     }
 
-    public void updateMovieByID(int ID) {
+    public boolean updateMovieByID(int ID) {
         int index = searchWithID(ID);
         if (index == -1) {
             System.out.println("No such movie!");
-            return;
+            return false;
         }
         boolean isDeleted = movieList.get(index).updateDetail();
         if (isDeleted) {
             remove(index);
         }
         writeToDB(movieList);
+        return true;
     }
 
     public void addTickectSales(String title, double price) {
@@ -185,6 +186,7 @@ public class MovieController {
         if (index == -1) {
             return false;
         }
+        System.out.println(getMovie(index).getTitle() + " has been removed!");
         remove(index);
         writeToDB(movieList);
         return true;
