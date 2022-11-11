@@ -69,7 +69,7 @@ public class ModifyShowtimeMenuUI {
             System.out.print("\nEnter end time in the format YYYYMMddHHmm: ");
             endTime = new Time(InputController.getTimeFromUser());
             if (endTime.compareTo(startTime) <= 0)
-                System.out.println("Invalid time range, input again!");
+                System.out.println("End time cannot be smaller than start time!");
         } while (endTime.compareTo(startTime) <= 0);
         cineplexController.listCineplex();
         System.out.print("\nSelect cineplex: ");
@@ -105,7 +105,7 @@ public class ModifyShowtimeMenuUI {
             System.out.print("\nEnter end time in the format YYYYMMddHHmm: ");
             endTime = new Time(InputController.getTimeFromUser());
             if (endTime.compareTo(startTime) <= 0)
-                System.out.println("Invalid time range, input again!");
+                System.out.println("End time cannot be smaller than start time!");
         } while (endTime.compareTo(startTime) <= 0);
         cineplexController.listCineplex();
         System.out.print("\nSelect cineplex: ");
