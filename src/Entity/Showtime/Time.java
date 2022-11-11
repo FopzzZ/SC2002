@@ -82,4 +82,9 @@ public class Time implements Serializable {
 
     }
 
+    public int compareTo(Time time) {
+        int startInt = time.getYear() * 6 + time.getMonth() * 4 + time.getHour() * 2 + time.getMinutes();
+        int endInt = this.getYear() * 6 + this.getMonth() * 4 + this.getHour() * 2 + this.getMinutes();
+        return endInt - startInt;
+    }
 }

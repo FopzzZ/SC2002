@@ -128,6 +128,10 @@ public class CineplexController {
     }
 
     public void listCinemas(Cineplex cineplex) {
+        System.out.println("\n" +
+                "-----------\n" +
+                "| Cinemas |\n" +
+                "-----------");
         ArrayList<Cinema> cinemaList = cineplex.getCinemas();
         for (int i = 0; i < cinemaList.size(); ++i) {
             System.out.printf("%d: %s, Type: %s\n", i + 1, cinemaList.get(i).getName(),
