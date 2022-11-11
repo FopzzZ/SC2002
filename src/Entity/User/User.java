@@ -24,6 +24,9 @@ public class User implements Serializable {
         this.bookingHistory = new ArrayList<Booking>();
     }
 
+    /**
+     * @return ArrayList<Booking>
+     */
     public ArrayList<Booking> getBookingHistory() {
         return this.bookingHistory;
     }
@@ -50,44 +53,74 @@ public class User implements Serializable {
         }
     }
 
+    /**
+     * @return String
+     */
     public String getDateOfBirth() {
         return this.dateOfBirth;
     }
 
+    /**
+     * @return String
+     */
     public String getName() {
         return this.name;
 
     }
 
+    /**
+     * @return String
+     */
     public String getMobileNumber() {
         return this.mobileNumber;
     }
 
+    /**
+     * @return String
+     */
     public String getEmail() {
         return this.email;
     }
 
+    /**
+     * @param dateOfBirth
+     */
     public void setDateOfBirth(String dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
 
+    /**
+     * @param name
+     */
     public void setName(String name) {
         this.name = name;
     }
 
+    /**
+     * @param mobileNumber
+     */
     public void setMobileNumber(String mobileNumber) {
         this.mobileNumber = mobileNumber;
 
     }
 
+    /**
+     * @param email
+     */
     public void setEmail(String email) {
         this.email = email;
     }
 
+    /**
+     * @param bookingHistory
+     */
     public void setBookingHistory(ArrayList<Booking> bookingHistory) {
         this.bookingHistory = bookingHistory;
     }
 
+    /**
+     * @param booking
+     */
     public void addBooking(Booking booking) {
         bookingHistory.add(booking);
     }
