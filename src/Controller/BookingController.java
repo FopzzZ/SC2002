@@ -220,7 +220,9 @@ public class BookingController {
                     break;
             }
         }
-
+        if (defaultPrice <= 1) { // min price 1 dollar
+            defaultPrice = 1.0;
+        }
         return defaultPrice;
     }
 
