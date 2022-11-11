@@ -50,6 +50,7 @@ public class ShowtimeController {
         showtimeList.get(index).update(showtime);
         sortShowtimesByStartTime();
         movieController.updateShowtime(movie, showtimeList);
+
     }
 
     private void sortShowtimesByStartTime() {
@@ -82,6 +83,4 @@ public class ShowtimeController {
     public ArrayList<Showtime> getFilteredShowtimeList() {
         return this.filteredShowtimeList;
     }
-
-    // TODO implement a sort showtime function
 }

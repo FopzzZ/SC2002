@@ -44,7 +44,7 @@ public class CineplexController {
         }
     }
 
-    public void addNewCineplex(String name) { // insert types of 3 cinemas
+    public void addNewCineplex(String name) { // add 3 cinemas of nomal types
         Cinema cinema1 = new Cinema("Cinema 1");
         Cinema cinema2 = new Cinema("Cinema 2");
         Cinema cinema3 = new Cinema("Cinema 3");

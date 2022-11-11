@@ -284,7 +284,7 @@ public class MovieController {
                     "-----------------");
             System.out.println(movieList.get(index).toString());
         } else
-            System.out.println("No movie found.");
+            System.out.println("No movie found");
     }
 
     public void showDetailByID(int ID) {
@@ -296,7 +296,7 @@ public class MovieController {
                     "-----------------");
             System.out.println(movieList.get(index).toString());
         } else
-            System.out.println("No movie found.");
+            System.out.println("No movie found");
     }
 
     private void remove(int index) {
