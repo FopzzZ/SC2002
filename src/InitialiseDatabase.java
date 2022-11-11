@@ -90,6 +90,14 @@ public class InitialiseDatabase {
                 addShowtime(0, 0, 1, "202211121600", "202211121800", false);
                 addShowtime(0, 0, 2, "202212111600", "202212111800", false);
 
+                addShowtime(1, 1, 0, "202211111600", "202211111800", false);
+                addShowtime(1, 1, 1, "202211121600", "202211121800", false);
+                addShowtime(1, 1, 2, "202212111600", "202212111800", false);
+
+                addShowtime(2, 2, 0, "202211111600", "202211111800", false);
+                addShowtime(2, 2, 1, "202211121600", "202211121800", false);
+                addShowtime(2, 2, 2, "202212111600", "202212111800", false);
+
                 // initialise surcharges and discounts
                 BookingController bookingController = new BookingController();
                 bookingController.clearDatabase();
