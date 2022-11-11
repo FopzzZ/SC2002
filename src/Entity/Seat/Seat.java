@@ -44,22 +44,36 @@ public class Seat implements Serializable {
         this.columnNumber = columnNumber;
     }
      /**
-    * Method to set the column number of seat
+    * Method to set the Seat Type
     *
-    * @param Integer that has the column number    
+    * @return SeatType This returns the type of the seat object.    
     */
     
     public void setSeatType(SeatType seatType) {
         this.seatType = seatType;
     }
 
+    /**
+    * Method to set the related seats
+    *
+    * @return Seat Type This returns the type of the related seats. 
+    */
+    
     public void setRelatedSeat(Seat seat) {
         this.relatedSeat = seat;
     }
+    /**
+    * Method to see if seat is occupied.
+    *  
+    */
 
     public void occupy() {
         this.isOccupied = true;
     }
+    /**
+    * Method to see if seat is unoccupied.
+    *  
+    */
 
     public void unOccupy() {
         this.isOccupied = false;
