@@ -73,15 +73,16 @@ public class InitialiseDatabase {
         ArrayList<Movie> movieList = movieController.getMovieList();
         Time startTime = new Time(start);
         Time endTime = new Time(end);
+        int index = 0;
         for (Movie movie : movieList) {
             ShowtimeController showtimeController = new ShowtimeController(movie);
             for (int i = 0; i < cineplexController.getCineplexList().size(); i++) {
                 Cineplex selectedCineplex = cineplexController.getCineplexList().get(i);
-                for (int j = 0; j < cineplexController.getCinemaList(selectedCineplex).size(); j++) {
-                    Cinema selectedCinema = cineplexController.getCinemaList(selectedCineplex).get(j);
-                    showtimeController.create(movie, startTime, endTime, selectedCineplex, selectedCinema, isHoliday);
-                }
+                Cinema selectedCinema = cineplexController.getCinemaList(selectedCineplex).get(index);
+                showtimeController.create(movie, startTime, endTime, selectedCineplex, selectedCinema, isHoliday);
+
             }
+            index++;
         }
     }
 }
