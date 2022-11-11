@@ -24,8 +24,6 @@ public class UserMenuUI {
                     "3. Check seat availability\n" +
                     "4. Book ticket\n" +
                     "5. View booking history\n" +
-                    // "6. List Top 5 ranking\n" +
-                    // "7. List Top 5 ticket sales\n" +
                     "6. Rate a movie\n" +
                     "7. Log out\n");
             System.out.print("Select action: ");
