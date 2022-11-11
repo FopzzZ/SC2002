@@ -18,7 +18,7 @@ public class AdminConfigSettingUI {
                     "| Admin Settings |\n" +
                     "------------------\n" +
                     "1. Modify ticket prices\n" +
-                    "2. Modify cineplex\n" +
+                    "2. Modify cineplexes\n" +
                     "3. Back to main menu\n");
             System.out.print("Select action: ");
             switch (InputController.getIntFromUser(1, 3)) {
