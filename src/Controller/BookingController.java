@@ -12,6 +12,9 @@ import Entity.Showtime.Showtime;
 import Entity.User.AgeClass;
 import Entity.User.User;
 
+/**
+ * Controller to manage bookings
+ */
 public class BookingController {
     private double goldclassSurcharge, platinumSurcharge, imaxSurcharge, blockbusterSurcharge,
             threedSurcharge, childDiscount,
@@ -20,6 +23,9 @@ public class BookingController {
     private final static String DataBaseFilePath = "DataBase/Surcharges.txt";
     private static ArrayList<Double> surchargeList;
 
+    /**
+     * Class constructor
+     */
     public BookingController() {
         surchargeList = new ArrayList<Double>();
         File dbFile = new File(DataBaseFilePath);
@@ -31,6 +37,9 @@ public class BookingController {
 
     }
 
+    /**
+     * Update variables from list
+     */
     public void update() {
         if (surchargeList.size() == 10) {
             this.goldclassSurcharge = surchargeList.get(0);
@@ -47,6 +56,11 @@ public class BookingController {
 
     }
 
+    /**
+     * Read surcharge list from database
+     * 
+     * @return ArrayList<Double> current surcharge list
+     */
     @SuppressWarnings("unchecked")
     public ArrayList<Double> readFromDB() {
         try {
@@ -61,6 +75,11 @@ public class BookingController {
         return new ArrayList<Double>();
     }
 
+    /**
+     * Write current surcharge list to database
+     * 
+     * @param surchargeList current list
+     */
     public void writeToDB(ArrayList<Double> surchargeList) {
         try {
             ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(DataBaseFilePath));
@@ -74,6 +93,9 @@ public class BookingController {
         }
     }
 
+    /**
+     * Clear database
+     */
     public void clearDatabase() {
         while (surchargeList.size() > 0) {
             surchargeList.remove(0);
@@ -82,6 +104,13 @@ public class BookingController {
         System.out.println("Clearing surcharge database");
     }
 
+    /**
+     * Update surcharges that depend on class
+     * 
+     * @param goldclassSurcharge Gold Class surcharge
+     * @param platinumSurcharge  Platinum Class surcharge
+     * @param imaxSurcharge      IMAX surcharge
+     */
     public void editClassSurcharge(double goldclassSurcharge, double platinumSurcharge, double imaxSurcharge) {
         surchargeList.remove(0);
         surchargeList.add(0, goldclassSurcharge);
@@ -93,6 +122,12 @@ public class BookingController {
         update();
     }
 
+    /**
+     * Update surcharges that depend on movie type
+     * 
+     * @param blockbusterSurcharge Blockbuster surcharge
+     * @param threedSurcharge      3D surcharge
+     */
     public void editTypeSurcharge(double blockbusterSurcharge, double threedSurcharge) {
         surchargeList.remove(3);
         surchargeList.add(3, blockbusterSurcharge);
@@ -102,6 +137,12 @@ public class BookingController {
         update();
     }
 
+    /**
+     * Update surcharges that depend on age of buyer
+     * 
+     * @param childDiscount         Child/student discount
+     * @param seniorCitizenDiscount Senior citizen discount
+     */
     public void editAgeDiscount(double childDiscount, double seniorCitizenDiscount) {
         surchargeList.remove(5);
         surchargeList.add(5, childDiscount);
@@ -111,6 +152,12 @@ public class BookingController {
         update();
     }
 
+    /**
+     * Update surcharges that depend on day of week/holiday
+     * 
+     * @param weekendSurcharge Weekend surcharge (Fri/Sat/Sun)
+     * @param holidaySurcharge Public holiday surcharge
+     */
     public void editWeekendSurcharge(double weekendSurcharge, double holidaySurcharge) {
         surchargeList.remove(7);
         surchargeList.add(7, weekendSurcharge);
@@ -120,6 +167,11 @@ public class BookingController {
         update();
     }
 
+    /**
+     * Update basic ticket price
+     * 
+     * @param defaultTicketPrice Basic ticket price
+     */
     public void editDefaultTicketPrice(double defaultTicketPrice) {
         surchargeList.remove(9);
         surchargeList.add(9, defaultTicketPrice);
@@ -127,6 +179,9 @@ public class BookingController {
         update();
     }
 
+    /**
+     * Print surcharge list
+     */
     public void printSurcharges() {
         System.out.println("\n" +
                 "------------------\n" +
@@ -144,6 +199,20 @@ public class BookingController {
         System.out.println("Basic Ticket Price: " + defaultTicketPrice);
     }
 
+    /**
+     * Set surcharges, for initialisation, parameters are self explanatory
+     * 
+     * @param goldclassSurcharge
+     * @param platinumSurcharge
+     * @param imaxSurcharge
+     * @param blockbusterSurcharge
+     * @param threedSurcharge
+     * @param childDiscount
+     * @param seniorCitizenDiscount
+     * @param weekendSurcharge
+     * @param holidaySurcharge
+     * @param defaultTicketPrice
+     */
     public void setSurcharges(double goldclassSurcharge, double platinumSurcharge, double imaxSurcharge,
             double blockbusterSurcharge, double threedSurcharge, double childDiscount,
             double seniorCitizenDiscount, double weekendSurcharge, double holidaySurcharge, double defaultTicketPrice) {
@@ -162,15 +231,15 @@ public class BookingController {
         update();
     }
 
-    // test
-    public static void main(String[] args) {
-        BookingController bookingController = new BookingController();
-        bookingController.printSurcharges();
-
-    }
-
-    // get ticket price based on type of movie,class of cinema, age, day of week or
-    // public holiday
+    /**
+     * Calculates ticket price based on movie class, type, day of week and age of
+     * buyer
+     * 
+     * @param movie    movie
+     * @param showtime showtime of the movie
+     * @param user     user that is buying the ticket
+     * @return double price of the ticket
+     */
     public double getTicketPrice(Movie movie, Showtime showtime, User user) {
         double defaultPrice = defaultTicketPrice;
         // add price based on cinemaClass
@@ -230,16 +299,18 @@ public class BookingController {
         return defaultPrice;
     }
 
-    private AgeClass getAgeClass(User user, Showtime showtime) { // TODO this is just a rough one
+    /**
+     * Calculates what age group buyer is in
+     * 
+     * @param user     user that is making the booking
+     * @param showtime showtime of the movie
+     * @return AgeClass age group of user
+     */
+    private AgeClass getAgeClass(User user, Showtime showtime) {
         int showtimeYear; // showtimeMonth, showtimeDay;
         showtimeYear = showtime.getStartTime().getYear();
-        // showtimeMonth = showtime.getStartTime().getMonth();
-        // showtimeDay = showtime.getStartTime().getDay();
         String dob = user.getDateOfBirth();
-        int dobYear; // dobMonth, dobDay;
-        // dobDay = Integer.parseInt(dob.substring(0, 2));
-        // dobMonth = Integer.parseInt(dob.substring(2, 4));
-        // dob: 19/19/1919
+        int dobYear;
         dobYear = Integer.parseInt(dob.substring(6, 10));
         int roughAge = showtimeYear - dobYear;
         if (roughAge > 65) {
@@ -252,6 +323,12 @@ public class BookingController {
 
     }
 
+    /**
+     * Generates transaction id for a booking
+     * 
+     * @param selectedShowtime selected showtime of the movie
+     * @return String transaction id of the booking
+     */
     // get transaction id based on current time and cineplex and cinema code
     public String getTransactionID(Showtime selectedShowtime) {
         int hour = LocalTime.now().getHour();
@@ -267,6 +344,11 @@ public class BookingController {
         return id;
     }
 
+    /**
+     * Get basic ticket price
+     * 
+     * @return double basic ticket price
+     */
     public double getDefaultPrice() {
         return defaultTicketPrice;
     }

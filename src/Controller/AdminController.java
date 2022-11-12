@@ -5,10 +5,16 @@ import java.io.*;
 
 import Entity.User.*;
 
+/**
+ * Controller to access admin database
+ */
 public class AdminController {
     private final static String DataBaseFilePath = "DataBase/Admins.txt";
     private ArrayList<Admin> adminList;
 
+    /**
+     * Class constructor
+     */
     public AdminController() {
         adminList = new ArrayList<Admin>();
         File dbFile = new File(DataBaseFilePath);
@@ -17,6 +23,11 @@ public class AdminController {
         }
     }
 
+    /**
+     * Read stored admin list from database
+     * 
+     * @return ArrayList<Admin> stored admin list
+     */
     @SuppressWarnings("unchecked")
     public ArrayList<Admin> readFromDB() {
         try {
@@ -30,6 +41,11 @@ public class AdminController {
         return new ArrayList<Admin>();
     }
 
+    /**
+     * Write current admin list to database
+     * 
+     * @param adminList current list of admins
+     */
     public void writeToDB(ArrayList<Admin> adminList) {
         try {
             ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(DataBaseFilePath));
@@ -42,12 +58,21 @@ public class AdminController {
         }
     }
 
+    /**
+     * Create a new admin
+     * 
+     * @param username username of new admin
+     * @param password password of new admin
+     */
     public void create(String username, String password) {
         Admin newAdmin = new Admin(username, password);
         adminList.add(newAdmin);
         writeToDB(adminList);
     }
 
+    /**
+     * Clears database
+     */
     public void clearDatabase() {
         while (adminList.size() > 0) {
             adminList.remove(0);
@@ -56,6 +81,11 @@ public class AdminController {
         System.out.println("Clearing admin database");
     }
 
+    /**
+     * Retrieves admin list
+     * 
+     * @return ArrayList<Admin> list of current admins
+     */
     public ArrayList<Admin> getAdminList() {
         return this.adminList;
     }

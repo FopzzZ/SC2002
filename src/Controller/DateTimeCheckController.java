@@ -5,8 +5,17 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.time.format.ResolverStyle;
 
+/**
+ * Controller to verify date time
+ */
 public class DateTimeCheckController {
 
+    /**
+     * Checks if a given string is in a valid date time format
+     * 
+     * @param date string to be checked
+     * @return boolean whether the string is in a valid date time format
+     */
     public static boolean isValid(final String date) {
 
         boolean valid = false;

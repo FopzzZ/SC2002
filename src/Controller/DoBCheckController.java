@@ -5,8 +5,17 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.time.format.ResolverStyle;
 
+/**
+ * Controller to check if given date of birth is valid
+ */
 public class DoBCheckController {
 
+    /**
+     * Check if dob provided is valid and in the correct format
+     * 
+     * @param date dob to be checked
+     * @return boolean whether dob provided is valid and in correct format
+     */
     public static boolean isValid(final String date) {
 
         boolean valid = false;
@@ -21,7 +30,7 @@ public class DoBCheckController {
             valid = true;
 
         } catch (DateTimeParseException e) {
-            //e.printStackTrace();
+            // e.printStackTrace();
             valid = false;
         }
 

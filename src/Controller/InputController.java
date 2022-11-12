@@ -2,9 +2,17 @@ package Controller;
 
 import java.util.Scanner;
 
+/**
+ * Controller for getting input from user and checking if its valid
+ */
 public class InputController {
     private static Scanner sc = new Scanner(System.in);
 
+    /**
+     * Gets a string from user
+     * 
+     * @return String string entered by user
+     */
     public static String getStringFromUser() {
         String input = "";
         while (input.equals("")) {
@@ -16,6 +24,11 @@ public class InputController {
         return input;
     }
 
+    /**
+     * Gets an int from user
+     * 
+     * @return int int entered by user
+     */
     public static int getIntFromUser() {
         int input = -1;
         boolean validInput = false;
@@ -31,6 +44,13 @@ public class InputController {
         return input;
     }
 
+    /**
+     * Gets an int from a specified range from user
+     * 
+     * @param start start of range (inclusive)
+     * @param end   end of range (inclusive)
+     * @return int int entered by user
+     */
     public static int getIntFromUser(int start, int end) {
         int input = getIntFromUser();
         while (input < start || input > end) {
@@ -40,6 +60,11 @@ public class InputController {
         return input;
     }
 
+    /**
+     * Gets Y or N from user
+     * 
+     * @return boolean Y is 1 N is 0
+     */
     public static boolean getYesOrNoFromUser() { // Y or N to boolean
         String input = "";
         boolean validInput = false;
@@ -58,6 +83,11 @@ public class InputController {
         }
     }
 
+    /**
+     * Gets email from user
+     * 
+     * @return String email entered by user
+     */
     public static String getEmailFromUser() {
         String input = "";
         boolean validInput = false;
@@ -72,6 +102,11 @@ public class InputController {
         return input;
     }
 
+    /**
+     * Gets a time from suer
+     * 
+     * @return String time in a specific format
+     */
     public static String getTimeFromUser() {
         String input = "";
         boolean validInput = false;
@@ -86,6 +121,11 @@ public class InputController {
         return input;
     }
 
+    /**
+     * Gets mobile number from user
+     * 
+     * @return String mobile number entered by user
+     */
     public static String getMobileNumberFromUser() {
         String pattern = "[\\d]{8}"; // 8 digit mobile number
         String input = "";
@@ -101,6 +141,11 @@ public class InputController {
         return input;
     }
 
+    /**
+     * Gets a capital letter from user
+     * 
+     * @return char letter entered by user
+     */
     public static char getCapitalLetterFromUser() { // A-Z
         String pattern = "[A-Z]{1}";
         String input = "";
@@ -116,6 +161,11 @@ public class InputController {
         return input.charAt(0);
     }
 
+    /**
+     * Gets dob from user
+     * 
+     * @return String dob entered by user
+     */
     public static String getDateOfBirthFromUser() {
         String input = "";
         boolean validInput = false;
@@ -130,6 +180,11 @@ public class InputController {
         return input;
     }
 
+    /**
+     * Gets a double from user
+     * 
+     * @return double double entered by user
+     */
     public static double getDoubleFromUser() { // should work
         String pattern = "[-]?[0-9]+[.]?[0-9]{0,2}?";
         String input = "";
@@ -143,10 +198,5 @@ public class InputController {
             }
         }
         return Double.parseDouble(input);
-    }
-
-    public static void main(String[] args) {
-        double test = InputController.getDoubleFromUser();
-        System.out.println(test);
     }
 }
