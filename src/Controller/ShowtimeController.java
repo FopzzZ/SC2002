@@ -54,11 +54,19 @@ public class ShowtimeController {
         System.out.printf("Total %d showtimes\n\n", filteredShowtimeList.size());
     }
 
-    public void updateShowtime(int index, Showtime showtime) {
-        showtimeList.get(index).update(showtime);
-        sortShowtimesByStartTime();
-        movieController.updateShowtime(movie, showtimeList);
-
+    public boolean updateShowtime(int index, Showtime showtime) {
+        if (0 <= index & index < getShowtimeList().size()) {
+            showtimeList.get(index).update(showtime);
+            // System.out.println("Editing: " +
+            // showtimeList.get(index).getCinema().getName()); #checking
+            sortShowtimesByStartTime();
+            movieController.updateShowtime(movie, showtimeList);
+            System.out.println("Success");
+            return true;
+        } else {
+            System.out.println("No such show time");
+            return false;
+        }
     }
 
     private void sortShowtimesByStartTime() {
@@ -80,11 +88,13 @@ public class ShowtimeController {
     }
 
     public boolean removeShowtime(int index) {
-        if (movieController.searchWithID(index) != -1) {
+        if (0 <= index & index < getShowtimeList().size()) {
             showtimeList.remove(index);
             movieController.updateShowtime(movie, showtimeList);
+            System.out.println("Successfully removed!");
             return true;
         }
+        System.out.println("Failed to remove!");
         return false;
     }
 
@@ -94,5 +104,12 @@ public class ShowtimeController {
 
     public ArrayList<Showtime> getFilteredShowtimeList() {
         return this.filteredShowtimeList;
+    }
+
+    public boolean validShowtimes(int index) {
+        if (0 <= index & index < getShowtimeList().size()) {
+            return true;
+        }
+        return false;
     }
 }
