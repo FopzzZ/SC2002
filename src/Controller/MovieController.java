@@ -236,7 +236,7 @@ public class MovieController {
                 "| Top 5 Movies (Rating) |\n" +
                 "-------------------------");
         for (int i = 0; i < topList.size(); ++i) {
-            System.out.printf("Movie rated no.%d: %s (rating: %s)\n", i + 1, topList.get(i).getTitle(),
+            System.out.printf("No.%d rated movie: %s (avg score: %s)\n", i + 1, topList.get(i).getTitle(),
                     topList.get(i).getAverageReviewScore());
         }
     }
@@ -270,7 +270,7 @@ public class MovieController {
                 "| Top 5 Movies (Sales) |\n" +
                 "------------------------");
         for (int i = 0; i < topList.size(); ++i) {
-            System.out.printf("No.%d Most sold movie: %s (sales: %s)\n", i + 1, topList.get(i).getTitle(),
+            System.out.printf("No.%d most sold movie: %s (sales: %s)\n", i + 1, topList.get(i).getTitle(),
                     topList.get(i).getTicketSales());
         }
     }
