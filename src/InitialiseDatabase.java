@@ -14,8 +14,16 @@ import Entity.Movie.MovieStatus;
 import Entity.Movie.MovieType;
 import Entity.Showtime.Time;
 
-//file for testing
+/**
+ * Program to initialise databases
+ */
 public class InitialiseDatabase {
+
+        /**
+         * Initialise databases
+         * 
+         * @param args
+         */
         public static void main(String[] args) {
 
                 // initialise user list
@@ -108,6 +116,16 @@ public class InitialiseDatabase {
                                 5, 2, 3, 8);
         }
 
+        /**
+         * Adds a showtime to database
+         * 
+         * @param movieIndex    index of movie
+         * @param cineplexIndex index of cineplex
+         * @param cinemaIndex   index of cinema
+         * @param start         start time
+         * @param end           end time
+         * @param isHoliday     whether it is a holiday
+         */
         public static void addShowtime(int movieIndex, int cineplexIndex, int cinemaIndex, String start, String end,
                         boolean isHoliday) {
                 MovieController movieController = new MovieController();
