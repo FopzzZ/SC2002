@@ -7,25 +7,46 @@ import Entity.Cineplex.Cineplex;
 import Entity.Movie.Movie;
 import Entity.Showtime.*;
 
+/**
+ * Controller to manage showtimes of a movie
+ */
 public class ShowtimeController {
     private Movie movie;
     private ArrayList<Showtime> showtimeList;
     private ArrayList<Showtime> filteredShowtimeList;
     private MovieController movieController;
 
+    /**
+     * Class constructor
+     * 
+     * @param movie movie to be managed
+     */
     public ShowtimeController(Movie movie) {
         this.movie = movie;
         movieController = new MovieController();
         showtimeList = movie.getShowtimes();
     }
 
+    /**
+     * Creates a new showtime
+     * 
+     * @param movie     movie
+     * @param startTime start time
+     * @param endTime   end time
+     * @param cineplex  cineplex
+     * @param cinema    cinema
+     * @param isHoliday whether it is a holiday
+     */
     public void create(Movie movie, Time startTime, Time endTime, Cineplex cineplex, Cinema cinema, boolean isHoliday) {
         showtimeList.add(new Showtime(startTime, endTime, cineplex, cinema, isHoliday));
         sortShowtimesByStartTime();
         movieController.updateShowtime(movie, showtimeList);
 
-    } // adds a showtime to movie
+    }
 
+    /**
+     * Prints all showtimes
+     */
     public void showAllShowtimes() {
         System.out.println("\n" +
                 "-------------\n" +
@@ -37,6 +58,11 @@ public class ShowtimeController {
         System.out.printf("Total %d showtimes\n\n", showtimeList.size());
     }
 
+    /**
+     * Print showtimes filterd by cineplex
+     * 
+     * @param cineplex cineplex to filter by
+     */
     public void showAllFilteredShowtimesByCineplex(Cineplex cineplex) {
         System.out.println("\n" +
                 "-------------\n" +
@@ -54,6 +80,13 @@ public class ShowtimeController {
         System.out.printf("Total %d showtimes\n\n", filteredShowtimeList.size());
     }
 
+    /**
+     * Update a showtime
+     * 
+     * @param index    index of showtime to update
+     * @param showtime updated showtime
+     * @return boolean whether showtime is successfully updated
+     */
     public boolean updateShowtime(int index, Showtime showtime) {
         if (0 <= index & index < getShowtimeList().size()) {
             showtimeList.get(index).update(showtime);
@@ -69,11 +102,19 @@ public class ShowtimeController {
         }
     }
 
+    /**
+     * Sort showtimes by start time
+     */
     private void sortShowtimesByStartTime() {
         showtimeList.sort(null);
     }
 
-    public void updateSeatingPlan(Showtime updatedShowtime) { // TODO make better, now is temp solution
+    /**
+     * Update seating plan
+     * 
+     * @param updatedShowtime showtime with updated seating plan
+     */
+    public void updateSeatingPlan(Showtime updatedShowtime) {
         boolean found = false;
         for (Showtime showtime : showtimeList) {
             if (showtime.matchExceptSeatplan(updatedShowtime)) {
@@ -87,6 +128,12 @@ public class ShowtimeController {
         movieController.updateShowtime(movie, showtimeList);
     }
 
+    /**
+     * Remove a showtime
+     * 
+     * @param index index of showtime to be removed
+     * @return boolean whether showtime is successfully removed
+     */
     public boolean removeShowtime(int index) {
         if (0 <= index & index < getShowtimeList().size()) {
             showtimeList.remove(index);
@@ -98,14 +145,30 @@ public class ShowtimeController {
         return false;
     }
 
+    /**
+     * Get list of showtimes
+     * 
+     * @return ArrayList<Showtime> current list of showtimes
+     */
     public ArrayList<Showtime> getShowtimeList() {
         return this.showtimeList;
     }
 
+    /**
+     * Get filtered list of showtimes
+     * 
+     * @return ArrayList<Showtime> filtered list of showtimes
+     */
     public ArrayList<Showtime> getFilteredShowtimeList() {
         return this.filteredShowtimeList;
     }
 
+    /**
+     * Checks if an index is valid
+     * 
+     * @param index index to check
+     * @return boolean whether index is valid
+     */
     public boolean validShowtimes(int index) {
         if (0 <= index & index < getShowtimeList().size()) {
             return true;

@@ -1,7 +1,6 @@
 package Controller;
 
 import java.util.regex.Pattern;
-import java.util.*;
 
 /**
  * Controller to check if email is valid

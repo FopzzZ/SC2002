@@ -259,10 +259,11 @@ public class MovieController {
     }
 
     /**
-     * @param title
-     * @return boolean
+     * Remove a movie by title
+     * 
+     * @param title title of movie to remove
+     * @return boolean whether movie is successfully removed
      */
-    // return false if no such movie, return true if removed successfully
     public boolean removeMovieByTitle(String title) {
         int index = searchWithTitle(title);
         if (index == -1) {
@@ -274,8 +275,10 @@ public class MovieController {
     }
 
     /**
-     * @param ID
-     * @return boolean
+     * Remove a movie by ID
+     * 
+     * @param ID ID of movie to remove
+     * @return boolean whether movie is successfully removed
      */
     public boolean removeMovieByID(int ID) {
         int index = searchWithID(ID);
@@ -288,6 +291,9 @@ public class MovieController {
         return true;
     }
 
+    /**
+     * Print list of movies
+     */
     public void listMovies() {
         System.out.println("\n" +
                 "-------------------\n" +
@@ -300,12 +306,17 @@ public class MovieController {
     }
 
     /**
-     * @return ArrayList<Movie>
+     * Get list of movies
+     * 
+     * @return ArrayList<Movie> current list of movies
      */
     public ArrayList<Movie> getlistMovies() {
         return movieList;
     }
 
+    /**
+     * List top 5 movies by average review scores
+     */
     public void listTop5ByRating() {
         ArrayList<Movie> tempList = new ArrayList<Movie>();
         tempList = readFromDB();
@@ -329,7 +340,6 @@ public class MovieController {
                 }
             }
         }
-        // System.out.println("Top movies by rating:");
         System.out.println("\n" +
                 "-------------------------\n" +
                 "| Top 5 Movies (Rating) |\n" +
@@ -340,6 +350,9 @@ public class MovieController {
         }
     }
 
+    /**
+     * List top 5 movies by ticket sales
+     */
     public void listTop5ByTicketSales() {
         ArrayList<Movie> tempList = new ArrayList<Movie>();
         tempList = readFromDB();
@@ -363,7 +376,6 @@ public class MovieController {
                 }
             }
         }
-        // System.out.println("Top movies by sales:");
         System.out.println("\n" +
                 "------------------------\n" +
                 "| Top 5 Movies (Sales) |\n" +
@@ -375,18 +387,22 @@ public class MovieController {
     }
 
     /**
-     * @param index
-     * @param rating
-     * @param reviewContent
+     * Add a user review to a movie by index
+     * 
+     * @param index         index of movie
+     * @param rating        score of review
+     * @param reviewContent content of review
      */
     public void addUserReview(int index, int rating, String reviewContent) {
         movieList.get(index).addReview(rating, reviewContent);
-        System.out.println("Review added successfully"); // test
+        System.out.println("Review added successfully");
         writeToDB(movieList);
     }
 
     /**
-     * @param title
+     * Show details of a movie by title
+     * 
+     * @param title title of movie
      */
     public void showDetail(String title) {
         int index = searchWithTitle(title);
@@ -401,7 +417,9 @@ public class MovieController {
     }
 
     /**
-     * @param ID
+     * Show details of a movie by ID
+     * 
+     * @param ID ID of movie
      */
     public void showDetailByID(int ID) {
         int index = searchWithID(ID);
@@ -416,51 +434,41 @@ public class MovieController {
     }
 
     /**
-     * @param index
+     * Remove a movie by index
+     * 
+     * @param index index of movie to be removed
      */
     private void remove(int index) {
         movieList.remove(index);
     }
 
     /**
-     * @param index
-     * @return Movie
+     * Get a movie by index
+     * 
+     * @param index index of movie
+     * @return Movie movie at selected index
      */
     public Movie getMovie(int index) {
         return movieList.get(index);
     }
 
     /**
-     * @return ArrayList<Movie>
+     * Get list of movies
+     * 
+     * @return ArrayList<Movie> current list of movies
      */
     public ArrayList<Movie> getMovieList() {
         return movieList;
     }
 
+    /**
+     * Clears movie database
+     */
     public void clearDatabase() {
         while (movieList.size() > 0) {
             movieList.remove(0);
         }
         writeToDB(movieList);
         System.out.println("Clearing movie database");
-    }
-
-    // adding initial movies to database for testing
-    public static void main(String[] args) { // for testing
-        // add movies run once
-        ArrayList<String> cast = new ArrayList<String>();
-        cast.add("Cast1");
-        cast.add("Cast2");
-        MovieController movieController = new MovieController();
-        movieController.clearDatabase();
-        movieController.createNewMovie("John Cena", MovieStatus.Showing, "now u see me",
-                MovieType.Common,
-                MovieRating.G, "dk", cast);
-        movieController.createNewMovie("Nemo", MovieStatus.Showing, "now u see me",
-                MovieType.Common,
-                MovieRating.G, "dk", cast);
-        movieController.createNewMovie("Bob bones", MovieStatus.Showing, "now u see me",
-                MovieType.Common,
-                MovieRating.G, "dk", cast);
     }
 }
