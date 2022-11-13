@@ -1,12 +1,12 @@
 package Boundary;
 
 import java.util.ArrayList;
-
-//import javax.swing.event.SwingPropertyChangeSupport;
-
 import Controller.*;
 import Entity.Movie.*;
 
+/**
+* SearchMovieUI is an entity containing the user interface for searching movies
+*/
 public class SearchMovieUI {
     private MovieController movieController;
     private String title;
@@ -80,12 +80,12 @@ public class SearchMovieUI {
                 case 7:
                     selectedMovies = filterByRating();
                     if (!selectedMovies.isEmpty()) {
-                        int dashLength = selectedMovies.get(0).getRating().toString().length();
+                        int dashLength = selectedMovies.get(0).getStatus().toString().length();
                         System.out.println();
                         for (int i = 0; i < dashLength + 11; i++) {
                             System.out.print("-");
                         }
-                        System.out.println("\n| " + selectedMovies.get(0).getRating() + " Movies |");
+                        System.out.println("\n| " + selectedMovies.get(0).getStatus() + " Movies |");
                         for (int i = 0; i < dashLength + 11; i++) {
                             System.out.print("-");
                         }
@@ -101,6 +101,9 @@ public class SearchMovieUI {
         }
     }
 
+    /** 
+     * A method that takes in an arraylist of movies and prints it out
+     */
     private void showAllMoviesTitle(ArrayList<Movie> movies) {
         for (int i = 0; i < movies.size(); ++i) {
             System.out.printf("Movie %d: %s\n", i + 1, movies.get(i).getTitle());
@@ -108,26 +111,41 @@ public class SearchMovieUI {
         System.out.printf("Total %d movies\n", movies.size());
     }
 
+    /** 
+     * A method to show all movies
+     */
     public void showAllMovies() {
         movieController.listMovies();
     }
 
+    /** 
+     * A method to list the top 5 movies by rating
+     */
     private void listTop5Ranking() {
         MovieController movieController = new MovieController();
         movieController.listTop5ByRating();
     }
 
+    /** 
+     * A method to list the top 5 movies by ticket sales
+     */
     private void listTop5ByTicketSales() {
         MovieController movieController = new MovieController();
         movieController.listTop5ByTicketSales();
     }
 
+    /** 
+     * A method to search for a movie title
+     */
     public void searchByTitle() {
         System.out.print("Enter movie title to search: ");
         title = InputController.getStringFromUser();
         movieController.showDetail(title);
     }
 
+    /** 
+     * A method to display the menu for filtering movies by type
+     */
     public ArrayList<Movie> filterByType() {
         System.out.println(
                 "1. Blockbuster\n" +
@@ -149,6 +167,9 @@ public class SearchMovieUI {
         return new ArrayList<Movie>();
     }
 
+    /** 
+     * A method to display the menu for filtering movies by status
+     */
     public ArrayList<Movie> filterByStatus() {
         System.out.println(
                 "1. Coming Soon\n" +
@@ -156,7 +177,7 @@ public class SearchMovieUI {
                         "3. Now Showing\n" +
                         "4. Back\n");
         System.out.print("Select status to filter by: ");
-        int choice = InputController.getIntFromUser(1, 4);
+        int choice = InputController.getIntFromUser(1, 5);
         switch (choice) {
             case 1:
                 return movieController.filterByStatus(MovieStatus.Coming);
@@ -170,6 +191,9 @@ public class SearchMovieUI {
         return new ArrayList<Movie>();
     }
 
+    /** 
+     * A method to display the menu for filtering movies by rating
+     */
     public ArrayList<Movie> filterByRating() {
         System.out.println("1. G\n2. PG\n3. PG13\n4. NC16\n5. M18\n6. R21\n");
         System.out.print("Select rating to filter by: ");
