@@ -17,6 +17,8 @@ The workspace contains two folders by default, where:
 
 ## Setup instructions
 
+This project is meant to be open as a java project in vscode
+
 1) Open project using vscode
 2) Run InitialiseDatabase for first time setup
 3) Run Main for main program
