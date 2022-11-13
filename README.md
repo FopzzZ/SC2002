@@ -9,11 +9,12 @@ Created by SC2002 SE3 Group 2
 
 ## Folder Structure
 
-The workspace contains two folders by default, where:
+The workspace contains the following folders, where:
 
 - `src`: the folder to maintain sources
 - `javadoc`: the folder to store javadoc
 - `bin`: the folder to store compiled output files
+- `database`: the folder to store database files
 
 ## Setup instructions
 
