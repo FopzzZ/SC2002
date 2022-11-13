@@ -4,6 +4,9 @@ import Boundary.AdminMenu.AdminLoginUI;
 import Boundary.UserMenu.UserLoginUI;
 import Controller.InputController;
 
+/**
+* MainMenuUI is an entity containing the main menu interface
+*/
 public class MainMenuUI {
     public void main() {
         while (true) {
