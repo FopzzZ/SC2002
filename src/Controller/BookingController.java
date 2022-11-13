@@ -20,7 +20,7 @@ public class BookingController {
             threedSurcharge, childDiscount,
             seniorCitizenDiscount, weekendSurcharge, holidaySurcharge, defaultTicketPrice;
 
-    private final static String DataBaseFilePath = "DataBase/Surcharges.txt";
+    private final static String DataBaseFilePath = "database/Surcharges.txt";
     private static ArrayList<Double> surchargeList;
 
     /**

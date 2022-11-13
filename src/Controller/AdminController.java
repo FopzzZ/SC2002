@@ -9,7 +9,7 @@ import Entity.User.*;
  * Controller to access admin database
  */
 public class AdminController {
-    private final static String DataBaseFilePath = "DataBase/Admins.txt";
+    private final static String DataBaseFilePath = "database/Admins.txt";
     private ArrayList<Admin> adminList;
 
     /**

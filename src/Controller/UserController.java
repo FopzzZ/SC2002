@@ -10,7 +10,7 @@ import Entity.User.User;
  * Controller to manage user database
  */
 public class UserController {
-    private final static String DataBaseFilePath = "DataBase/Users.txt";
+    private final static String DataBaseFilePath = "database/Users.txt";
     private static ArrayList<User> userList;
 
     /**
