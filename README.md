@@ -1,18 +1,22 @@
-## Getting Started
+## MOBLIMA APP
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+Created by SC2002 SE3 Group 2
+- Pavanraj Selvaraju
+- Tan Jin Wei Daniel
+- Yan Renyu
+- Zheng Rongtao
+- Zhou Xuhang
 
 ## Folder Structure
 
 The workspace contains two folders by default, where:
 
 - `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
+- `javadoc`: the folder to store javadoc
+- `bin`: the folder to store compiled output files
 
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
+## Setup instructions
 
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
-
-## Dependency Management
-
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+1) Open project using vscode
+2) Run InitialiseDatabase for first time setup
+3) Run Main for main program
